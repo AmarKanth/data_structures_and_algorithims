@@ -1,8 +1,6 @@
 """
-1. In tree data stracture parent node has two attributes to maintain
-data and list of links to sub-category nodes.
-2. trees are non-linear data stractures.
-3. In binary tree each node has most two children.
+1. Trees are non-linear data stractures.
+2. In binary tree each node has most two children.
 """
 
 """
