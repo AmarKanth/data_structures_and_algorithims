@@ -1,30 +1,102 @@
-class BTree:
-    def __init__(self, data, children=[]):
+class TreeNode:
+    def __init__(self, data):
         self.data = data
-        self.children = children
+        self.leftChild = None
+        self.rightChild = None
     
-    def __str__(self, level=0):
-        ret = " " * level + str(self.data) + "\n"
-        for child in self.children:
-            ret += child.__str__(level+2)
-        return ret
-    
-    def appendChild(self, childNode):
-        self.children.append(childNode)
+newBT = TreeNode("Drinks")
+hot = TreeNode("Hot")
+cold = TreeNode("Cold")
+newBT.leftChild = hot
+newBT.rightChild = cold
 
-rootnode = BTree("Drinks", [])
+tea = TreeNode("Tea")
+coffee = TreeNode("Coffee")
+hot.leftChild = tea
+hot.rightChild = coffee
 
-hot = BTree("Hot", [])
-cold = BTree("Cold", [])
-rootnode.appendChild(hot)
-rootnode.appendChild(cold)
+cola = TreeNode("Cola")
+cold.leftChild = cola
 
-tea = BTree("Tea", [])
-coffee = BTree("Coffee", [])
-hot.appendChild(tea)
-hot.appendChild(coffee)
+from queue import Queue
 
-cola = BTree("Cola", [])
-cold.appendChild(cola)
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return 
+    else:
+        q = Queue()
+        q.put(rootNode)
+        while not q.empty():
+            root = q.get()
+            print(root.data)
+            if root.leftChild is not None:
+                q.put(root.leftChild)
+            if root.rightChild is not None:
+                q.put(root.rightChild)
 
-print(rootnode)
+
+def getDeepestNode(rootNode):
+    if not rootNode:
+        return
+    else:
+        q = Queue()
+        q.put(rootNode)
+        while not q.empty():
+            root = q.get()
+            if root.leftChild is not None:
+                q.put(root.leftChild)
+            if root.rightChild is not None:
+                q.put(root.rightChild)
+        deepestNode = root.data
+        return deepestNode
+
+
+def deleteDeepestNode(rootNode, node):
+    if not rootNode:
+        return
+    else:
+        q = Queue()
+        q.put(rootNode)
+        while not q.empty():
+            root = q.get()
+            if root.data == node:
+                root = None
+                return
+            if root.leftChild:
+                if root.leftChild.data == node:
+                    root.leftChild = None
+                    return
+                else:
+                    q.put(root.leftChild)
+            if root.rightChild:
+                if root.rightChild.data == node:
+                    root.rightChild = None
+                    return
+                else:
+                    q.put(root.rightChild)
+
+
+def deleteNode(rootNode, node):
+    if not rootNode:
+        return "BT is not exist"
+    else:
+        q = Queue()
+        q.put(rootNode)
+        while not q.empty():
+            root = q.get()
+            if root.data == node:
+                dNode = getDeepestNode(rootNode)
+                root.data = dNode
+                print(root.data)
+                print("----------------")
+                deleteDeepestNode(rootNode, dNode)
+                return "Node is deleted successfully"
+            if root.leftChild is not None:
+                q.put(root.leftChild)
+            if root.rightChild is not None:
+                q.put(root.rightChild)
+
+# deleteNode(newBT, "Tea")
+# levelOrderTraversal(newBT)
+res = getDeepestNode(newBT)
+print(res)
