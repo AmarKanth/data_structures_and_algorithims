@@ -24,7 +24,7 @@ class BinaryTree:
     SpaceComplexity is O(1)
     """
     def searchNode(self, nodeValue):
-        for idx in range(self.maxSize):
+        for idx in range(self.lastUsedIndex):
             if self.customList[idx] == nodeValue:
                 return "Success"
         return "Not Found"
