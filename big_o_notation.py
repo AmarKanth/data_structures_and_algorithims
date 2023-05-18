@@ -15,6 +15,14 @@ O(2**N) 	Exponential 	Double recursion in Fionacci
 """
 
 """
+O(LogN) :-
+
+log2(depth) = n ===> b**depth = n
+Here depth is number of levels n is devided into.
+Binary Logarithm default base number is 2.
+"""
+
+"""
 Big O Complexity
 1. O(Log N), O(1)
 2. O(N)
