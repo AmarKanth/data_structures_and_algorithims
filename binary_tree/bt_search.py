@@ -87,3 +87,49 @@ def searchNode(rootNode, nodeValue):
             searchNode(rootNode.rightChild, nodeValue)
 
 newBST = BSTNode(None)
+
+
+"""
+Delete Node
+TimeComplexity O(logN)
+SpaceComplexity O(logN)
+"""
+def minValueNode(bstNode):
+    current = bstNode
+    while (current.leftChild is not None):
+        current = current.leftChild
+    return current
+
+
+def deleteNode(rootNode, nodeValue):
+    if rootNode is None:
+        return rootNode
+    if nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue > rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        """
+        The below two if conditions will be execute
+        when we trying to delete leaf node
+        """
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        
+        if rootNode.rightChild is None:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+
+        """
+        1. The below code will be execute when there is a childs to the nodeValue.
+        2. minValueNode fetches the successor
+        3. it will replace the deleted node value with successor
+        4. the last line re-arrange the all nodes
+        """
+        temp = minValueNode(rootNode.rightChild)
+        rootNode.data = temp.data
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+    return rootNode
