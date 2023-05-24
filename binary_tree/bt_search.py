@@ -133,3 +133,10 @@ def deleteNode(rootNode, nodeValue):
         rootNode.data = temp.data
         rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
     return rootNode
+
+
+def deleteBST(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "BST successfully deleted"
