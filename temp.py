@@ -72,5 +72,19 @@ Insertion Conditions in AVL
 2. LR Condition
 3. RR Condition
 4. RL Condition
+
+rotateRight(disbalanceNode):
+    newRoot = disbalanceNode.leftChild
+    disbalanceNode.leftChild = disbalanceNode.leftChild.rightChild
+    newRoot.righChild = disbalanceNode
+    update the height
+    return newRoot
+
+rotateLeft(disbalanceNode):
+    newRoot = dibalanceNode.rightChild
+    disbalanceNode.rightChild = disbalanceNode.rightChild.leftChild
+    newRoot.leftChild = disbalanceNode
+    update the height
+    return newRoot
 """
 newAVL = AVLNode(10)
