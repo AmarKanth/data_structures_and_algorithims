@@ -113,7 +113,7 @@ def insertNode(rootNode, nodeValue):
     elif nodeValue < rootNode.data:
         rootNode.leftChild = insertNode(rootNode.leftChild, nodeValue)
     else:
-        rootNode.rigtChild = insertNode(rootNode.rightChild, nodeValue)
+        rootNode.rightChild = insertNode(rootNode.rightChild, nodeValue)
     
     rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
     balance = getBalance(rootNode)
@@ -134,4 +134,5 @@ newAVL = AVLNode(5)
 newAVL = insertNode(newAVL, 10)
 newAVL = insertNode(newAVL, 15)
 newAVL = insertNode(newAVL, 20)
+
 levelOrderTraversal(newAVL)
