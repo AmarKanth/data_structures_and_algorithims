@@ -130,13 +130,6 @@ def insertNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     return rootNode
 
-newAVL = AVLNode(5)
-newAVL = insertNode(newAVL, 10)
-newAVL = insertNode(newAVL, 15)
-newAVL = insertNode(newAVL, 20)
-
-levelOrderTraversal(newAVL)
-
 
 """
 1. Delete leaf node
@@ -155,9 +148,9 @@ def deleteNode(rootNode, nodeValue):
     if not rootNode:
         return rootNode
     elif nodeValue < rootNode.data:
-        rootNode.leftChild = deleteNode(rootNode, nodeValue)
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
     elif nodeValue > rootNode.data:
-        rootNode.rightChild = deleteNode(rootNode, nodeValue)
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
     else:
         if rootNode.leftChild is None:
             temp = rootNode.rightChild
@@ -187,3 +180,12 @@ def deleteNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     
     return rootNode
+
+
+newAVL = AVLNode(5)
+newAVL = insertNode(newAVL, 10)
+newAVL = insertNode(newAVL, 15)
+newAVL = insertNode(newAVL, 20)
+newAVL = deleteNode(newAVL, 15)
+
+levelOrderTraversal(newAVL)
