@@ -182,6 +182,16 @@ def deleteNode(rootNode, nodeValue):
     return rootNode
 
 
+"""
+TimeComplexity is O(1)
+SpaceComplexity is O(1)
+"""
+def deleteAVL(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+
+
 newAVL = AVLNode(5)
 newAVL = insertNode(newAVL, 10)
 newAVL = insertNode(newAVL, 15)

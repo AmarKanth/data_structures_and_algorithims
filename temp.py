@@ -17,22 +17,6 @@ def preOrderTraversal(rootNode):
     preOrderTraversal(rootNode.rightChild)
 
 
-def inOrderTraversal(rootNode):
-    if not rootNode:
-        return
-    inOrderTraversal(rootNode.leftChild)
-    print(rootNode.data)
-    inOrderTraversal(rootNode.rightChild)
-
-
-def postOrderTraversal(rootNode):
-    if not rootNode:
-        return
-    postOrderTraversal(rootNode.leftChild)
-    postOrderTraversal(rootNode.rightChild)
-    print(rootNode.data)
-
-
 def levelOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -47,35 +31,6 @@ def levelOrderTraversal(rootNode):
             if root.rightChild is not None:
                 q.put(root.rightChild)
 
-
-def searchNode(rootNode, nodeValue):
-    if rootNode.data == nodeValue:
-        print("Value is found")
-    elif nodeValue < rootNode.data:
-        if rootNode.data == nodeValue:
-            print("Value is found")
-        else:
-            searchNode(rootNode.leftChild, nodeValue)
-    else:
-        if rootNode.data == nodeValue:
-            print("Value is found")
-        else:
-            searchNode(rootNode.rightChild, nodeValue)
-
-
-"""
-Insertion Conditions in AVL
-1. Rotation is not Required(Insertion is same as in BT)
-2. Rotation is Required(When left and right subtree depth difference is morethan one)
-
-1. LL Condition
-2. LR Condition
-3. RR Condition
-4. RL Condition
-
-TimeComplexity O(LogN)
-SpaceComplexity O(LogN)
-"""
 
 def getHeight(rootNode):
     if not rootNode:
@@ -130,62 +85,9 @@ def insertNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     return rootNode
 
-
-"""
-1. Delete leaf node
-2. Delete node if parent node has one sub-node
-3. Delete node if parent node has two sub-nodes
-4. Do rotation to make the tree balanced
-"""
-
-def getMinValueNode(rootNode):
-    if rootNode is None or rootNode.leftChild is None:
-        return rootNode
-    return getMinValueNode(rootNode.leftChild)
-
-
-def deleteNode(rootNode, nodeValue):
-    if not rootNode:
-        return rootNode
-    elif nodeValue < rootNode.data:
-        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
-    elif nodeValue > rootNode.data:
-        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
-    else:
-        if rootNode.leftChild is None:
-            temp = rootNode.rightChild
-            rootNode = None
-            return temp
-        elif rootNode.rightChild is None:
-            temp = rootNode.leftChild
-            rootNode = None
-            return temp
-        
-        temp = getMinValueNode(rootNode.rightChild)
-        rootNode.data = temp.data
-        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
-
-    rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
-    balance = getBalance(rootNode)
-    
-    if balance > 1 and getBalance(rootNode.leftChild) >= 0:
-        return rightRotate(rootNode)
-    if balance < -1 and getBalance(rootNode.rightChild) <= 0:
-        return leftRotate(rootNode)
-    if balance > 1 and getBalance(rootNode.leftChild) < 0:
-        rootNode.leftChild = leftRotate(rootNode.leftChild)
-        return rightRotate(rootNode)
-    if balance < -1 and getBalance(rootNode.rightChild) > 0:
-        rootNode.rightChild = rightRotate(rootNode.rightChild)
-        return leftRotate(rootNode)
-    
-    return rootNode
-
-
 newAVL = AVLNode(5)
 newAVL = insertNode(newAVL, 10)
 newAVL = insertNode(newAVL, 15)
 newAVL = insertNode(newAVL, 20)
-newAVL = deleteNode(newAVL, 15)
 
 levelOrderTraversal(newAVL)
