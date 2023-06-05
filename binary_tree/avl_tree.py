@@ -115,6 +115,7 @@ def insertNode(rootNode, nodeValue):
     else:
         rootNode.rightChild = insertNode(rootNode.rightChild, nodeValue)
     
+    # height always update from bottom to top nodes
     rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
     balance = getBalance(rootNode)
 
@@ -190,6 +191,7 @@ def deleteAVL(rootNode):
     rootNode.data = None
     rootNode.leftChild = None
     rootNode.rightChild = None
+    return "AVL has been successfully deleted"
 
 
 newAVL = AVLNode(5)
