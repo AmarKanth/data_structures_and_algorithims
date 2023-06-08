@@ -1,48 +1,39 @@
-class AVLNode:
-    def __init__(self, data):
-        self.data = data
-        self.leftChild = None
-        self.rightChild = None
-        self.height = 1
-
-
-def preOrdertreversal(rootNode):
-    if not rootNode:
-        return 
-    balance = getBalance(rootNode)
-    print(f"{rootNode.data}--{rootNode.height}--{balance}")
-    preOrdertreversal(rootNode.leftChild)
-    preOrdertreversal(rootNode.rightChild)
-
-
-def getHeight(rootNode):
-    if not rootNode:
-        return 0
-    return rootNode.height
-
-
-def getBalance(rootNode):
-    if not rootNode:
-        return 0
-    return getHeight(rootNode.leftChild) - getHeight(rootNode.rightChild)
-
-
-def insertNode(rootNode, nodeValue):
-    if not rootNode:
-        return AVLNode(nodeValue)
-    if nodeValue < rootNode.data:
-        rootNode.leftChild = insertNode(rootNode.leftChild, nodeValue)
-    else:
-        rootNode.rightChild = insertNode(rootNode.rightChild, nodeValue)
+class Heap:
+    def __init__(self, size):
+        self.customList = (size+1) * [None]
+        self.heapSize = 0
+        self.maxSize = size + 1
     
-    rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
-    balance = getBalance(rootNode)
-    return rootNode
+
+"""
+TimeComplexity is O(1)
+SpaceComplexity is O(1)
+"""
+def peakofHeap(rootNode):
+    if not rootNode:
+        return
+    return rootNode.customList[1]
 
 
-newAVL = AVLNode(30)
-newAVL = insertNode(newAVL, 25)
-newAVL = insertNode(newAVL, 35)
-newAVL = insertNode(newAVL, 20)
-newAVL = insertNode(newAVL, 15)
-preOrdertreversal(newAVL)
+"""
+TimeComplexity is O(1)
+SpaceComplexity is O(1)
+"""
+def sizeofHeap(rootNode):
+    if not rootNode:
+        return
+    return rootNode.heapSize
+
+
+"""
+TimeComplexity is O(n)
+SpaceComplexity is O(1)
+"""
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    for idx in range(1, rootNode.heapSize+1):
+        print(rootNode.customList[idx])
+
+
+newBinaryHeap = Heap(5)
