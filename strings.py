@@ -139,12 +139,14 @@ string to  palindrome.
 """
 from collections import Counter
 string = "geeksforgeeks"
-counter = Counter(string)
-odd_nums = [i for i in counter.values() if i%2 != 0]
 
-if len(odd_nums) > 1:
-    return False
-return True
+def can_be_palindrome(string):
+    counter = Counter(string)
+    odd_nums = [i for i in counter.values() if i%2 != 0]
+
+    if len(odd_nums) > 1:
+        return False
+    return True
 
 
 """
