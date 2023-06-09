@@ -65,12 +65,72 @@ def insertNode(rootNode, nodeValue, heapType):
         return "Binary Heap is full"
     rootNode.customList[rootNode.heapSize + 1] = nodeValue
     rootNode.heapSize += 1
+    # Heapifying will be performed from last node to rootnode
     heapifyTreeInsert(rootNode, rootNode.heapSize, heapType)
     return "The value is successfully inserted"
 
 
+def heapifyTreeExtract(rootNode, index, heapType):
+    leftIndex = index * 2
+    rightIndex = index * 2 + 1
+    swapChild = 0
+
+    if rootNode.heapSize < leftIndex:
+        return 
+    # If current node has only leftchild and leftchild is the last child
+    elif rootNode.heapSize == leftIndex:
+        if heapType == "Min":
+            if rootNode.customList[index] > rootNode.customList[leftIndex]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+        else:
+            if rootNode.customList[index] < rootNode.customList[leftIndex]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+    # If current node has right and left child
+    else:
+        if heapType == "Min":
+            # Find Min value between left and right childs
+            if rootNode.customList[leftIndex] < rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            temp = rootNode.customList[index]
+            rootNode.customList[index] = rootNode.customList[swapChild]
+            rootNode.customList[swapChild] = temp
+        else:
+            # Find Max value between left and right childs
+            if rootNode.customList[leftIndex] > rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            temp = rootNode.customList[index]
+            rootNode.customList[index] = rootNode.customList[swapChild]
+            rootNode.customList[swapChild] = temp
+    heapifyTreeExtract(rootNode, swapChild, heapType)
+
+
+def extractNode(rootNode, heapType):
+    if rootNode.heapSize == 0:
+        return
+    else:
+        # Binary Heap allowed to extract rootNode
+        extractedNode = rootNode.customList[1]
+        rootNode.customList[1] = rootNode.customList[rootNode.heapSize]
+        rootNode.customList[rootNode.heapSize] = None
+        rootNode.heapSize -= 1
+        # Heapifying will be performed from rootNode
+        heapifyTreeExtract(rootNode, 1, heapType)
+        return extractedNode
+    
+
 newBinaryHeap = Heap(5)
-insertNode(newBinaryHeap, 20, "Max")
-insertNode(newBinaryHeap, 10, "Max")
+insertNode(newBinaryHeap, 4, "Max")
 insertNode(newBinaryHeap, 5, "Max")
+insertNode(newBinaryHeap, 2, "Max")
+insertNode(newBinaryHeap, 1, "Max")
 levelOrderTraversal(newBinaryHeap)
