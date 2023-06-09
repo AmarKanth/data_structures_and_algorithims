@@ -114,6 +114,10 @@ def heapifyTreeExtract(rootNode, index, heapType):
     heapifyTreeExtract(rootNode, swapChild, heapType)
 
 
+"""
+TimeComplexity is O(LogN)
+SpaceComplexity is O(LogN)
+"""
 def extractNode(rootNode, heapType):
     if rootNode.heapSize == 0:
         return
@@ -127,6 +131,14 @@ def extractNode(rootNode, heapType):
         heapifyTreeExtract(rootNode, 1, heapType)
         return extractedNode
     
+
+"""
+TimeComplexity is O(1)
+SpaceComplexity is O(1)
+"""
+def deleteBH(rootNode):
+    rootNode.customList = None
+
 
 newBinaryHeap = Heap(5)
 insertNode(newBinaryHeap, 4, "Max")
