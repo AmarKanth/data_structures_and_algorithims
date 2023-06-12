@@ -4,14 +4,14 @@ class TrieNode:
         self.endOfString = False
 
 
-"""
-TimeComplexity is O(m)
-SpaceComplexity is O(m)
-"""
 class Trie:
     def __init__(self):
         self.root = TrieNode()
     
+    """
+    TimeComplexity is O(m)
+    SpaceComplexity is O(m)
+    """
     def insertString(self, word):
         current = self.root
         for ch in word:
@@ -23,6 +23,20 @@ class Trie:
         current.endOfString = True
         print("successfully inserted.")
 
+    """
+    TimeComplexity is O(m)
+    SpaceComplexity is O(m)
+    """
+    def searchString(self, word):
+        currentNode = self.root
+        for ch in word:
+            node = currentNode.children.get(ch)
+            if node == None:
+                return False
+            currentNode = node
+        return currentNode.endOfString
+
 
 newTrie = Trie()
 newTrie.insertString("API")
+newTrie.searchString("AP")
