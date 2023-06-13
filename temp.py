@@ -38,7 +38,7 @@ class Trie:
 
 
 """
-If some part of given word is part of the word(API, APPLE)
+Delete API
      A
     /
    P
@@ -49,7 +49,7 @@ If some part of given word is part of the word(API, APPLE)
         \
          E
 
-If given string prefix is part of other string(API, APIS)
+Delete API
      A
     /
    P
