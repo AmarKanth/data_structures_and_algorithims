@@ -44,21 +44,47 @@ CASE-1 : Some part of given string(API) is part of other string.
    P
   / \
  I   P
-      \
-       L
+  \   \
+   *   L
         \
          E
+          \
+           *
 
 CASE-2 : Enire given string(API) is part of other string.
      A
     /
    P
   / \
- I   P
+ I*   P
   \   \
    S   L
-        \
-         E
+    \   \
+     *   E
+          \
+           *
+
+CASE-3 : Other string(API) is Sub-Part of given String(APIS)
+     A
+    /
+   P
+  / 
+ I*  
+  \  
+   S
+    \
+     *
+
+CASE-4 : Not any node depends on this string K
+     AK
+    /  \
+   P    *
+  / 
+ I  
+  \  
+   S
+    \
+     *
 """
 def deleteString(root, word, index):
     ch = word[index]
@@ -70,7 +96,7 @@ def deleteString(root, word, index):
     if len(currentNode.children) >= 1:
         deleteString(currentNode, word, index+1)
         return False
-    
+
     # When index at last character in the word
     if index == len(word) - 1:
         if len(currentNode.children) >= 1:
@@ -82,8 +108,6 @@ def deleteString(root, word, index):
             root.children.pop(ch)
             return True
     
-    # If the given word is prefix of other
-    # we cant delete the word
     if currentNode.endOfString == True:
         deleteString(currentNode, word, index+1)
         return False
@@ -96,9 +120,9 @@ def deleteString(root, word, index):
         return False
 
 newTrie = Trie()
-newTrie.insertString("APPLE")
 newTrie.insertString("API")
+newTrie.insertString("APIS")
 
-deleteString(newTrie.root, "API", 0)
+deleteString(newTrie.root, "APIS", 0)
+print(newTrie.searchString("APIS"))
 print(newTrie.searchString("API"))
-print(newTrie.searchString("APPLE"))
