@@ -38,7 +38,7 @@ class Trie:
 
 
 """
-Delete API
+CASE-1 : Some part of given string(API) is part of other string.
      A
     /
    P
@@ -49,7 +49,7 @@ Delete API
         \
          E
 
-Delete API
+CASE-2 : Enire given string(API) is part of other string.
      A
     /
    P
