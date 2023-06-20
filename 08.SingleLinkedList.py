@@ -1,9 +1,4 @@
 """
-Each node contains value and reference, 
-head and tail nodes stores only reference to the next node.
-"""
-
-"""
 Time to create single linked list is 0(1)
 """
 class Node:
@@ -24,6 +19,12 @@ class SLinkedList:
             node = node.next
     
     def insertSLL(self, value, location):
+        """
+        1. Insert new node, when there is no head
+        2. Replace head with new node(@index 0)
+        3. Replace tail with new node(@index -1)
+        4. Insert new node at specific location
+        """
         newNode = Node(value)
         if self.head is None:
             self.head = newNode
