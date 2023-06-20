@@ -1,31 +1,7 @@
 """
-Linked list is a form of a sequential collection and it does not have to be in order.
-A linked list made up of independent nodes that may contain any type of data and 
-each node has a reference to the next in the link.
-"""
-
-"""
-1. Elements in linked list are independent. 
-Elements in list will be replaced with next element if delete the element.
-2. in case of delete element in list elements will be rearrange the indicies and memory slots.
-In linked list need to update the references. which is effiecient than the list.
-3. we cant randomly fetch the element in linked list, need to itarate all the elements.
-"""
-
-"""
-1. Singular Linked List :- each node contains value and reference, 
+Each node contains value and reference, 
 head and tail nodes stores only reference to the next node.
-
-2. Circular Singly Linked List :- it is same as single linked list, 
-last node stores the first node reference.
-
-3. Doubly Linked List :- each node has two references. 
-first reference is previous value and second reference is next value.
-
-4. Circular Doubly Linked List :- it is same as doubly linked list,
-last node stores the reference of previous node and first node.
 """
-
 
 """
 Time to create single linked list is 0(1)
@@ -34,6 +10,7 @@ class Node:
     def __init__(self, value=None):
         self.value = value
         self.next = None
+
 
 class SLinkedList:
     def __init__(self):

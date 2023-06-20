@@ -1,3 +1,7 @@
+"""
+It is same as single linked list, last node stores the first node reference.
+"""
+
 class Node:
     def __init__(self, value=None):
         self.value = value

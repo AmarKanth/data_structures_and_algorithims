@@ -1,3 +1,7 @@
+"""
+Each node has two references. first reference is previous value and second reference is next value.
+"""
+
 class Node:
     def __init__(self, value=None):
         self.value = value
