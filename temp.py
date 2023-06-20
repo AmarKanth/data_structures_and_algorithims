@@ -48,6 +48,17 @@ class SingleLinkedList:
             print((index, node.value))
             index += 1
             node = node.next
+    
+    def searchSSL(self, value):
+        if self.head is None:
+            return "Linked List is not present."
+        else:
+            node = self.head
+            while node is not None:
+                if node.value == value:
+                    return node.value
+                node = node.next
+            return "Value is not found."
 
 ssl = SingleLinkedList()
 ssl.insertSSL(3, 0)
@@ -55,3 +66,5 @@ ssl.insertSSL(1, 1)
 ssl.insertSSL(4, 2)
 ssl.insertSSL(0, 0)
 ssl.traversalSSL()
+search = ssl.searchSSL(5)
+print(search)

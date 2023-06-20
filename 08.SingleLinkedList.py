@@ -70,6 +70,11 @@ class SLinkedList:
             return "The value does not exist in this list"
     
     def deleteNode(self, location):
+        """
+        1. Delete node at index 0(head)
+        2. Delete node at index -1(tail)
+        3. Delete node at specific location
+        """
         if self.head is None:
             print("The SLL does not exist")
         else:
