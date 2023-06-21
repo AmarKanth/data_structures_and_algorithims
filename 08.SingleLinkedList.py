@@ -1,5 +1,6 @@
 """
-Time to create single linked list is 0(1)
+TimeComplexity is O(1)
+SpaceComplexity is O(1)
 """
 class Node:
     def __init__(self, value=None):
@@ -18,6 +19,10 @@ class SLinkedList:
             yield node
             node = node.next
     
+    """
+    TimeComplexity is O(n)
+    SpaceComplexity is O(1)
+    """
     def insertSLL(self, value, location):
         """
         1. Insert new node, when there is no head
@@ -48,7 +53,11 @@ class SLinkedList:
                 newNode.next = nextNode
                 if tempNode == self.tail:
                     self.tail = newNode
-        
+
+    """
+    TimeComplexity is O(n)
+    SpaceComplexity is O(1)
+    """    
     def traverseSLL(self):
         if self.head is None:
             print("The Singly Linked List does not exist")
@@ -58,6 +67,10 @@ class SLinkedList:
                 print(node.value)
                 node = node.next
     
+    """
+    TimeComplexity is O(n)
+    SpaceComplexity is O(1)
+    """
     def searchSLL(self, nodeValue):
         if self.head is None:
            return "The list does not exist"
@@ -69,6 +82,10 @@ class SLinkedList:
                 node = node.next
             return "The value does not exist in this list"
     
+    """
+    TimeComplexity is O(n)
+    SpaceComplexity is O(1)
+    """
     def deleteNode(self, location):
         """
         1. Delete node at index 0(head)
@@ -105,6 +122,10 @@ class SLinkedList:
                 nextNode = tempNode.next
                 tempNode.next = nextNode.next
     
+    """
+    TimeComplexity is O(1)
+    SpaceComplexity is O(1)
+    """
     def deleteEntireSLL(self):
         if self.head is None:
             print("The SLL does not exist")
