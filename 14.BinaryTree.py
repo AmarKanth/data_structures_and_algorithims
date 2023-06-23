@@ -1,9 +1,4 @@
 """
-1. Trees are non-linear data stractures.
-2. In binary tree each node has most two children.
-"""
-
-"""
 Basic Tree
 """
 class TreeNode:
