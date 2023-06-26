@@ -1,9 +1,11 @@
+from queue import Queue
+
+
 class BSTNode:
     def __init__(self, data):
         self.data = data
         self.leftChild = None
         self.rightChild = None
-
 
 """
 TimeComplexity  O(logn)
@@ -24,7 +26,6 @@ def insertNode(rootNode, nodeValue):
             else:
                 insertNode(rootNode.rightChild, nodeValue)
 
-
 def preOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -43,7 +44,6 @@ def inOrderTraversal(rootNode):
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
 
-
 def postOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -51,8 +51,6 @@ def postOrderTraversal(rootNode):
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
 
-
-from queue import Queue
 def levelOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -66,7 +64,6 @@ def levelOrderTraversal(rootNode):
                 q.put(root.leftChild)
             if root.rightChild is not None:
                 q.put(root.rightChild)
-
 
 """
 TimeComplexity O(logN)
@@ -86,11 +83,7 @@ def searchNode(rootNode, nodeValue):
         else:
             searchNode(rootNode.rightChild, nodeValue)
 
-newBST = BSTNode(None)
-
-
 """
-Delete Node
 TimeComplexity O(logN)
 SpaceComplexity O(logN)
 """
@@ -99,7 +92,6 @@ def minValueNode(bstNode):
     while (current.leftChild is not None):
         current = current.leftChild
     return current
-
 
 def deleteNode(rootNode, nodeValue):
     if rootNode is None:
@@ -133,7 +125,6 @@ def deleteNode(rootNode, nodeValue):
         rootNode.data = temp.data
         rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
     return rootNode
-
 
 def deleteBST(rootNode):
     rootNode.data = None
