@@ -4,7 +4,6 @@ class Heap:
         self.heapSize = 0
         self.maxSize = size + 1
     
-
 """
 TimeComplexity is O(1)
 SpaceComplexity is O(1)
@@ -13,7 +12,6 @@ def peakofHeap(rootNode):
     if not rootNode:
         return
     return rootNode.customList[1]
-
 
 """
 TimeComplexity is O(1)
@@ -24,7 +22,6 @@ def sizeofHeap(rootNode):
         return
     return rootNode.heapSize
 
-
 """
 TimeComplexity is O(n)
 SpaceComplexity is O(1)
@@ -34,7 +31,6 @@ def levelOrderTraversal(rootNode):
         return
     for idx in range(1, rootNode.heapSize+1):
         print(rootNode.customList[idx])
-
 
 def heapifyTreeInsert(rootNode, index, heapType):
     parentIndex = int(index/2)
@@ -55,7 +51,6 @@ def heapifyTreeInsert(rootNode, index, heapType):
             rootNode.customList[parentIndex] = temp
             heapifyTreeInsert(rootNode, parentIndex, heapType)
 
-
 """
 TimeComplexity is O(LogN)
 SpaceComplexity is O(LogN)
@@ -68,7 +63,6 @@ def insertNode(rootNode, nodeValue, heapType):
     # Heapifying will be performed from last node to rootnode
     heapifyTreeInsert(rootNode, rootNode.heapSize, heapType)
     return "The value is successfully inserted"
-
 
 def heapifyTreeExtract(rootNode, index, heapType):
     leftIndex = index * 2
@@ -113,7 +107,6 @@ def heapifyTreeExtract(rootNode, index, heapType):
             rootNode.customList[swapChild] = temp
     heapifyTreeExtract(rootNode, swapChild, heapType)
 
-
 """
 TimeComplexity is O(LogN)
 SpaceComplexity is O(LogN)
@@ -131,14 +124,12 @@ def extractNode(rootNode, heapType):
         heapifyTreeExtract(rootNode, 1, heapType)
         return extractedNode
     
-
 """
 TimeComplexity is O(1)
 SpaceComplexity is O(1)
 """
 def deleteBH(rootNode):
     rootNode.customList = None
-
 
 newBinaryHeap = Heap(5)
 insertNode(newBinaryHeap, 4, "Max")
