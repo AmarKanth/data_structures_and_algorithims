@@ -8,14 +8,12 @@ class AVLNode:
         self.rightChild = None
         self.height = 1
 
-
 def preOrderTraversal(rootNode):
     if not rootNode:
         return
     print(rootNode.data)
     preOrderTraversal(rootNode.leftChild)
     preOrderTraversal(rootNode.rightChild)
-
 
 def inOrderTraversal(rootNode):
     if not rootNode:
@@ -24,14 +22,12 @@ def inOrderTraversal(rootNode):
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
 
-
 def postOrderTraversal(rootNode):
     if not rootNode:
         return
     postOrderTraversal(rootNode.leftChild)
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
-
 
 def levelOrderTraversal(rootNode):
     if not rootNode:
@@ -47,7 +43,6 @@ def levelOrderTraversal(rootNode):
             if root.rightChild is not None:
                 q.put(root.rightChild)
 
-
 def searchNode(rootNode, nodeValue):
     if rootNode.data == nodeValue:
         print("Value is found")
@@ -62,7 +57,6 @@ def searchNode(rootNode, nodeValue):
         else:
             searchNode(rootNode.rightChild, nodeValue)
 
-
 """
 Insertion Conditions in AVL
 1. Rotation is not Required(Insertion is same as in BT)
@@ -76,12 +70,10 @@ Insertion Conditions in AVL
 TimeComplexity O(LogN)
 SpaceComplexity O(LogN)
 """
-
 def getHeight(rootNode):
     if not rootNode:
         return 0
     return rootNode.height
-
 
 def rightRotate(disbalanceNode):
     newRoot = disbalanceNode.leftChild
@@ -91,7 +83,6 @@ def rightRotate(disbalanceNode):
     newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
     return newRoot
 
-
 def leftRotate(disbalanceNode):
     newRoot = disbalanceNode.rightChild
     disbalanceNode.rightChild = disbalanceNode.rightChild.leftChild
@@ -100,12 +91,10 @@ def leftRotate(disbalanceNode):
     newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
     return newRoot
 
-
 def getBalance(rootNode):
     if not rootNode:
         return 0
     return getHeight(rootNode.leftChild) - getHeight(rootNode.rightChild)
-
 
 def insertNode(rootNode, nodeValue):
     if not rootNode:
@@ -131,19 +120,16 @@ def insertNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     return rootNode
 
-
 """
 1. Delete leaf node
 2. Delete node if parent node has one sub-node
 3. Delete node if parent node has two sub-nodes
 4. Do rotation to make the tree balanced
 """
-
 def getMinValueNode(rootNode):
     if rootNode is None or rootNode.leftChild is None:
         return rootNode
     return getMinValueNode(rootNode.leftChild)
-
 
 def deleteNode(rootNode, nodeValue):
     if not rootNode:
@@ -182,7 +168,6 @@ def deleteNode(rootNode, nodeValue):
     
     return rootNode
 
-
 """
 TimeComplexity is O(1)
 SpaceComplexity is O(1)
@@ -193,11 +178,8 @@ def deleteAVL(rootNode):
     rootNode.rightChild = None
     return "AVL has been successfully deleted"
 
-
 newAVL = AVLNode(5)
 newAVL = insertNode(newAVL, 10)
 newAVL = insertNode(newAVL, 15)
 newAVL = insertNode(newAVL, 20)
 newAVL = deleteNode(newAVL, 15)
-
-levelOrderTraversal(newAVL)
