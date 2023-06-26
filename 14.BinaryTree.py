@@ -307,7 +307,7 @@ def deleteNodeBT(rootNode, value):
     """
     1. Find matched node
     2. Find Deepest node
-    3. Replace current node with deepest node
+    3. Replace matched node with deepest node
     4. Delete deepest node
     """
     if not rootNode:
