@@ -1,3 +1,5 @@
+from queue import Queue
+
 """
 Basic Tree
 """
@@ -60,7 +62,7 @@ class BinaryTree:
     SpaceComplexity is O(1)
     """
     def searchNode(self, nodeValue):
-        for idx in range(self.lastUsedIndex):
+        for idx in range(1, self.lastUsedIndex+1):
             if self.customList[idx] == nodeValue:
                 return "Success"
         return "Not Found"
@@ -166,8 +168,6 @@ def preOrderTraversal(rootNode):
     preOrderTraversal(rootNode.leftChild)
     preOrderTraversal(rootNode.rightChild)
 
-preOrderTraversal(newBT)
-
 """
 Time Complexity is O(n)
 Space Complexity is O(n)
@@ -178,8 +178,6 @@ def inOrderTraversal(rootNode):
     inOrderTraversal(rootNode.leftChild)
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
-
-inOrderTraversal(newBT)
 
 """
 Time Complexity is O(n)
@@ -192,13 +190,10 @@ def postOrderTraversal(rootNode):
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
 
-postOrderTraversal(newBT)
-
 """
 Time Complexity is O(n)
 Space Complexity is O(n)
 """
-from queue import Queue
 def levelOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -213,50 +208,16 @@ def levelOrderTraversal(rootNode):
             if root.rightChild is not None:
                 q.put(root.rightChild)
 
-levelOrderTraversal(newBT)
-
-"""
-Searching For Node(Linked List)
-"""
-"""
-Searching for element in Binray Tree gives better performance with levelOrderTraversal,
-because levelOrderTraversal uses Queue and other traversal methods uses stack.
-"""
 """
 Time Complexity O(n)
 Space Complexity O(n)
 """
-from queue import Queue
-def searchBT(rootNode, node):
-    if not rootNode:
-        return "BT is not exist"
-    else:
-        q = Queue()
-        q.put(rootNode)
-        while not q.empty():
-            root = q.get()
-            if root.data == node:
-                return "Success"
-            if root.leftChild is not None:
-                q.put(root.leftChild)
-            if root.rightChild is not None:
-                q.put(root.rightChild)
-        return "Not Found"
+def insertNode(rootNode, value):
+    newNode = TreeNode(value)
 
-res = searchBT(newBT, "Tea")
-print(res)
-
-"""
-Insert New Node
-"""
-"""
-Time Complexity O(n)
-Space Complexity O(n)
-"""
-from queue import Queue
-def insertBT(rootNode, newNode):
     if not rootNode:
         rootNode = newNode
+        return "Node successfully inserted"
     else:
         q = Queue()
         q.put(rootNode)
@@ -273,35 +234,52 @@ def insertBT(rootNode, newNode):
                 root.rightChild = newNode
                 return "Successfully Inserted"
 
-newNode = TreeNode("Cola")
-res = insertBT(newBT, newNode)
-print(res)
-
 """
-Delete Node(Linked List)
+Time Complexity O(n)
+Space Complexity O(n)
 """
-"""
-TimeComplexity is O(n)
-SpaceComplexity is O(n)
-"""
-from queue import Queue
-
-def getDeepestNode(rootNode):
+def searchNode(rootNode, value):
     if not rootNode:
-        return
+        return "BT is not exist"
     else:
         q = Queue()
         q.put(rootNode)
         while not q.empty():
             root = q.get()
+            if root.data == value:
+                return "Success"
             if root.leftChild is not None:
                 q.put(root.leftChild)
             if root.rightChild is not None:
                 q.put(root.rightChild)
-        deepestNode = root.data
+        return "Not Found"
+
+"""
+TimeComplexity is O(n)
+SpaceComplexity is O(n)
+"""
+def getDeepestNode(rootNode):
+    if not rootNode:
+        return
+    else:
+        deepestNode = None
+        q = Queue()
+        q.put(rootNode)
+        while not q.empty():
+            root = q.get()
+            deepestNode = root.data
+            if root.leftChild is not None:
+                q.put(root.leftChild)
+            if root.rightChild is not None:
+                q.put(root.rightChild)
         return deepestNode
 
-def deleteDeepestNode(rootNode, dNode):
+def deleteDeepestNode(rootNode, deepestNode):
+    """
+    1. If deepest node is root node make it None
+    2. If deepest node is leftChild remove link between root and leftChild
+    3. If deepest node is rightChild remove linke between root and rightChild
+    """
     if not rootNode:
         return
     else:
@@ -309,23 +287,29 @@ def deleteDeepestNode(rootNode, dNode):
         q.put(rootNode)
         while not q.empty():
             root = q.get()
-            if root.data is dNode:
+            if root.data == deepestNode:
                 root = None
                 return
             if root.rightChild:
-                if root.rightChild.data is dNode:
+                if root.rightChild.data == deepestNode:
                     root.rightChild = None
                     return
                 else:
                     q.put(root.rightChild)
             if root.leftChild:
-                if root.leftChild.data is dNode:
+                if root.leftChild.data == deepestNode:
                     root.leftChild = None
                     return
                 else:
                     q.put(root.leftChild)
 
-def deleteNodeBT(rootNode, node):
+def deleteNodeBT(rootNode, value):
+    """
+    1. Find matched node
+    2. Find Deepest node
+    3. Replace current node with deepest node
+    4. Delete deepest node
+    """
     if not rootNode:
         return "The BT doesnt exist"
     else:
@@ -333,10 +317,10 @@ def deleteNodeBT(rootNode, node):
         q.put(rootNode)
         while not q.empty():
             root = q.get()
-            if root.data is node:
-                dNode = getDeepestNode(rootNode)
-                root.data = dNode
-                deleteDeepestNode(rootNode, dNode)
+            if root.data is value:
+                deepestNode = getDeepestNode(rootNode)
+                root.data = deepestNode
+                deleteDeepestNode(rootNode, deepestNode)
                 return "The node has been successfully deleted"
             if root.leftChild is not None:
                 q.put(root.leftChild)
@@ -344,21 +328,12 @@ def deleteNodeBT(rootNode, node):
                 q.put(root.rightChild)
         return "Failed to delete the node"
 
-deleteNodeBT(newBT, "Tea")
-
-
-"""
-Delete Enitre Binary Tree
-"""
 """
 TimeComplexity is O(1)
 SpaceComplexity is O(1)
 """
-
 def deleteBT(rootNode):
     rootNode.data = None
     rootNode.leftChild = None
     rootNode.rightChild = None
     return "The BT has been successfully deleted"
-
-deleteBT(newBT)
