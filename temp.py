@@ -1,100 +1,57 @@
+class Node:
+    def __init__(self, info):
+        self.info = info  
+        self.left = None  
+        self.right = None 
+        self.level = None 
+
+    def __str__(self):
+        return str(self.info) 
+
+def preOrder(root):
+    if root == None:
+        return
+    print (root.info, end=" ")
+    preOrder(root.left)
+    preOrder(root.right)
+
 from queue import Queue
 
+class BinarySearchTree:
+    def __init__(self): 
+        self.root = None
 
-class BinaryTree:
-    def __init__(self, data):
-        self.data = data
-        self.leftChild = None
-        self.rightChild = None
+    def insert(self, val):
+        newNode = Node(val)
 
+        if self.root == None:
+            self.root = newNode
+            return "Successfully inserted"
+        else:
+            q = Queue()
+            q.put(self.root)
+            while not q.empty():
+                rootNode = q.get()
+                if val < rootNode.info:
+                    if rootNode.left == None:
+                        rootNode.left = newNode
+                        return "Successfully inserted"
+                    else:
+                        q.put(rootNode.left)
+                
+                if val > rootNode.info:
+                    if rootNode.right == None:
+                        rootNode.right = newNode
+                        return "Successfully inserted"
+                    else:
+                        q.put(rootNode.right)
 
-def preOrderTraversal(rootNode):
-    if rootNode != None:
-        return 
-    print(rootNode.data)
-    preOrderTraversal(rootNode.leftChild)
-    preOrderTraversal(rootNode.rightChild)
+tree = BinarySearchTree()
+t = int(input())
 
+arr = list(map(int, input().split()))
 
-def inOrderTraversal(rootNode):
-    if rootNode != None:
-        return
-    inOrderTraversal(rootNode.leftChild)
-    print(rootNode.data)
-    inOrderTraversal(rootNode.rightChild)
+for i in range(t):
+    tree.insert(arr[i])
 
-
-def postOrderTraversal(rootNode):
-    if rootNode != None:
-        return
-    postOrderTraversal(rootNode.leftChild)
-    postOrderTraversal(rootNode.rightChild)
-    print(rootNode.data)
-
-    
-def levelOrderTraversal(rootNode):
-    if rootNode == None:
-        return
-    q = Queue()
-    q.put(rootNode)
-
-    while not q.empty():
-        root = q.get()
-        print(root.data)
-
-        if root.leftChild != None:
-            q.put(root.leftChild)
-        
-        if root.rightChild != None:
-            q.put(root.rightChild)
-
-
-def insertNode(rootNode, value):
-    newNode = BinaryTree(value)
-
-    if rootNode == None:
-        rootNode = newNode
-        return "Node successfully inserted"
-    else:
-        q = Queue()
-        q.put(rootNode)
-        while not q.empty():
-            root = q.get()
-
-            if root.leftChild != None:
-                q.put(root.leftChild)
-            else:
-                root.leftChild = newNode
-                return "Node successfully inserted"
-            
-            if root.rightChild != None:
-                q.put(root.rightChild)
-            else:
-                root.rightChild = newNode
-                return "Node successfully inserted"
-
-
-def searchNode(rootNode, value):
-    if rootNode == None:
-        return "Binary Tree is not exist"
-    else:
-        q = Queue()
-        q.put(rootNode)
-        while not q.empty():
-            root = q.get()
-            if root.data == value:
-                return "Success"
-            if root.leftChild != None:
-                q.put(root.leftChild)
-            if root.rightChild != None:
-                q.put(root.rightChild)
-    return "Not Found"
-
-
-newBT = BinaryTree("Drinks")
-hot = BinaryTree("Hot")
-cold = BinaryTree("Cold")
-newBT.leftChild = hot
-newBT.rightChild = cold
-
-levelOrderTraversal(newBT)
+preOrder(tree.root)

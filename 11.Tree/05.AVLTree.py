@@ -1,6 +1,5 @@
 from queue import Queue
 
-
 class AVLNode:
     def __init__(self, data):
         self.data = data
@@ -43,20 +42,6 @@ def levelOrderTraversal(rootNode):
             if root.rightChild is not None:
                 q.put(root.rightChild)
 
-def searchNode(rootNode, nodeValue):
-    if rootNode.data == nodeValue:
-        print("Value is found")
-    elif nodeValue < rootNode.data:
-        if rootNode.data == nodeValue:
-            print("Value is found")
-        else:
-            searchNode(rootNode.leftChild, nodeValue)
-    else:
-        if rootNode.data == nodeValue:
-            print("Value is found")
-        else:
-            searchNode(rootNode.rightChild, nodeValue)
-
 """
 Insertion Conditions in AVL
 1. Rotation is not Required(Insertion is same as in BT)
@@ -97,6 +82,9 @@ def getBalance(rootNode):
     return getHeight(rootNode.leftChild) - getHeight(rootNode.rightChild)
 
 def insertNode(rootNode, nodeValue):
+    """
+    1. It uses post order traversal
+    """
     if not rootNode:
         return AVLNode(nodeValue)
     elif nodeValue < rootNode.data:
@@ -104,7 +92,6 @@ def insertNode(rootNode, nodeValue):
     else:
         rootNode.rightChild = insertNode(rootNode.rightChild, nodeValue)
     
-    # height always update from bottom to top nodes
     rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
     balance = getBalance(rootNode)
 
@@ -120,6 +107,20 @@ def insertNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     return rootNode
 
+def searchNode(rootNode, nodeValue):
+    if rootNode.data == nodeValue:
+        print("Value is found")
+    elif nodeValue < rootNode.data:
+        if rootNode.data == nodeValue:
+            print("Value is found")
+        else:
+            searchNode(rootNode.leftChild, nodeValue)
+    else:
+        if rootNode.data == nodeValue:
+            print("Value is found")
+        else:
+            searchNode(rootNode.rightChild, nodeValue)
+
 """
 1. Delete leaf node
 2. Delete node if parent node has one sub-node
@@ -132,6 +133,10 @@ def getMinValueNode(rootNode):
     return getMinValueNode(rootNode.leftChild)
 
 def deleteNode(rootNode, nodeValue):
+    """
+    1. It uses post order traversal and 
+    all the updation will happen form bottom to top(including height and rotations)
+    """
     if not rootNode:
         return rootNode
     elif nodeValue < rootNode.data:
@@ -165,7 +170,6 @@ def deleteNode(rootNode, nodeValue):
     if balance < -1 and getBalance(rootNode.rightChild) > 0:
         rootNode.rightChild = rightRotate(rootNode.rightChild)
         return leftRotate(rootNode)
-    
     return rootNode
 
 """
