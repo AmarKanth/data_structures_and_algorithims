@@ -1,3 +1,9 @@
+"""
+1. Create Buckets and distribute elements of array into bucket
+2. Sort buckets individually
+3. Merge buckets after sorting
+"""
+
 import math
 
 def insertSort(customList):
