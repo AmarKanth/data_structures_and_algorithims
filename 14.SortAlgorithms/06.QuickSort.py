@@ -23,13 +23,16 @@ def pivot(mylist, pivot_index, end_index):
     swap(mylist, pivot_index, swap_index)
     return swap_index
 
-def quickSort(mylist, left, right):
+def quickSortHelper(mylist, left, right):
     if left < right:
         pivot_index = pivot(mylist, left, right)
-        pivot(mylist, left, pivot_index-1)
-        pivot(mylist, pivot_index+1, right)
+        quickSortHelper(mylist, left, pivot_index-1)
+        quickSortHelper(mylist, pivot_index+1, right)
     return mylist
 
+def quickSort(mylist):
+    return quickSortHelper(mylist, 0, len(mylist)-1)
+
 cList = [3,5,0,6,2,1,4]
-res = quickSort(cList, 0, 6)
+res = quickSort(cList)
 print(res)
