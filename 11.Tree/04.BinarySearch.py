@@ -126,3 +126,7 @@ def deleteBST(rootNode):
     rootNode.leftChild = None
     rootNode.rightChild = None
     return "BST successfully deleted"
+
+"""
+1. Binary Search on sorted list revise #356
+"""
