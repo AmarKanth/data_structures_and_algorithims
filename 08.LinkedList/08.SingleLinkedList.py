@@ -7,7 +7,14 @@ class Node:
         self.value = value
         self.next = None
 
-
+"""
+            TimeComplexity      SpaceComplexity
+insert      O(n)                O(1)
+traverse    O(n)                O(1)
+search      O(n)                O(1)
+delete      O(n)                O(1)
+deleteAll   O(1)                O(1)
+"""
 class SLinkedList:
     def __init__(self):
         self.head = None
@@ -19,11 +26,7 @@ class SLinkedList:
             yield node
             node = node.next
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """
-    def insertSLL(self, value, location):
+    def insert(self, value, location):
         """
         1. Insert new node, when there is no head
         2. Replace head with new node(@index 0)
@@ -31,7 +34,7 @@ class SLinkedList:
         4. Insert new node at specific location
         """
         newNode = Node(value)
-        if self.head is None:
+        if self.head == None:
             self.head = newNode
             self.tail = newNode
         else:
@@ -54,46 +57,36 @@ class SLinkedList:
                 if tempNode == self.tail:
                     self.tail = newNode
 
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """    
-    def traverseSLL(self):
-        if self.head is None:
+    def traverse(self):
+        if self.head == None:
             print("The Singly Linked List does not exist")
         else:
-            node = self.head
-            while node is not None:
-                print(node.value)
-                node = node.next
+            tempNode = self.head
+            while tempNode != None:
+                print(tempNode.value)
+                tempNode = tempNode.next
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """
-    def searchSLL(self, nodeValue):
-        if self.head is None:
-           return "The list does not exist"
+    def search(self, value):
+        if self.head == None:
+           return "The ssl does not exist"
         else:
-            node = self.head
-            while node is not None:
-                if node.value == nodeValue:
-                    return node.value
-                node = node.next
-            return "The value does not exist in this list"
+            tempNode = self.head
+            while tempNode != None:
+                if tempNode.value == value:
+                    return tempNode.value
+                tempNode = tempNode.next
+            return "The value does not exist in ssl"
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """
-    def deleteNode(self, location):
+    def delete(self, location):
         """
         1. Delete node at index 0(head)
-        2. Delete node at index -1(tail)
+        2. Delete node at index 0(head) if head and tail is same
+        3. Delete node at index -1(tail)
+        4. Delete node at index -1(tail) if head and tail is same
         3. Delete node at specific location
         """
-        if self.head is None:
-            print("The SLL does not exist")
+        if self.head == None:
+            print("The ssl does not exist")
         else:
             if location == 0:
                 if self.head == self.tail:
@@ -106,13 +99,13 @@ class SLinkedList:
                     self.head = None
                     self.tail = None
                 else:
-                    node = self.head
-                    while node is not None:
-                        if node.next == self.tail:
+                    tempNode = self.head
+                    while tempNode != None:
+                        if tempNode.next == self.tail:
                             break
-                        node = node.next
-                    node.next = None
-                    self.tail = node
+                        tempNode = tempNode.next
+                    tempNode.next = None
+                    self.tail = tempNode
             else:
                 tempNode = self.head
                 index = 0
@@ -122,25 +115,21 @@ class SLinkedList:
                 nextNode = tempNode.next
                 tempNode.next = nextNode.next
     
-    """
-    TimeComplexity is O(1)
-    SpaceComplexity is O(1)
-    """
-    def deleteEntireSLL(self):
+    def deleteAll(self):
         if self.head is None:
-            print("The SLL does not exist")
+            print("The ssl does not exist")
         else:
             self.head = None
             self.tail = None
 
-singleLinkedList = SLinkedList()
-singleLinkedList.insertSLL(1, 1)
-singleLinkedList.insertSLL(2, 1)
-singleLinkedList.insertSLL(3, 1)
-singleLinkedList.insertSLL(4, 1)
-singleLinkedList.insertSLL(0, 0)
-singleLinkedList.insertSLL(0, 3)
-print([node.value for node in singleLinkedList])
-singleLinkedList.traverseSLL()
-search = singleLinkedList.searchSLL(10)
+ssl = SLinkedList()
+ssl.insert(1, 1)
+ssl.insert(2, 1)
+ssl.insert(3, 1)
+ssl.insert(4, 1)
+ssl.insert(0, 0)
+ssl.insert(0, 3)
+print([node.value for node in ssl])
+ssl.traverse()
+search = ssl.search(10)
 print(f"search value is {search}")
