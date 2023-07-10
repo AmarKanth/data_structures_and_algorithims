@@ -1,3 +1,5 @@
+from queue import Queue
+
 class Graph:
     def __init__(self):
         self.adjacency_list = {}
@@ -33,18 +35,35 @@ class Graph:
             self.adjacency_list[vertex2].remove(vertex1)
             return True
         return False
+    
+    """
+    TimeComplexity is O(V+E)
+    SpaceComplexity is O(V)
+    """
+    def bfs(self, vertex):
+        visited = set()
+        visited.add(vertex)
+        q = Queue()
+        q.put(vertex)
+        while not q.empty():
+            current_vertex = q.get()
+            print(current_vertex)
+            for adjacent_vertex in self.adjacency_list[vertex]:
+                if adjacent_vertex not in visited:
+                    visited.add(adjacent_vertex)
+                    q.put(adjacent_vertex)
+
 
 custom_graph = Graph()
 custom_graph.add_vertex("A")
 custom_graph.add_vertex("B")
 custom_graph.add_vertex("C")
 custom_graph.add_vertex("D")
+custom_graph.add_vertex("E")
 custom_graph.add_edge("A", "B")
 custom_graph.add_edge("A", "C")
-custom_graph.add_edge("A", "D")
-custom_graph.add_edge("B", "C")
+custom_graph.add_edge("B", "E")
 custom_graph.add_edge("C", "D")
+custom_graph.add_edge("D", "E")
 custom_graph.print_grapth()
-custom_graph.remove_vertex("D")
-print("After removing D....")
-custom_graph.print_grapth()
+# custom_graph.bfs("A")
