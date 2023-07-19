@@ -135,3 +135,60 @@ nodeH.add_edge(14, nodeG)
 algorithm = Dijkstra()
 algorithm.calculate(nodeA)
 algorithm.get_shortest_path(nodeG)
+
+"""
+Bellman Ford Algorithm
+"""
+class Graph:
+    def __init__(self, vertices):
+        self.v = vertices
+        self.graph = []
+        self.nodes = []
+    
+    def add_edges(self, s, d, w):
+        self.graph.append([s, d, w])
+    
+    def add_node(self, value):
+        self.nodes.append(value)
+    
+    def print_solution(self, dist):
+        print("Vertex distance from source")
+        for key, val in dist.items():
+            print(' ' + key, ' : ' + str(val))
+    
+    """
+    TimeComplexity is O(EV)
+    SpaceComplexity is O(V)
+    """
+    def bellmanFord(self, src):
+        # Here source will be the last node in the graph
+        dist = {i: float("inf") for i in self.nodes}
+        dist[src] = 0
+
+        for _ in range(self.v-1):
+            for s, d, w in self.graph:
+                if dist[s] != float("inf") and dist[s] + w < dist[d]:
+                    dist[d] = dist[s] + w
+
+        for s, d, w in self.graph:
+            if dist[s] != float("inf") and dist[s] + w < dist[d]:
+                print("Graph contains negative cycle")
+                return
+        
+        self.print_solution(dist)
+
+g = Graph(5)
+g.add_node("A")
+g.add_node("B")
+g.add_node("C")
+g.add_node("D")
+g.add_node("E")
+g.add_edges("A", "C", 6)
+g.add_edges("A", "D", 6)
+g.add_edges("B", "A", 3)
+g.add_edges("C", "D", 1)
+g.add_edges("D", "C", 2)
+g.add_edges("D", "B", 1)
+g.add_edges("E", "B", 4)
+g.add_edges("E", "D", 2)
+g.bellmanFord("E")
