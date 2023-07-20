@@ -1,3 +1,7 @@
+"""
+Single Source Shortest path means path from given 
+vertex to all other vertices in the graph.
+"""
 from queue import Queue
 
 """
