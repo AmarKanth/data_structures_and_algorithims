@@ -1,3 +1,6 @@
+"""
+Floyd Warshall Algorithm
+"""
 INF = 9999
 
 def printSolution(nV, distance):
