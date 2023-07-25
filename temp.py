@@ -1,32 +1,22 @@
-INF = 9999
-
-def printSolution(nV, distance):
-    for i in range(nV):
-        for j in range(nV):
-            if distance[i][j] == INF:
-                print("INF", end=" ")
-            else:
-                print(distance[i][j], end=" ")
-        print(" ")
-
-"""
-TimeComplexity O(V^3)
-SpaceComplexity O(V^2)
-"""
-def floydWarshall(nV, G):
-    distance = G
-    for k in range(nV):
-        for i in range(nV):
-            for j in range(nV):
-                distance[i][j] = min(distance[i][j], distance[i][k]+distance[k][j])
+class DisjointSet:
+    def __init__(self, vertices):
+        self.vertices = vertices
+        self.parent = {v:v for v in vertices}
+        self.rank = dict.fromkeys(vertices, 0)
     
-    printSolution(nV, distance)
-
-G = [
-    [0, 8, INF, 1],
-    [INF, 0, 1, INF],
-    [4, INF, 0, INF],
-    [INF, 2, 9, 1]
-]
-
-floydWarshall(4, G)
+    def find(self, item):
+        if self.parent[item] == item:
+            return item
+        else:
+            return self.find(self.parent[item])
+    
+    def union(self, x, y):
+        xroot = self.find(x)
+        yroot = self.find(y)
+        if self.rank[xroot] < self.rank[yroot]:
+            self.parent[xroot] = yroot
+        elif self.rank[xroot] > self.rank[yroot]:
+            self.parent[yroot] = xroot
+        else:
+            self.parent[yroot] = xroot
+            self.rank[xroot] += 1
