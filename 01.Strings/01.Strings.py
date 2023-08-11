@@ -20,14 +20,13 @@ s = "sdls ab lld ab"
 Write program to count number of occurrences of substring "ab" in given string
 """
 s = "sdls ab lld ab"
-l = len("ab")
 count = 0
 
 for i in range(len(s)):
-    if s[i:l] == "ab":
-        count = count + 1
-    l = l + 1
-
+    sub = s[i:i+2]
+    if sub == 'ab':
+        count += 1
+        
 print(count)
 
 
@@ -59,6 +58,7 @@ print(sort[0])
 
 """
 check palindrome using recursion
+Algorithm: First and Last letter should be same.
 """
 def palindrome(string):
     if len(string) == [1, 0]:
