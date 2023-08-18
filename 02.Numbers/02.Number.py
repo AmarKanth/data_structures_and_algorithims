@@ -51,7 +51,7 @@ Write a program to reverse the digits in the number
 def reverse(num, reversed_num):
     if num == 0:
         return reversed_num
-    quotient, reminder = num//10, n%10
+    quotient, reminder = num//10, num%10
     rn = reversed_num*10 + reminder
     return reverse(quotient, rn)
 

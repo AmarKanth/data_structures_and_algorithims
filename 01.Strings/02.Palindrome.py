@@ -1,10 +1,10 @@
 """
-Find longest common substring between given string
-str1 = "GeeksforGeeks"
-str2 = "GeeksQuiz"
+Find longest common substring between given strings
+str1 = "abcaaaabbb"
+str2 = "abcaabb"
 """
-str1 = "GeeksforGeeks"
-str2 = "GeeksQuiz"
+str1 = "abcaaaabbb"
+str2 = "abcaabb"
 
 def extract_substrings(str):
     s = set()
