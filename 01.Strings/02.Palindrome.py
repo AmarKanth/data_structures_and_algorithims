@@ -8,7 +8,6 @@ str2 = "abcaabb"
 
 def extract_substrings(str):
     s = set()
-
     for i in range(len(str)):
         for j in range(i+1, len(str)+1):
             sub = str[i:j]
@@ -17,10 +16,8 @@ def extract_substrings(str):
 
 set1 = extract_substrings(str1)
 set2 = extract_substrings(str2)
-
 res = set2.intersection(set1)
 sort = sorted(list(res), key=lambda s: len(s), reverse=True)
-
 print(sort[0])
 
 
@@ -30,10 +27,8 @@ check palindrome using recursion
 def palindrome(string):
     if len(string) == [1, 0]:
         return True
-
     if string[0] != string[len(string)-1]:
         return False
-
     string1 = string[1:]
     string2 = string1[:len(string1)-1]
     return palindrome(string2)
@@ -48,13 +43,11 @@ Write a program to find longest palindrome
 """
 s = "cdfgaa ksdjfsa bbbb"
 l = ""
-
 for i in range(len(s)):
     for j in range(i+1, len(s)+1):
         sub = s[i:j]
         if sub == sub[::-1] and len(l) < len(sub):
             l = sub
-
 print(l)
 
 

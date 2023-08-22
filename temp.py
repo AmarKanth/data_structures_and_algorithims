@@ -1,7 +1,12 @@
-def decimalToBinary(n):
-    if n == 0:
-        return 0
-    return n%2 + 10 * decimalToBinary(n//2)
-
-res = decimalToBinary(13)
-print(res)
+"""
+s = "cdfgaa ksdjfsa bbbb"
+Write a program to find longest palindrome
+"""
+s = "cdfgaa ksdjfsa bbbb"
+l = ""
+for i in range(len(s)):
+    for j in range(i+1, len(s)+1):
+        sub = s[i:j]
+        if sub == sub[::-1] and len(sub) > len(l):
+            l = sub
+print(l)
