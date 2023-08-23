@@ -55,11 +55,10 @@ print(l)
 Check if a given string is a rotation of a palindrome
 """
 def find_palindrome(string):
-    n = len(string)
-
     if string == string[::-1]:
         return string
     
+    n = len(string)
     for i in range(n-1):
         string1 = string[i+1:]
         string2 = string[:i+1]
