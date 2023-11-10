@@ -32,6 +32,17 @@ def fibonacci(n):
 res = fibonacci(10)
 print(res)
 
+n = 9
+num1 = 0
+num2 = 1
+next_number = num1 + num2
+counter = 1
+while counter <= n:
+    print(num2)
+    num1, num2 = num2, next_number
+    next_number = num1 + num2
+    counter += 1
+
 
 """
 Write a program to sum of digits in the number
