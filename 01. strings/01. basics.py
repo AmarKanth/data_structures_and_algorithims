@@ -59,7 +59,8 @@ print(x)
 
 """
 s = "sdls ab lld ab"
-Write program to count number of occurrences of substring "ab" in given string
+Write program to count number of occurrences of substring "ab" in given string 
+without using count method
 """
 s = "sdls ab lld ab"
 count = 0
