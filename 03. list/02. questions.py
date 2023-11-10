@@ -1,5 +1,5 @@
 """
-1. list is mutable, element of list can changed or replaced.
+1. list is immutable, element of list can changed or replaced.
 """
 
 

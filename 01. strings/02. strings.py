@@ -25,3 +25,26 @@ for i in range(len(s)):
     if sub == 'ab':
         count += 1
 print(count)
+
+
+"""
+Find longest common substring between given strings
+str1 = "abcaaaabbb"
+str2 = "abcaabb"
+"""
+str1 = "abcaaaabbb"
+str2 = "abcaabb"
+
+def extract_substrings(str):
+    s = set()
+    for i in range(len(str)):
+        for j in range(i+1, len(str)+1):
+            sub = str[i:j]
+            s.add(sub)
+    return s
+
+set1 = extract_substrings(str1)
+set2 = extract_substrings(str2)
+res = set2.intersection(set1)
+sort = sorted(list(res), key=lambda s: len(s), reverse=True)
+print(sort[0])

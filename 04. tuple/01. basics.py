@@ -1,6 +1,7 @@
 """
 Tuples looks similar as list but it has immutability which means elements can’t be reassigned. 
-It allows duplicate values. In case of generating tuple with single element, make sure to add a comma after the element.
+It allows duplicate values. In case of generating tuple with single element, make sure to add a comma 
+after the element.
 """
 
 """

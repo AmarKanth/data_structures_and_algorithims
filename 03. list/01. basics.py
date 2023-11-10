@@ -46,13 +46,17 @@ remove - removes the element by value. If there are multiple elements it removes
 """
 sort - it sorts the elements of the list and its in-place method. In place methods dont return anything.
 """
+import random
+lst = [{"name": f"Name {random.randrange(1, 10)}", "age": random.randrange(20, 40)} for _ in range(10)]
+lst.sort(key=lambda d: -d["age"])
+print(lst)
 
 """
 reverse - its reverse elements in the list. Its in-place method.
 """
 
 """
-count - it counts the number of occurrences of the specific object in the list.
+count - it counts the number of occurrences of the specific element in the list.
 """
 
 """
