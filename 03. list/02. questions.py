@@ -95,10 +95,10 @@ using sum of n series equation
 """
 l = [1, 2, 3, 4, 5, 6, 8, 9]
 
-def findMissingNumber(l, n):
+def find_missing_number(l, n):
     sum1 = n*(n+1)//2
     sum2 = sum(l)
     return sum1-sum2
 
-res = findMissingNumber(l, 9)
+res = find_missing_number(l, 9)
 print(res)

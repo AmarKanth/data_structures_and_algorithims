@@ -2,6 +2,7 @@
 1. items returns list of tuples with key, value
 2. keys returns list of keys
 3. values returns list of values
+4. len returns the len of the dict
 """
 
 """
