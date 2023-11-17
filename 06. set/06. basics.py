@@ -34,20 +34,32 @@ res = s1.intersection(s2)
 print(res)
 
 """
+intersection_update - it removes the non-common items between the sets.
+"""
+s1 = {1,2,3,4,5}
+s2 = {4,5,6,7,8}
+s1.intersection_update(s2)
+print(s1)
+
+"""
 copy - it copies the original set and changes in original won’t change the copied object.
 """
 
 """
-difference - it returns the difference of the two sets.
+difference - it compares two sets and returns unmatched elements of set1.
 """
+s1 = {1,2,3,4,5}
+s2 = {4,5,6,7,8}
+s = s1.difference(s2)
+print(s)
 
 """
-difference_update - it removes the items that exists in both the sets.
+difference_update - it compares two sets and updates unmatches elements of set1.
 """
-
-"""
-intersection_update - it removes the non-common items between the sets.
-"""
+s1 = {1,2,3,4,5}
+s2 = {4,5,6,7,8}
+s1.difference_update(s2)
+print(s1)
 
 """
 isdisjoint - it returns true if the sets have null intersection and vice versa.
