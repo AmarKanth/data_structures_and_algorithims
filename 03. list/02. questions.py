@@ -1,9 +1,4 @@
 """
-1. list is immutable, element of list can changed or replaced.
-"""
-
-
-"""
 del keyword is use to delete objects in python.
 """
 class MyClass:
@@ -43,14 +38,14 @@ print(res)
 input = ["-1", "0", "2", "3", "4","-1","-2", "-1","3", "-1"] write program to return 
 output ['-1', '-1', '-1', '-1', '0', '2', '3', '4', '-2', '3'] from the given list
 """
-l = ["-1", "0", "2", "3", "4", "-1", "-2", "-1", "3", "-1"]
+lst = ["-1", "0", "2", "3", "4","-1","-2", "-1","3", "-1"]
 
-for i, e in enumerate(l):
-    if e == "-1":
-        l.pop(i)
-        l.insert(0, e)
+for i in range(len(lst)):
+    for j in range(i+1, len(lst)):
+        if lst[j] == "-1":
+            lst[i], lst[j] = lst[j], lst[i]
 
-print(l)
+print(input)
 
 
 """
