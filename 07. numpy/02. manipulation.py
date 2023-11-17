@@ -108,7 +108,7 @@ print(i)
 
 
 """
-union of two numpy arrays
+union of two numpy arrays and removes duplicates
 """
 import numpy as np
 arr_1 = np.array([10, 20, 30, 40])
