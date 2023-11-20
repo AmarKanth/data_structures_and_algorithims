@@ -103,3 +103,15 @@ rows = [(101, 'Jitender', 21), (102, 'Deepak', 20)]
 arr = np.core.records.fromrecords(rows, names=columns)
 print(arr)
 print(arr.Rollno)
+
+
+"""
+How to build an array of all combinations of two NumPy arrays?
+"""
+import numpy as np
+  
+np1 = np.array([1, 2])
+np2 = np.array([4, 6])
+
+comb_array = np.array(np.meshgrid(np1, np2)).T.reshape(-1, 2)
+print(comb_array)

@@ -1,5 +1,7 @@
 """
 where Method
+find the index of 30 in given array
+[10, 32, 30, 30, 50, 20, 82, 91, 45]
 """
 import numpy as np
 
@@ -29,6 +31,24 @@ res1 = np.argmax(arr)
 res2 = np.argmax(arr, axis=0)
 res3 = np.argmax(arr, axis=1)
 print(res3)
+
+
+"""
+Find the most frequent value in a NumPy array
+"""
+import numpy as np
+
+x = np.array([1, 1, 1, 2, 3, 4, 2, 4, 3, 3])
+print(np.bincount(x).argmax())
+
+# if the array contains more than one element 
+# having the maximum number of frequency
+y = np.bincount(x)
+maximum = max(y)
+  
+for i in range(len(y)):
+    if y[i] == maximum:
+        print(i, end=" ")
 
 
 """
