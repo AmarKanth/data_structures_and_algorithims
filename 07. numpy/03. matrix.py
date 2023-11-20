@@ -1,5 +1,6 @@
 """
-Get the maximum value from given matrix
+Get the maximum value from given matrix 
+'[64, 1; 12, 3]'
 """
 import numpy as np
           
@@ -10,6 +11,7 @@ print(res)
 
 """
 Get the minimum value from given matrix
+'[64, 1; 12, 3]'
 """
 import numpy as np
           
@@ -20,6 +22,7 @@ print(res)
 
 """
 Fetch the element from given matrix
+'[4, 1, 12, 3, 4, 6, 7]'
 """
 import numpy as np
               
@@ -30,6 +33,7 @@ print(res)
 
 """
 Sum of all elements in matrix
+'[4, 1; 12, 3]'
 """
 import numpy as np
 
@@ -40,6 +44,9 @@ print(res)
 
 """
 Sum of diagnal elements
+[[55, 25, 15],
+ [30, 44, 02],
+ [11, 45, 77]]
 """
 import numpy as np
 
@@ -60,6 +67,7 @@ print(sum)
 
 """
 Adding Matrices
+[[1, 2], [3, 4]], [[4, 5], [6, 7]]
 """
 import numpy as np
 
@@ -71,6 +79,7 @@ print(res)
 
 """
 Subtract Matrices
+[[1, 2], [3, 4]], [[4, 5], [6, 7]]
 """
 import numpy as np
 
@@ -99,6 +108,7 @@ print(result)
 
 """
 count the number of occurances of elements
+[10, 20, 5, 10, 8, 20, 8, 9]
 """
 import numpy as np
 
@@ -111,6 +121,7 @@ print(frequency)
 
 """
 Write a program to rotate 90 degrees n*n matrix
+[1,2,3], [4,5,6], [7,8,9]]
 """
 import numpy as np
 
