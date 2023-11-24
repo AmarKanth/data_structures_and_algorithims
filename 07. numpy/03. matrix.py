@@ -21,7 +21,7 @@ print(res)
 
 
 """
-Fetch the element from given matrix
+Fetch the element at index 2 from given matrix
 '[4, 1, 12, 3, 4, 6, 7]'
 """
 import numpy as np
