@@ -94,10 +94,8 @@ print(arr_v)
 Combining a one and a two-dimensional NumPy Array
 """
 import numpy as np
-  
 arr1 = np.arange(5)
 arr2 = np.arange(10).reshape(2,5)
-  
 for a, b in np.nditer([arr1, arr2]):
     print((int(a), int(b)))
 
@@ -135,12 +133,10 @@ arr = np.array([[11, 11, 12, 11],
                 [11, 11, 12, 11]])
 """
 import numpy as np
-
 arr = np.array([[11, 11, 12, 11],
                 [13, 11, 12, 11],
                 [16, 11, 12, 11],
                 [11, 11, 12, 11]])
-
 arr_0 = np.unique(arr)
 print(arr_0)
 arr_1 = np.unique(arr, axis=0)
@@ -157,7 +153,6 @@ from given array
 arr = np.array((0, 0, 0, 0, 1, 5, 7, 0, 6, 2, 9, 0, 10, 0, 0))
 """
 import numpy as np
-
 arr = np.array((0, 0, 0, 0, 1, 5, 7, 0, 6, 2, 9, 0, 10, 0, 0))
 trim = np.trim_zeros(arr)
 print(trim)
@@ -175,12 +170,10 @@ array = np.array([[1, 2, 3, 4, 5],
                   [16, 17, 18, 19, 20]])
 """
 import numpy as np
-
 array = np.array([[1, 2, 3, 4, 5],
                   [6, 7, 8, 9, 10],
                   [11, 12, 13, 14, 15],
                   [16, 17, 18, 19, 20]])
-
 print([1, 2, 3, 4, 5] in array.tolist())
 
 
@@ -191,7 +184,6 @@ array = np.array([[10.5, 22.5, 3.8],
                   [41, np.nan, np.nan]])
 """
 import numpy as np
-
 array = np.array([[10.5, 22.5, 3.8], 
                   [23.45, 50, 78.7],
                   [41, np.nan, np.nan]])
@@ -204,7 +196,6 @@ Remove single dimensional entries from the shape
 array = np.array([[[2, 2, 2], [2, 2, 2]]])
 """
 import numpy as np
-
 array = np.array([[[2, 2, 2], [2, 2, 2]]])
 print(np.squeeze(array))
 
@@ -217,7 +208,6 @@ array = np.array([[2, 8, 9, 4],
                   [2, 9, 4, 3]])
 """
 import numpy as np
-  
 array = np.array([[2, 8, 9, 4], 
                   [9, 4, 9, 4],
                   [4, 5, 9, 7],
@@ -235,14 +225,11 @@ array = np.array([[2, 8, 9, 4],
                   [2, 9, 4, 3]])
 """
 import numpy as np
-
 array = np.array([[2, 8, 9, 4], 
                   [9, 4, 9, 4],
                   [4, 5, 9, 7],
                   [2, 9, 4, 3]])
-
 flat = array.flatten()
-
 d  = dict()
 for i in range(0, len(flat)-1):
         comb = (flat[i], flat[i+1])
@@ -250,7 +237,6 @@ for i in range(0, len(flat)-1):
             d[comb] += 1
         else:
             d[comb] = 1
-
 sorted = sorted(d.items(), key=lambda t: t[1], reverse=True)
 print(sorted[0][0])
 
@@ -261,7 +247,6 @@ np1 = np.array([[2, 3, 0],
                [4, 1, 6]])
 """
 import numpy as np
-  
 np1 = np.array([[2, 3, 0],
                [4, 1, 6]])
 print(10 in np1)
@@ -274,7 +259,6 @@ np1 = np.array([[1, 2, 3],
                 [7, 8, 9]])
 """
 import numpy as np
-  
 np1 = np.array([[1, 2, 3],
                 [4, 5, 6],
                 [7, 8, 9]])
@@ -283,24 +267,11 @@ print(res)
 
 
 """
-Count the number of non zero values in the array
-np1 = np.array([[0, 2, 0], [0, 5, 0], [0, 8, 0]])
-"""
-import numpy as np
-  
-np1 = np.array([[0, 2, 0], [0, 5, 0], [0, 8, 0]])
-res = np.count_nonzero(np1)
-print(res)
-
-
-"""
 How to find the size of an array
 np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 """
 import numpy as np
-
 np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
-
 print(np.size(np1))
 print(np.size(np1, 0)) 
 print(np.size(np1, 1))
@@ -311,7 +282,6 @@ How to reverse the numpy array
 np1 = np.array([1, 2, 3, 6, 4, 5])
 """
 import numpy as np
- 
 np1 = np.array([1, 2, 3, 6, 4, 5])
 res = np.flip(np1)
 print(res)
@@ -321,7 +291,6 @@ print(res)
 How to make numpy readonly
 """
 import numpy as np
-
 a = np.zeros(11)
 a.setflags(write=False)
 
@@ -331,7 +300,6 @@ insert new column [1,2,3] at position 2 in given numpy array
 twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 """
 import numpy as np
-
 twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 newTwoDArray = np.insert(twoDArray, 2, [[1,2,3]], axis=1)
 print(newTwoDArray)
@@ -341,7 +309,6 @@ insert new row [1,2,3] at last in given numpy array
 twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 """
 import numpy as np
-
 twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 newTwoDArray = np.append(twoDArray, [[1,2,3]], axis=0)
 print(newTwoDArray)
@@ -351,7 +318,6 @@ delete first column from
 twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 """
 import numpy as np
-
 twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 newTwoDArray = np.delete(twoDArray, 0, axis=1)
 print(newTwoDArray)
