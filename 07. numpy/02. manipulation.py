@@ -178,29 +178,6 @@ print([1, 2, 3, 4, 5] in array.tolist())
 
 
 """
-How to Remove rows in given array that contains non-numeric values?
-array = np.array([[10.5, 22.5, 3.8], 
-                  [23.45, 50, 78.7],
-                  [41, np.nan, np.nan]])
-"""
-import numpy as np
-array = np.array([[10.5, 22.5, 3.8], 
-                  [23.45, 50, 78.7],
-                  [41, np.nan, np.nan]])
-
-print(array[~np.isnan(array).any(axis=1)])
-
-
-"""
-Remove single dimensional entries from the shape
-array = np.array([[[2, 2, 2], [2, 2, 2]]])
-"""
-import numpy as np
-array = np.array([[[2, 2, 2], [2, 2, 2]]])
-print(np.squeeze(array))
-
-
-"""
 Find the number of occurrences of a sequence "9, 4" in given array
 array = np.array([[2, 8, 9, 4], 
                   [9, 4, 9, 4],
@@ -267,17 +244,6 @@ print(res)
 
 
 """
-How to find the size of an array
-np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
-"""
-import numpy as np
-np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
-print(np.size(np1))
-print(np.size(np1, 0)) 
-print(np.size(np1, 1))
-
-
-"""
 How to reverse the numpy array
 np1 = np.array([1, 2, 3, 6, 4, 5])
 """
@@ -313,6 +279,7 @@ twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 newTwoDArray = np.append(twoDArray, [[1,2,3]], axis=0)
 print(newTwoDArray)
 
+
 """
 delete first column from 
 twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
@@ -321,3 +288,26 @@ import numpy as np
 twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 newTwoDArray = np.delete(twoDArray, 0, axis=1)
 print(newTwoDArray)
+
+
+"""
+How to Remove rows in given array that contains non-numeric values?
+array = np.array([[10.5, 22.5, 3.8], 
+                  [23.45, 50, 78.7],
+                  [41, np.nan, np.nan]])
+"""
+import numpy as np
+array = np.array([[10.5, 22.5, 3.8], 
+                  [23.45, 50, 78.7],
+                  [41, np.nan, np.nan]])
+
+print(array[~np.isnan(array).any(axis=1)])
+
+
+"""
+Remove single dimensional entries from the shape
+array = np.array([[[2, 2, 2], [2, 2, 2]]])
+"""
+import numpy as np
+array = np.array([[[2, 2, 2], [2, 2, 2]]])
+print(np.squeeze(array))

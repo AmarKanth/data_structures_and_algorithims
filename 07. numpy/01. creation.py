@@ -115,3 +115,14 @@ np2 = np.array([4, 6])
 
 comb_array = np.array(np.meshgrid(np1, np2)).T.reshape(-1, 2)
 print(comb_array)
+
+
+"""
+How to find the size of an array
+np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+"""
+import numpy as np
+np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+print(np.size(np1))
+print(np.size(np1, 0)) 
+print(np.size(np1, 1))
