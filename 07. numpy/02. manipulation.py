@@ -54,6 +54,8 @@ print(arr_c)
 
 """
 Horizontal Stack
+arr_x = np.array([[1,2,3], [-1,-2,-3]])
+arr_y = np.array([[4,5,6], [-4,-5,-6]])
 """
 import numpy as np
 arr_x = np.array([[1,2,3], [-1,-2,-3]])
@@ -64,6 +66,8 @@ print(arr)
 
 """
 Vertical Stack
+arr_x = np.array([[1,2,3], [-1,-2,-3]])
+arr_y = np.array([[4,5,6], [-4,-5,-6]])
 """
 import numpy as np
 arr_x = np.array([[1,2,3], [-1,-2,-3]])
@@ -73,7 +77,9 @@ print(arr)
 
 
 """
-Concatenate
+Concatenate two arrays with different axis values
+arr_x = np.array([[1, 2], [3, 4]])
+arr_y = np.array([[5, 6], [7, 8]])
 """
 import numpy as np  
 arr_x = np.array([[1, 2], [3, 4]])
@@ -98,6 +104,8 @@ for a, b in np.nditer([arr1, arr2]):
 
 """
 Compare numpy arrays
+np1 = np.array([[1, 2], [3, 4]])
+np2 = np.array([[1, 2], [3, 4]])
 """
 import numpy as np
 np1 = np.array([[1, 2], [3, 4]])
@@ -109,6 +117,8 @@ print(i)
 
 """
 union of two numpy arrays and removes duplicates
+arr_1 = np.array([10, 20, 30, 40])
+arr_2 = np.array([20, 40, 60, 80])
 """
 import numpy as np
 arr_1 = np.array([10, 20, 30, 40])
@@ -118,7 +128,11 @@ print(arr)
 
 
 """
-To identify unique elements, rows and columns
+Identify unique-elements, unique-rows and unique-columns in the given array
+arr = np.array([[11, 11, 12, 11],
+                [13, 11, 12, 11],
+                [16, 11, 12, 11],
+                [11, 11, 12, 11]])
 """
 import numpy as np
 
@@ -136,9 +150,11 @@ print(arr_2)
 
 
 """
-1. Trim zeros from numpy array
-2. "f" parameter trim leading zeros
-3. "b" parameter trim trailing zeros
+1. Trim zeros
+2. Trim leading zeros 
+3. Trim trailing zeros
+from given array
+arr = np.array((0, 0, 0, 0, 1, 5, 7, 0, 6, 2, 9, 0, 10, 0, 0))
 """
 import numpy as np
 
@@ -152,7 +168,11 @@ print(trim_b)
 
 
 """
-Check whether a Numpy array contains a specified row
+Check given array contains a specified row [1, 2, 3, 4, 5]
+array = np.array([[1, 2, 3, 4, 5],
+                  [6, 7, 8, 9, 10],
+                  [11, 12, 13, 14, 15],
+                  [16, 17, 18, 19, 20]])
 """
 import numpy as np
 
@@ -165,8 +185,10 @@ print([1, 2, 3, 4, 5] in array.tolist())
 
 
 """
-How to Remove rows in Numpy array that contains non-numeric values?
-Here axis 0 is the columns and axis 1 is the rows
+How to Remove rows in given array that contains non-numeric values?
+array = np.array([[10.5, 22.5, 3.8], 
+                  [23.45, 50, 78.7],
+                  [41, np.nan, np.nan]])
 """
 import numpy as np
 
@@ -179,6 +201,7 @@ print(array[~np.isnan(array).any(axis=1)])
 
 """
 Remove single dimensional entries from the shape
+array = np.array([[[2, 2, 2], [2, 2, 2]]])
 """
 import numpy as np
 
@@ -187,7 +210,11 @@ print(np.squeeze(array))
 
 
 """
-Find the number of occurrences of a sequence in a NumPy array
+Find the number of occurrences of a sequence "9, 4" in given array
+array = np.array([[2, 8, 9, 4], 
+                  [9, 4, 9, 4],
+                  [4, 5, 9, 7],
+                  [2, 9, 4, 3]])
 """
 import numpy as np
   
@@ -201,7 +228,11 @@ print(output)
 
 
 """
-Find most common pair in NumPy array
+Find most common pair in given array
+array = np.array([[2, 8, 9, 4], 
+                  [9, 4, 9, 4],
+                  [4, 5, 9, 7],
+                  [2, 9, 4, 3]])
 """
 import numpy as np
 
@@ -225,8 +256,9 @@ print(sorted[0][0])
 
 
 """
-How to check whether specified values are 
-present in n*n NumPy?
+How to check whether value 10 is present in given array?
+np1 = np.array([[2, 3, 0],
+               [4, 1, 6]])
 """
 import numpy as np
   
@@ -236,8 +268,10 @@ print(10 in np1)
 
 
 """
-How to get the diagonal elements of
-n*n matrix
+How to get the diagonal elements given array
+np1 = np.array([[1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]])
 """
 import numpy as np
   
@@ -250,6 +284,7 @@ print(res)
 
 """
 Count the number of non zero values in the array
+np1 = np.array([[0, 2, 0], [0, 5, 0], [0, 8, 0]])
 """
 import numpy as np
   
@@ -260,6 +295,7 @@ print(res)
 
 """
 How to find the size of an array
+np1 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 """
 import numpy as np
 
@@ -272,6 +308,7 @@ print(np.size(np1, 1))
 
 """
 How to reverse the numpy array
+np1 = np.array([1, 2, 3, 6, 4, 5])
 """
 import numpy as np
  
@@ -290,7 +327,8 @@ a.setflags(write=False)
 
 
 """
-insert new column at position 2
+insert new column [1,2,3] at position 2 in given numpy array
+twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 """
 import numpy as np
 
@@ -299,7 +337,8 @@ newTwoDArray = np.insert(twoDArray, 2, [[1,2,3]], axis=1)
 print(newTwoDArray)
 
 """
-insert new row at last
+insert new row [1,2,3] at last in given numpy array
+twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 """
 import numpy as np
 
@@ -308,7 +347,8 @@ newTwoDArray = np.append(twoDArray, [[1,2,3]], axis=0)
 print(newTwoDArray)
 
 """
-delete first column
+delete first column from 
+twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 """
 import numpy as np
 
