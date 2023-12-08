@@ -33,48 +33,48 @@ class SLinkedList:
         3. Replace tail with new node(@index -1)
         4. Insert new node at specific location
         """
-        newNode = Node(value)
+        new_node = Node(value)
         if self.head == None:
-            self.head = newNode
-            self.tail = newNode
+            self.head = new_node
+            self.tail = new_node
         else:
             if location == 0:
-                newNode.next = self.head
-                self.head = newNode
+                new_node.next = self.head
+                self.head = new_node
             elif location == -1:
-                newNode.next = None
-                self.tail.next = newNode
-                self.tail = newNode
+                new_node.next = None
+                self.tail.next = new_node
+                self.tail = new_node
             else:
-                tempNode = self.head
+                temp_node = self.head
                 index = 0
                 while index < location - 1:
-                    tempNode = tempNode.next
+                    temp_node = temp_node.next
                     index += 1
-                nextNode = tempNode.next
-                tempNode.next = newNode
-                newNode.next = nextNode
-                if tempNode == self.tail:
-                    self.tail = newNode
+                next_node = temp_node.next
+                temp_node.next = new_node
+                new_node.next = next_node
+                if temp_node == self.tail:
+                    self.tail = new_node
 
     def traverse(self):
         if self.head == None:
             print("The Singly Linked List does not exist")
         else:
-            tempNode = self.head
-            while tempNode != None:
-                print(tempNode.value)
-                tempNode = tempNode.next
+            temp_node = self.head
+            while temp_node != None:
+                print(temp_node.value)
+                temp_node = temp_node.next
     
     def search(self, value):
         if self.head == None:
            return "The ssl does not exist"
         else:
-            tempNode = self.head
-            while tempNode != None:
-                if tempNode.value == value:
-                    return tempNode.value
-                tempNode = tempNode.next
+            temp_node = self.head
+            while temp_node != None:
+                if temp_node.value == value:
+                    return temp_node.value
+                temp_node = temp_node.next
             return "The value does not exist in ssl"
     
     def delete(self, location):
@@ -99,21 +99,21 @@ class SLinkedList:
                     self.head = None
                     self.tail = None
                 else:
-                    tempNode = self.head
-                    while tempNode != None:
-                        if tempNode.next == self.tail:
+                    temp_node = self.head
+                    while temp_node != None:
+                        if temp_node.next == self.tail:
                             break
-                        tempNode = tempNode.next
-                    tempNode.next = None
-                    self.tail = tempNode
+                        temp_node = temp_node.next
+                    temp_node.next = None
+                    self.tail = temp_node
             else:
-                tempNode = self.head
+                temp_node = self.head
                 index = 0
                 while index < location - 1:
-                    tempNode = tempNode.next
+                    temp_node = temp_node.next
                     index += 1
-                nextNode = tempNode.next
-                tempNode.next = nextNode.next
+                next_node = temp_node.next
+                temp_node.next = next_node.next
     
     def deleteAll(self):
         if self.head is None:
