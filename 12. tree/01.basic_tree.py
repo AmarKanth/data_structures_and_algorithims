@@ -9,20 +9,24 @@ class TreeNode:
             ret += child.__str__(level+1)
         return ret
     
-    def addChild(self, TreeNode):
-        self.children.append(TreeNode)
+    def addChild(self, tree_node):
+        self.children.append(tree_node)
+
 
 tree = TreeNode("Drinks", [])
 cold = TreeNode("Cold", [])
 hot = TreeNode("Hot", [])
 tree.addChild(cold)
 tree.addChild(hot)
+
 tea = TreeNode("Tea", [])
 coffee = TreeNode("Coffee", [])
+hot.addChild(tea)
+hot.addChild(coffee)
+
 cola = TreeNode("Cola", [])
 fanta = TreeNode("Fanta", [])
 cold.addChild(cola)
 cold.addChild(fanta)
-hot.addChild(tea)
-hot.addChild(coffee)
+
 print(tree)
