@@ -1,100 +1,77 @@
+"""
+                        TimeComplexity      SpaceComplexity
+init                    O(1)                O(1)
+insert_node             O(1)                O(1)
+search_node             O(n)                O(1)
+pre_order_traversal     O(n)                O(n)
+in_order_traversal      O(n)                O(n)
+post_order_traversal    O(n)                O(n)
+level_order_traversal   O(n)                O(1)
+delete                  O(n)                O(1)
+delete_bt               O(1)                O(1)
+"""
+
 class BinaryTree:
-    """
-    TimeComplexity is O(1)
-    SpaceComplexity is O(1)
-    """
     def __init__(self, size):
-        self.customList = size * [None]
-        self.lastUsedIndex = 0
-        self.maxSize = size
+        self.custom_list = size * [None]
+        self.last_used_index = 0
+        self.max_size = size
     
-    """
-    TimeComplexity is O(1)
-    SpaceComplexity is O(1)
-    """
-    def insertNode(self, value):
-        if self.lastUsedIndex + 1 == self.maxSize:
+    def insert_node(self, value):
+        if self.last_used_index + 1 == self.max_size:
             return "The Binary Tree is full"
-        self.customList[self.lastUsedIndex+1] = value
-        self.lastUsedIndex += 1
+        self.custom_list[self.last_used_index+1] = value
+        self.last_used_index += 1
         return "The value has been successfully inserted"
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """
-    def searchNode(self, nodeValue):
-        for idx in range(1, self.lastUsedIndex+1):
-            if self.customList[idx] == nodeValue:
+    def search_node(self, node_value):
+        for idx in range(1, self.last_used_index+1):
+            if self.custom_list[idx] == node_value:
                 return "Success"
         return "Not Found"
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(n)
-    """
-    def preOrderTraversal(self, index):
-        if index > self.lastUsedIndex:
+    def pre_order_traversal(self, index):
+        if index > self.last_used_index:
             return
-        print(self.customList[index])
-        self.preOrderTraversal(index*2)
-        self.preOrderTraversal(index*2+1)
+        print(self.custom_list[index])
+        self.pre_order_traversal(index*2)
+        self.pre_order_traversal(index*2+1)
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(n)
-    """
-    def inOrderTraversal(self, index):
-        if index > self.lastUsedIndex:
+    def in_order_traversal(self, index):
+        if index > self.last_used_index:
             return
-        self.inOrderTraversal(index*2)
-        print(self.customList[index])
-        self.inOrderTraversal(index*2+1)
+        self.in_order_traversal(index*2)
+        print(self.custom_list[index])
+        self.in_order_traversal(index*2+1)
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(n)
-    """
-    def postOrderTraversal(self, index):
-        if index > self.lastUsedIndex:
+    def post_order_traversal(self, index):
+        if index > self.last_used_index:
             return
-        self.postOrderTraversal(index*2)
-        self.postOrderTraversal(index*2+1)
+        self.post_order_traversal(index*2)
+        self.post_order_traversal(index*2+1)
         print(self.customList[index])
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """
-    def levelOrderTraversal(self, index):
-        for idx in range(index, self.lastUsedIndex+1):
-            print(self.customList[idx])
+    def level_order_traversal(self, index):
+        for idx in range(index, self.last_used_index+1):
+            print(self.custom_list[idx])
     
-    """
-    TimeComplexity is O(n)
-    SpaceComplexity is O(1)
-    """
-    def deleteNode(self, value):
-        if self.lastUsedIndex == 0:
+    def delete_node(self, value):
+        if self.last_used_index == 0:
             return "There is no node to delete"
-        for idx in range(1, self.lastUsedIndex+1):
-            if self.customList[idx] == value:
-                self.customList[idx] = self.customList[self.lastUsedIndex]
-                self.customList[self.lastUsedIndex] = None
-                self.lastUsedIndex -= 1
+        for idx in range(1, self.last_used_index+1):
+            if self.custom_list[idx] == value:
+                self.custom_list[idx] = self.custom_list[self.last_used_index]
+                self.custom_list[self.last_used_index] = None
+                self.last_used_index -= 1
                 return "The node has been successfully deleted"
     
-    """
-    TimeComplexity is O(1)
-    SpaceComplexity is O(1)
-    """
-    def deleteBT(self):
-        self.customList = None
+    def delete_bt(self):
+        self.custom_list = None
         return "The BT has been successfully deleted"
 
 newBT = BinaryTree(8)
-newBT.insertNode("Drinks")
-newBT.insertNode("Hot")
-newBT.insertNode("Cold")
-newBT.insertNode("Tea")
-newBT.insertNode("Coffee")
+newBT.insert_node("Drinks")
+newBT.insert_node("Hot")
+newBT.insert_node("Cold")
+newBT.insert_node("Tea")
+newBT.insert_node("Coffee")
