@@ -68,7 +68,7 @@ class BinaryTree:
     
     def level_order_traversal(self, index):
         """
-        1. Visit all the nodes at each level
+        1.Visit all the nodes at each level
         """
         for idx in range(index, self.last_used_index+1):
             print(self.custom_list[idx])
