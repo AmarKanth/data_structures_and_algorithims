@@ -31,6 +31,11 @@ class BinaryTree:
         return "Not Found"
     
     def pre_order_traversal(self, index):
+        """
+        1.Visit the root node.
+        2.Recursively traverse the left subtree.
+        3.Recursively traverse the right subtree.
+        """
         if index > self.last_used_index:
             return
         print(self.custom_list[index])
@@ -38,6 +43,11 @@ class BinaryTree:
         self.pre_order_traversal(index*2+1)
     
     def in_order_traversal(self, index):
+        """
+        1.Recursively traverse the left subtree.
+        2.Visit the root node.
+        3.Recursively traverse the right subtree.
+        """
         if index > self.last_used_index:
             return
         self.in_order_traversal(index*2)
@@ -45,6 +55,11 @@ class BinaryTree:
         self.in_order_traversal(index*2+1)
     
     def post_order_traversal(self, index):
+        """
+        1.Recursively traverse the left subtree.
+        2.Recursively traverse the right subtree.
+        3.Visit the root node.
+        """
         if index > self.last_used_index:
             return
         self.post_order_traversal(index*2)
@@ -52,6 +67,9 @@ class BinaryTree:
         print(self.customList[index])
     
     def level_order_traversal(self, index):
+        """
+        1. Visit all the nodes at each level
+        """
         for idx in range(index, self.last_used_index+1):
             print(self.custom_list[idx])
     
