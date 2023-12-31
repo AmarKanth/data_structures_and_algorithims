@@ -169,7 +169,7 @@ def delete_node(root_node, value):
             if root.data is value:
                 deepest_node = get_deepest_node(root_node)
                 root.data = deepest_node
-                deleteDeepestNode(root_node, deepest_node)
+                delete_deepest_node(root_node, deepest_node)
                 return "The node has been successfully deleted"
             if root.left_child is not None:
                 q.put(root.left_child)
@@ -177,7 +177,7 @@ def delete_node(root_node, value):
                 q.put(root.right_child)
         return "Failed to delete the node"
 
-def deleteBT(root_node):
+def delete_bt(root_node):
     root_node.data = None
     root_node.left_child = None
     root_node.right_child = None
