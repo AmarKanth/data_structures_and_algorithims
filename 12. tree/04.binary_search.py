@@ -1,113 +1,113 @@
+"""
+                        TimeComplexity      SpaceComplexity
+pre_order_traversal     O(n)                O(n)
+in_order_traversal      O(n)                O(n)
+post_order_traversal    O(n)                O(n)
+level_order_traversal   O(n)                O(1)
+insert_node             O(logN)             O(logN)
+search_node             O(logN)             O(logN)
+delete_node             O(logN)             O(logN)
+delete_bst              O(1)                O(1)
+"""
+
 from queue import Queue
 
 class BSTNode:
     def __init__(self, data):
         self.data = data
-        self.leftChild = None
-        self.rightChild = None
+        self.left_child = None
+        self.right_child = None
 
-def preOrderTraversal(rootNode):
-    if not rootNode:
+def pre_order_traversal(root_node):
+    if not root_node:
         return
-    print(rootNode.data)
-    preOrderTraversal(rootNode.leftChild)
-    preOrderTraversal(rootNode.rightChild)
+    print(root_node.data)
+    pre_order_traversal(root_node.left_child)
+    pre_order_traversal(root_node.right_child)
 
-def inOrderTraversal(rootNode):
-    if not rootNode:
+def in_order_traversal(root_node):
+    if not root_node:
         return
-    inOrderTraversal(rootNode.leftChild)
-    print(rootNode.data)
-    inOrderTraversal(rootNode.rightChild)
+    in_order_traversal(root_node.left_child)
+    print(root_node.data)
+    in_order_traversal(root_node.right_child)
 
-def postOrderTraversal(rootNode):
-    if not rootNode:
+def post_order_traversal(root_node):
+    if not root_node:
         return
-    postOrderTraversal(rootNode.leftChild)
-    postOrderTraversal(rootNode.rightChild)
-    print(rootNode.data)
+    post_order_traversal(root_node.left_child)
+    post_order_traversal(root_node.right_child)
+    print(root_node.data)
 
-def levelOrderTraversal(rootNode):
-    if not rootNode:
+def level_order_traversal(root_node):
+    if not root_node:
         return
     else:
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
             print(root.data)
-            if root.leftChild is not None:
-                q.put(root.leftChild)
-            if root.rightChild is not None:
-                q.put(root.rightChild)
+            if root.left_child:
+                q.put(root.left_child)
+            if root.right_child:
+                q.put(root.right_child)
 
-"""
-TimeComplexity  O(logn)
-SpaceComplexity O(logn)
-"""
-def insertNode(rootNode, nodeValue):
-    if rootNode.data == None:
-        rootNode.data = nodeValue
-    elif nodeValue <= rootNode.data:
-        if rootNode.leftChild is None:
-            rootNode.leftChild = BSTNode(nodeValue)
+def insert_node(root_node, node_value):
+    if root_node.data == None:
+        root_node.data = node_value
+    elif node_value <= root_node.data:
+        if root_node.left_child == None:
+            root_node.left_child = BSTNode(node_value)
         else:
-            insertNode(rootNode.leftChild, nodeValue)
+            insert_node(root_node.left_child, node_value)
     else:
-        if nodeValue > rootNode.data:
-            if rootNode.rightChild is None:
-                rootNode.rightChild = BSTNode(nodeValue)
+        if node_value > root_node.data:
+            if root_node.right_child == None:
+                root_node.right_child = BSTNode(node_value)
             else:
-                insertNode(rootNode.rightChild, nodeValue)
+                insert_node(root_node.right_child, node_value)
 
-"""
-TimeComplexity O(logN)
-SpaceComplexity O(logN)
-"""
-def searchNode(rootNode, nodeValue):
-    if rootNode.data == nodeValue:
+def search_node(root_node, node_value):
+    if root_node.data == node_value:
         print("Value is found")
-    elif nodeValue < rootNode.data:
-        if rootNode.data == nodeValue:
+    elif node_value < root_node.data:
+        if root_node.data == node_value:
             print("Value is found")
         else:
-            searchNode(rootNode.leftChild, nodeValue)
+            search_node(root_node.left_child, node_value)
     else:
-        if rootNode.data == nodeValue:
+        if root_node.data == node_value:
             print("Value is found")
         else:
-            searchNode(rootNode.rightChild, nodeValue)
+            search_node(root_node.right_child, node_value)
 
-"""
-TimeComplexity O(logN)
-SpaceComplexity O(logN)
-"""
-def minValueNode(bstNode):
-    current = bstNode
-    while (current.leftChild is not None):
-        current = current.leftChild
+def min_value_node(bst_node):
+    current = bst_node
+    while (current.left_child):
+        current = current.left_child
     return current
 
-def deleteNode(rootNode, nodeValue):
-    if rootNode is None:
-        return rootNode
-    if nodeValue < rootNode.data:
-        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
-    elif nodeValue > rootNode.data:
-        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+def delete_node(root_node, node_value):
+    if root_node == None:
+        return root_node
+    if node_value < root_node.data:
+        root_node.left_child = delete_node(root_node.left_child, node_value)
+    elif node_value > root_node.data:
+        root_node.right_child = delete_node(root_node.right_child, node_value)
     else:
         """
         The below two if conditions will be execute
         when we trying to delete leaf node
         """
-        if rootNode.leftChild is None:
-            temp = rootNode.rightChild
-            rootNode = None
+        if root_node.left_child == None:
+            temp = root_node.right_child
+            root_node = None
             return temp
         
-        if rootNode.rightChild is None:
-            temp = rootNode.leftChild
-            rootNode = None
+        if root_node.right_child == None:
+            temp = root_node.left_child
+            root_node = None
             return temp
 
         """
@@ -116,17 +116,13 @@ def deleteNode(rootNode, nodeValue):
         3. it will replace the deleted node value with successor
         4. the last line re-arrange the all nodes
         """
-        temp = minValueNode(rootNode.rightChild)
-        rootNode.data = temp.data
-        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
-    return rootNode
+        temp = min_value_node(root_node.right_child)
+        root_node.data = temp.data
+        root_node.right_child = delete_node(root_node.right_child, temp.data)
+    return root_node
 
-def deleteBST(rootNode):
-    rootNode.data = None
-    rootNode.leftChild = None
-    rootNode.rightChild = None
+def delete_bst(root_node):
+    root_node.data = None
+    root_node.left_child = None
+    root_node.right_child = None
     return "BST successfully deleted"
-
-"""
-1. Binary Search on sorted list revise #356
-"""
