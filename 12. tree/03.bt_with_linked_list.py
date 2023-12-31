@@ -17,164 +17,168 @@ from queue import Queue
 class TreeNode:
     def __init__(self, data):
         self.data = data
-        self.leftChild = None
-        self.rightChild = None
+        self.left_child = None
+        self.right_child = None
 
-newBT = TreeNode("Drinks")
-leftChild = TreeNode("Hot")
+new_bt = TreeNode("Drinks")
+hot = TreeNode("Hot")
+cold = TreeNode("Cold")
+new_bt.left_child = hot
+new_bt.right_child = cold
+
 tea = TreeNode('Tea')
 coffee = TreeNode('Coffee')
-leftChild.leftChild = tea
-leftChild.rightChild = coffee
-rightChild = TreeNode("Cold")
-newBT.leftChild = leftChild
-newBT.rightChild = rightChild
+hot.left_child = tea
+hot.right_child = coffee
 
-def preOrderTraversal(rootNode):
-    if not rootNode:
+coke = TreeNode('Coke')
+cold.left_child = coke
+
+def pre_order_traversal(root_node):
+    if not root_node:
         return
-    print(rootNode.data)
-    preOrderTraversal(rootNode.leftChild)
-    preOrderTraversal(rootNode.rightChild)
+    print(root_node.data)
+    preOrderTraversal(root_node.left_child)
+    preOrderTraversal(root_node.right_child)
 
-def inOrderTraversal(rootNode):
-    if not rootNode:
+def in_order_traversal(root_node):
+    if not root_node:
         return
-    inOrderTraversal(rootNode.leftChild)
-    print(rootNode.data)
-    inOrderTraversal(rootNode.rightChild)
+    in_order_traversal(root_node.left_child)
+    print(root_node.data)
+    in_order_traversal(root_node.right_child)
 
-def postOrderTraversal(rootNode):
-    if not rootNode:
+def post_order_traversal(root_node):
+    if not root_node:
         return
-    postOrderTraversal(rootNode.leftChild)
-    postOrderTraversal(rootNode.rightChild)
-    print(rootNode.data)
+    post_order_traversal(root_node.left_child)
+    post_order_traversal(root_node.right_child)
+    print(root_node.data)
 
-def levelOrderTraversal(rootNode):
-    if not rootNode:
+def level_order_traversal(root_node):
+    if not root_node:
         return
     else:
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
             print(root.data)
-            if root.leftChild is not None:
-                q.put(root.leftChild)
-            if root.rightChild is not None:
-                q.put(root.rightChild)
+            if root.left_child is not None:
+                q.put(root.left_child)
+            if root.right_child is not None:
+                q.put(root.right_child)
 
-def insertNode(rootNode, value):
-    newNode = TreeNode(value)
+def insert_node(root_node, value):
+    new_node = TreeNode(value)
 
-    if not rootNode:
-        rootNode = newNode
+    if not root_node:
+        root_node = new_node
         return "Node successfully inserted"
     else:
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
-            if root.leftChild is not None:
-                q.put(root.leftChild)
+            if root.left_child is not None:
+                q.put(root.left_child)
             else:
-                root.leftChild = newNode
+                root.left_child = new_node
                 return "Successfully Inserted"
-            if root.rightChild is not None:
-                q.put(root.rightChild)
+            if root.right_child is not None:
+                q.put(root.right_child)
             else:
-                root.rightChild = newNode
+                root.right_child = new_node
                 return "Successfully Inserted"
 
-def searchNode(rootNode, value):
-    if not rootNode:
+def search_node(root_node, value):
+    if not root_node:
         return "BT is not exist"
     else:
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
             if root.data == value:
                 return "Success"
-            if root.leftChild is not None:
-                q.put(root.leftChild)
-            if root.rightChild is not None:
-                q.put(root.rightChild)
+            if root.left_child is not None:
+                q.put(root.left_child)
+            if root.right_child is not None:
+                q.put(root.right_child)
         return "Not Found"
 
-def getDeepestNode(rootNode):
-    if not rootNode:
+def get_deepest_node(root_node):
+    if not root_node:
         return
     else:
-        deepestNode = None
+        deepest_node = None
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
-            deepestNode = root.data
-            if root.leftChild is not None:
-                q.put(root.leftChild)
-            if root.rightChild is not None:
-                q.put(root.rightChild)
-        return deepestNode
+            deepest_node = root.data
+            if root.left_child is not None:
+                q.put(root.left_child)
+            if root.right_child is not None:
+                q.put(root.right_child)
+        return deepest_node
 
-def deleteDeepestNode(rootNode, deepestNode):
+def delete_deepest_node(root_node, deepest_node):
     """
     1. If deepest node is root node make it None
     2. If deepest node is leftChild remove link between root and leftChild
     3. If deepest node is rightChild remove linke between root and rightChild
     """
-    if not rootNode:
+    if not root_node:
         return
     else:
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
-            if root.data == deepestNode:
+            if root.data == deepest_node:
                 root = None
                 return
-            if root.rightChild:
-                if root.rightChild.data == deepestNode:
-                    root.rightChild = None
+            if root.right_child:
+                if root.right_child.data == deepest_node:
+                    root.right_child = None
                     return
                 else:
-                    q.put(root.rightChild)
-            if root.leftChild:
-                if root.leftChild.data == deepestNode:
-                    root.leftChild = None
+                    q.put(root.right_child)
+            if root.left_child:
+                if root.left_child.data == deepest_node:
+                    root.left_child = None
                     return
                 else:
-                    q.put(root.leftChild)
+                    q.put(root.left_child)
 
-def deleteNodeBT(rootNode, value):
+def delete_node(root_node, value):
     """
     1. Find matched node
     2. Find Deepest node
     3. Replace matched node with deepest node
     4. Delete deepest node
     """
-    if not rootNode:
+    if not root_node:
         return "The BT doesnt exist"
     else:
         q = Queue()
-        q.put(rootNode)
+        q.put(root_node)
         while not q.empty():
             root = q.get()
             if root.data is value:
-                deepestNode = getDeepestNode(rootNode)
-                root.data = deepestNode
-                deleteDeepestNode(rootNode, deepestNode)
+                deepest_node = get_deepest_node(root_node)
+                root.data = deepest_node
+                deleteDeepestNode(root_node, deepest_node)
                 return "The node has been successfully deleted"
-            if root.leftChild is not None:
-                q.put(root.leftChild)
-            if root.rightChild is not None:
-                q.put(root.rightChild)
+            if root.left_child is not None:
+                q.put(root.left_child)
+            if root.right_child is not None:
+                q.put(root.right_child)
         return "Failed to delete the node"
 
-def deleteBT(rootNode):
-    rootNode.data = None
-    rootNode.leftChild = None
-    rootNode.rightChild = None
+def deleteBT(root_node):
+    root_node.data = None
+    root_node.left_child = None
+    root_node.right_child = None
     return "The BT has been successfully deleted"
