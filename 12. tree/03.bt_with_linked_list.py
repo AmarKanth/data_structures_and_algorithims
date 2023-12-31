@@ -1,3 +1,16 @@
+"""
+                        TimeComplexity      SpaceComplexity
+pre_order_traversal     O(n)                O(n)
+in_order_traversal      O(n)                O(n)
+post_order_traversal    O(n)                O(n)
+level_order_traversal   O(n)                O(1)
+insert_node             O(n)                O(n)
+search_node             O(n)                O(n)
+get_deepest_node        O(n)                O(n)
+delete_deepest_node     ****                ****
+delete_node             ****                ****
+delete_bt               O(1)                O(1)
+"""
 from queue import Queue
 
 
@@ -17,10 +30,6 @@ rightChild = TreeNode("Cold")
 newBT.leftChild = leftChild
 newBT.rightChild = rightChild
 
-"""
-Time Complexity is O(n)
-Space Complexity is O(n) becuase we are using the stack memory
-"""
 def preOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -28,10 +37,6 @@ def preOrderTraversal(rootNode):
     preOrderTraversal(rootNode.leftChild)
     preOrderTraversal(rootNode.rightChild)
 
-"""
-Time Complexity is O(n)
-Space Complexity is O(n)
-"""
 def inOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -39,10 +44,6 @@ def inOrderTraversal(rootNode):
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
 
-"""
-Time Complexity is O(n)
-Space Complexity is O(n)
-"""
 def postOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -50,10 +51,6 @@ def postOrderTraversal(rootNode):
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
 
-"""
-Time Complexity is O(n)
-Space Complexity is O(n)
-"""
 def levelOrderTraversal(rootNode):
     if not rootNode:
         return
@@ -68,10 +65,6 @@ def levelOrderTraversal(rootNode):
             if root.rightChild is not None:
                 q.put(root.rightChild)
 
-"""
-Time Complexity O(n)
-Space Complexity O(n)
-"""
 def insertNode(rootNode, value):
     newNode = TreeNode(value)
 
@@ -94,10 +87,6 @@ def insertNode(rootNode, value):
                 root.rightChild = newNode
                 return "Successfully Inserted"
 
-"""
-Time Complexity O(n)
-Space Complexity O(n)
-"""
 def searchNode(rootNode, value):
     if not rootNode:
         return "BT is not exist"
@@ -114,10 +103,6 @@ def searchNode(rootNode, value):
                 q.put(root.rightChild)
         return "Not Found"
 
-"""
-TimeComplexity is O(n)
-SpaceComplexity is O(n)
-"""
 def getDeepestNode(rootNode):
     if not rootNode:
         return
@@ -188,10 +173,6 @@ def deleteNodeBT(rootNode, value):
                 q.put(root.rightChild)
         return "Failed to delete the node"
 
-"""
-TimeComplexity is O(1)
-SpaceComplexity is O(1)
-"""
 def deleteBT(rootNode):
     rootNode.data = None
     rootNode.leftChild = None
