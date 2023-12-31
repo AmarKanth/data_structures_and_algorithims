@@ -80,6 +80,8 @@ def insert_node(root_node, value):
         q.put(root_node)
         while not q.empty():
             root = q.get()
+            if root.data == value:
+                return "Node value is already exist, skip the insertion"
             if root.left_child is not None:
                 q.put(root.left_child)
             else:
@@ -117,9 +119,9 @@ def get_deepest_node(root_node):
         while not q.empty():
             root = q.get()
             deepest_node = root.data
-            if root.left_child is not None:
+            if root.left_child:
                 q.put(root.left_child)
-            if root.right_child is not None:
+            if root.right_child:
                 q.put(root.right_child)
         return deepest_node
 
@@ -166,14 +168,14 @@ def delete_node(root_node, value):
         q.put(root_node)
         while not q.empty():
             root = q.get()
-            if root.data is value:
+            if root.data == value:
                 deepest_node = get_deepest_node(root_node)
                 root.data = deepest_node
                 delete_deepest_node(root_node, deepest_node)
                 return "The node has been successfully deleted"
-            if root.left_child is not None:
+            if root.left_child:
                 q.put(root.left_child)
-            if root.right_child is not None:
+            if root.right_child:
                 q.put(root.right_child)
         return "Failed to delete the node"
 
