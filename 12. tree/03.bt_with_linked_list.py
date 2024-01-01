@@ -20,20 +20,6 @@ class TreeNode:
         self.left_child = None
         self.right_child = None
 
-new_bt = TreeNode("Drinks")
-hot = TreeNode("Hot")
-cold = TreeNode("Cold")
-new_bt.left_child = hot
-new_bt.right_child = cold
-
-tea = TreeNode('Tea')
-coffee = TreeNode('Coffee')
-hot.left_child = tea
-hot.right_child = coffee
-
-coke = TreeNode('Coke')
-cold.left_child = coke
-
 def pre_order_traversal(root_node):
     if not root_node:
         return
@@ -184,3 +170,17 @@ def delete_bt(root_node):
     root_node.left_child = None
     root_node.right_child = None
     return "The BT has been successfully deleted"
+
+new_bt = TreeNode("Drinks")
+hot = TreeNode("Hot")
+cold = TreeNode("Cold")
+new_bt.left_child = hot
+new_bt.right_child = cold
+
+tea = TreeNode('Tea')
+coffee = TreeNode('Coffee')
+hot.left_child = tea
+hot.right_child = coffee
+
+coke = TreeNode('Coke')
+cold.left_child = coke
