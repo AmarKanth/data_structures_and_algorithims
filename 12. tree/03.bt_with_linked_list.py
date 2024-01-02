@@ -24,8 +24,8 @@ def pre_order_traversal(root_node):
     if not root_node:
         return
     print(root_node.data)
-    preOrderTraversal(root_node.left_child)
-    preOrderTraversal(root_node.right_child)
+    pre_order_traversal(root_node.left_child)
+    pre_order_traversal(root_node.right_child)
 
 def in_order_traversal(root_node):
     if not root_node:
