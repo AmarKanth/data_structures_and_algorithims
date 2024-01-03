@@ -65,7 +65,7 @@ def insert_node(root_node, value):
     return root_node
 
 def search_node(root_node, node_value):
-    if root_node is None:
+    if root_node == None:
         print("Value is not found")
     elif root_node.data == node_value:
         print("Value is found")
