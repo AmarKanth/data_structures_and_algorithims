@@ -65,18 +65,14 @@ def insert_node(root_node, value):
     return root_node
 
 def search_node(root_node, node_value):
-    if root_node.data == node_value:
+    if root_node is None:
+        print("Value is not found")
+    elif root_node.data == node_value:
         print("Value is found")
     elif node_value < root_node.data:
-        if root_node.data == node_value:
-            print("Value is found")
-        else:
-            search_node(root_node.left_child, node_value)
+        search_node(root_node.left_child, node_value)
     else:
-        if root_node.data == node_value:
-            print("Value is found")
-        else:
-            search_node(root_node.right_child, node_value)
+        search_node(root_node.right_child, node_value)
 
 def min_value_node(bst_node):
     current = bst_node
