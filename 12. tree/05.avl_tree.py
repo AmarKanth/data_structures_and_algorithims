@@ -54,23 +54,15 @@ def level_order_traversal(root_node):
             if root.right_child is not None:
                 q.put(root.right_child)
 
-"""
-Insertion Conditions in AVL
-1. Rotation is not Required(Insertion is same as in BT)
-2. Rotation is Required(When left and right subtree depth difference is morethan one)
-
-1. LL Condition
-2. LR Condition
-3. RR Condition
-4. RL Condition
-
-TimeComplexity O(LogN)
-SpaceComplexity O(LogN)
-"""
 def get_height(root_node):
     if not root_node:
         return 0
     return root_node.height
+
+def get_balance(root_node):
+    if not root_node:
+        return 0
+    return get_height(root_node.left_child) - get_height(root_node.right_child)
 
 def right_rotate(disbalance_node):
     new_root = disbalance_node.left_child
@@ -88,15 +80,7 @@ def left_rotate(disbalance_node):
     new_root.height = 1 + max(get_height(new_root.left_child), get_height(new_root.right_child))
     return new_root
 
-def get_balance(root_node):
-    if not root_node:
-        return 0
-    return get_height(root_node.left_child) - get_height(root_node.right_child)
-
 def insert_node(root_node, node_value):
-    """
-    1. It uses post order traversal
-    """
     if not root_node:
         return AVLNode(node_value)
     elif node_value < root_node.data:
@@ -123,15 +107,9 @@ def search_node(root_node, node_value):
     if root_node.data == node_value:
         print("Value is found")
     elif node_value < root_node.data:
-        if root_node.data == node_value:
-            print("Value is found")
-        else:
-            search_node(root_node.left_child, node_value)
+        search_node(root_node.left_child, node_value)
     else:
-        if root_node.data == node_value:
-            print("Value is found")
-        else:
-            search_node(root_node.right_child, node_value)
+        search_node(root_node.right_child, node_value)
 
 """
 1. Delete leaf node
@@ -190,8 +168,12 @@ def delete_avl(root_node):
     root_node.right_child = None
     return "AVL has been successfully deleted"
 
-new_avl = AVLNode(5)
-new_avl = insert_node(new_avl, 10)
-new_avl = insert_node(new_avl, 15)
-new_avl = insert_node(new_avl, 20)
-new_avl = delete_node(new_avl, 15)
+avl = AVLNode(70)
+insert_node(avl, 50)
+insert_node(avl, 90)
+insert_node(avl, 30)
+insert_node(avl, 60)
+insert_node(avl, 80)
+insert_node(avl, 100)
+insert_node(avl, 20)
+insert_node(avl, 10)
