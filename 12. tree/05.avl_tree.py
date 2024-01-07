@@ -91,14 +91,32 @@ def insert_node(root_node, node_value):
     root_node.height = 1 + max(get_height(root_node.left_child), get_height(root_node.right_child))
     balance = get_balance(root_node)
 
-    if balance > 1 and node_value < root_node.left_child.data:
+    if balance > 1 and get_balance(root_node.left_child) >= 0:
+        """
+        This case occurs when the left subtree of the left child of the node is taller than the right subtree.
+        To fix this, a right rotation is performed on the current node.
+        """
         return right_rotate(root_node)
-    if balance > 1 and node_value > root_node.left_child.data:
+    if balance > 1 and get_balance(root_node.left_child) < 0:
+        """
+        This case occurs when the right subtree of the left child of the node is taller than the left subtree.
+        To fix this, a left rotation is first performed on the left child, followed by a right rotation on the 
+        current node.
+        """
         root_node.left_child = left_rotate(root_node.left_child)
         return right_rotate(root_node)
-    if balance < -1 and node_value > root_node.right_child.data:
+    if balance < -1 and get_balance(root_node.right_child) <= 0:
+        """
+        This case occurs when the right subtree of the right child of the node is taller than the left subtree.
+        To fix this, a left rotation is performed on the current node.
+        """
         return left_rotate(root_node)
-    if balance < -1 and node_value < root_node.right_child.data:
+    if balance < -1 and get_balance(root_node.right_child) > 0:
+        """
+        This case occurs when the left subtree of the right child of the node is taller than the right subtree.
+        To fix this, a right rotation is first performed on the right child, followed by a left rotation on the 
+        current node.
+        """
         root_node.right_child = right_rotate(root_node.right_child)
         return left_rotate(root_node)
     return root_node
