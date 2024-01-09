@@ -42,16 +42,16 @@ def insert_node(root_node, node_value):
     root_node.height = 1 + max(get_height(root_node.left_child), get_height(root_node.right_child))
     balance = get_balance(root_node)
 
-    if balance > 1 and get_balance(root_node.left_child) >= 0:
-        return right_rotate(root_node)
-    if balance > 1 and get_balance(root_node.left_child) < 0:
-        root_node.left_child = left_rotate(root_node.left_child)
-        return right_rotate(root_node)
-    if balance < -1 and get_balance(root_node.right_child) <= 0:
-        return left_rotate(root_node)
-    if balance < -1 and get_balance(root_node.right_child) > 0:
-        root_node.right_child = right_rotate(root_node.right_child)
-        return left_rotate(root_node)
+    # if balance > 1 and get_balance(root_node.left_child) >= 0:
+    #     return right_rotate(root_node)
+    # if balance > 1 and get_balance(root_node.left_child) < 0:
+    #     root_node.left_child = left_rotate(root_node.left_child)
+    #     return right_rotate(root_node)
+    # if balance < -1 and get_balance(root_node.right_child) <= 0:
+    #     return left_rotate(root_node)
+    # if balance < -1 and get_balance(root_node.right_child) > 0:
+    #     root_node.right_child = right_rotate(root_node.right_child)
+    #     return left_rotate(root_node)
     return root_node
 
 def print_tree(root_node, level=0):
@@ -60,14 +60,9 @@ def print_tree(root_node, level=0):
         print(" " * 4 * level + "->"+str(root_node.data))
         print_tree(root_node.right_child, level+1)
 
-avl = AVLNode(70)
-insert_node(avl, 50)
-insert_node(avl, 90)
-insert_node(avl, 30)
-insert_node(avl, 60)
-insert_node(avl, 80)
-insert_node(avl, 100)
+avl = AVLNode(30)
 insert_node(avl, 20)
-insert_node(avl, 10)
-insert_node(avl, 25)
+insert_node(avl, 40)
+insert_node(avl, 60)
+insert_node(avl, 55)
 print_tree(avl)

@@ -4,9 +4,9 @@ pre_order_traversal     ****                ****
 in_order_traversal      ****                ****
 post_order_traversal    ****                ****
 level_order_traversal   ****                ****
-insert_node             ****                ****
-search_node             ****                ****
-delete_node             ****                ****
+insert_node             O(logN)             O(logN)
+search_node             O(logN)             O(logN)
+delete_node             O(logN)             O(logN)
 delete_bst              O(1)                O(1)
 """
 
@@ -95,6 +95,13 @@ def insert_node(root_node, node_value):
         """
         This case occurs when the left subtree of the left child of the node is taller than the right subtree.
         To fix this, a right rotation is performed on the current node.
+                    30
+                    / \
+                  20   40
+                  / 
+                 10
+                / 
+               5 
         """
         return right_rotate(root_node)
     if balance > 1 and get_balance(root_node.left_child) < 0:
@@ -102,6 +109,13 @@ def insert_node(root_node, node_value):
         This case occurs when the right subtree of the left child of the node is taller than the left subtree.
         To fix this, a left rotation is first performed on the left child, followed by a right rotation on the 
         current node.
+                30
+               /  \
+              20   40
+             /
+            10
+             \
+              15
         """
         root_node.left_child = left_rotate(root_node.left_child)
         return right_rotate(root_node)
@@ -109,6 +123,13 @@ def insert_node(root_node, node_value):
         """
         This case occurs when the right subtree of the right child of the node is taller than the left subtree.
         To fix this, a left rotation is performed on the current node.
+                30
+               /  \
+              20   40
+                    \
+                    50
+                      \
+                      60
         """
         return left_rotate(root_node)
     if balance < -1 and get_balance(root_node.right_child) > 0:
@@ -116,6 +137,13 @@ def insert_node(root_node, node_value):
         This case occurs when the left subtree of the right child of the node is taller than the right subtree.
         To fix this, a right rotation is first performed on the right child, followed by a left rotation on the 
         current node.
+                30
+               /  \
+              20   40
+                    \
+                    60
+                    /
+                   55
         """
         root_node.right_child = right_rotate(root_node.right_child)
         return left_rotate(root_node)
@@ -129,22 +157,12 @@ def search_node(root_node, node_value):
     else:
         search_node(root_node.right_child, node_value)
 
-"""
-1. Delete leaf node
-2. Delete node if parent node has one sub-node
-3. Delete node if parent node has two sub-nodes
-4. Do rotation to make the tree balanced
-"""
 def get_min_value_node(root_node):
     if root_node is None or root_node.left_child is None:
         return root_node
     return get_min_value_node(root_node.left_child)
 
 def delete_node(root_node, node_value):
-    """
-    1. It uses post order traversal and 
-    all the updation will happen form bottom to top(including height and rotations)
-    """
     if not root_node:
         return root_node
     elif node_value < root_node.data:
