@@ -49,9 +49,9 @@ def level_order_traversal(root_node):
         while not q.empty():
             root = q.get()
             print(root.data)
-            if root.left_child is not None:
+            if root.left_child:
                 q.put(root.left_child)
-            if root.right_child is not None:
+            if root.right_child:
                 q.put(root.right_child)
 
 def get_height(root_node):
@@ -170,11 +170,11 @@ def delete_node(root_node, node_value):
     elif node_value > root_node.data:
         root_node.right_child = delete_node(root_node.right_child, node_value)
     else:
-        if root_node.left_child is None:
+        if root_node.left_child == None:
             temp = root_node.right_child
             root_node = None
             return temp
-        elif root_node.right_child is None:
+        elif root_node.right_child == None:
             temp = root_node.left_child
             root_node = None
             return temp
