@@ -10,16 +10,19 @@
 
 output should like this ['1', 1, 2, 3, 5, 1, 1, 2, 3, 4]
 """
-res = []
+input = {"a": "1", "b":[1,2,3,5], "c": {"a":1, "b":[1,2,3,4]}}
 
-def flatten_list(obj):
-    if type(obj) == dict:
-        flatten_list(list(obj.values()))
-    elif type(obj) == list:
-        for e in obj:
-            flatten_list(e)
+def flatten_list(input):
+    res = []
+    if type(input) == dict:
+        for ele in list(input.values()):
+            res.extend(flatten_list(ele))
+    elif type(input) == list:
+        for ele in input:
+            res.extend(flatten_list(ele))
     else:
-        res.append(obj)
+        res.append(input)
+    return res
 
-flatten_list({"a": "1", "b":[1,2,3,5], "c": {"a":1, "b":[1,2,3,4]}})
+res = flatten_list(input)
 print(res)

@@ -1,5 +1,5 @@
 """
-Lists are immutable which means you can assign new element to the list.
+Lists are mutable which means you can assign new element to the list.
 """
 
 """
