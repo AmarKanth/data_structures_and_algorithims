@@ -34,26 +34,24 @@ def heapify_tree_insert(root_node, index, heap_type):
     if index <= 1:
         return
     
-    # Performed element swapping for sorting.
     if heap_type == "Min":
         if root_node.custom_list[index] < root_node.custom_list[parent_index]:
             temp = root_node.custom_list[index]
             root_node.custom_list[index] = root_node.custom_list[parent_index]
             root_node.custom_list[parent_index] = temp
-            heapify_tree_insert(root_node, parent_index, heap_type)
+        heapify_tree_insert(root_node, parent_index, heap_type)
     if heap_type == "Max":
         if root_node.custom_list[index] > root_node.custom_list[parent_index]:
             temp = root_node.custom_list[index]
             root_node.custom_list[index] = root_node.custom_list[parent_index]
             root_node.custom_list[parent_index] = temp
-            heapify_tree_insert(root_node, parent_index, heap_type)
+        heapify_tree_insert(root_node, parent_index, heap_type)
 
 def insert_node(root_node, node_value, heap_type):
     if root_node.heap_size + 1 == root_node.max_size:
         return "Binary Heap is full"
     root_node.custom_list[root_node.heap_size + 1] = node_value
     root_node.heap_size += 1
-    # Heapifying will be performed from last node to rootnode
     heapify_tree_insert(root_node, root_node.heap_size, heap_type)
     return "The value is successfully inserted"
 
