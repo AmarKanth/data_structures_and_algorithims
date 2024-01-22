@@ -34,7 +34,7 @@ res = s1.intersection(s2)
 print(res)
 
 """
-intersection_update - it removes the non-common items between the sets.
+intersection_update - it keeps the common elements and removes unmatched elements in set 1.
 """
 s1 = {1,2,3,4,5}
 s2 = {4,5,6,7,8}
