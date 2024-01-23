@@ -263,31 +263,32 @@ a.setflags(write=False)
 
 """
 insert new column [1,2,3] at position 2 in given numpy array
-twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
+arr = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 """
 import numpy as np
-twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
-newTwoDArray = np.insert(twoDArray, 2, [[1,2,3]], axis=1)
-print(newTwoDArray)
+arr = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
+new_arr = np.insert(arr, 2, [[1,2,3]], axis=1)
+print(new_arr)
+
 
 """
 insert new row [1,2,3] at last in given numpy array
-twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
+arr = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
 """
 import numpy as np
-twoDArray = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
-newTwoDArray = np.append(twoDArray, [[1,2,3]], axis=0)
-print(newTwoDArray)
+arr = np.array([["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]])
+new_arr = np.insert(arr, 3, [[1,2,3]], axis=0)
+print(new_arr)
 
 
 """
 delete first column from 
-twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 """
 import numpy as np
-twoDArray = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-newTwoDArray = np.delete(twoDArray, 0, axis=1)
-print(newTwoDArray)
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+new_arr = np.delete(arr, 0, axis=1)
+print(new_arr)
 
 
 """
