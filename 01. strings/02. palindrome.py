@@ -2,7 +2,7 @@
 check palindrome using recursion
 """
 def palindrome(string):
-    if len(string) == [1, 0]:
+    if len(string) in [1, 0]:
         return True
     if string[0] != string[len(string)-1]:
         return False
