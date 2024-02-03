@@ -41,11 +41,15 @@ lst = ["HelloWorld", "Hello, World!", "12345", "", "Hello123"]
 res = [ele for ele in lst if ele.isalnum()]
 print(res)
 
-
 """
 isalpha - method is used to check if all the characters in a given string are alphabetic characters (letters) 
 and there are no numeric or special characters in the string. It returns True if all characters in the string 
 are alphabetic, and False otherwise.
+"""
+
+"""
+isdigit : This method checks if the given string contains all numbers. 
+It returns False if it includes special characters or alphabetic characters.
 """
 
 """
