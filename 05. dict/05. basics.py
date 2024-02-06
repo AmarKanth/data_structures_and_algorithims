@@ -10,19 +10,15 @@
 
 output should like this ['1', 1, 2, 3, 5, 1, 1, 2, 3, 4]
 """
-input = {"a": "1", "b":[1,2,3,5], "c": {"a":1, "b":[1,2,3,4]}}
-
-def flatten_list(input):
-    res = []
+def flatten_list(input, res):
     if type(input) == dict:
         for ele in list(input.values()):
-            res.extend(flatten_list(ele))
+            flatten_list(ele, res)
     elif type(input) == list:
-        for ele in input:
-            res.extend(flatten_list(ele))
+        res.extend(input)
     else:
         res.append(input)
     return res
 
-res = flatten_list(input)
-print(res)
+output = flatten_list({"a": "1", "b":[1,2,3,5], "c": {"a":1, "b":[1,2,3,4]}}, [])
+print(output)
