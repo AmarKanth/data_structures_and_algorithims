@@ -53,7 +53,7 @@ print(arr_c)
 
 
 """
-Horizontal Stack
+Horizontal Stack : Concatenate arrays side by side
 arr_x = np.array([[1,2,3], [-1,-2,-3]])
 arr_y = np.array([[4,5,6], [-4,-5,-6]])
 """
@@ -65,7 +65,7 @@ print(arr)
 
 
 """
-Vertical Stack
+Vertical Stack : Concatenate arrays one on top of the other
 arr_x = np.array([[1,2,3], [-1,-2,-3]])
 arr_y = np.array([[4,5,6], [-4,-5,-6]])
 """
