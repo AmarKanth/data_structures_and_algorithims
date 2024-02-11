@@ -27,12 +27,6 @@ class SLinkedList:
             node = node.next
     
     def insert(self, value, location):
-        """
-        1. Insert new node, when there is no head
-        2. Replace head with new node(@index 0)
-        3. Replace tail with new node(@index -1)
-        4. Insert new node at specific location
-        """
         new_node = Node(value)
         if self.head == None:
             self.head = new_node
@@ -78,13 +72,6 @@ class SLinkedList:
             return "The value does not exist in ssl"
     
     def delete(self, location):
-        """
-        1. Delete node at index 0(head)
-        2. Delete node at index 0(head) if head and tail is same
-        3. Delete node at index -1(tail)
-        4. Delete node at index -1(tail) if head and tail is same
-        3. Delete node at specific location
-        """
         if self.head == None:
             print("The ssl does not exist")
         else:
