@@ -102,7 +102,7 @@ class SLinkedList:
                 next_node = temp_node.next
                 temp_node.next = next_node.next
     
-    def deleteAll(self):
+    def delete_all(self):
         if self.head is None:
             print("The ssl does not exist")
         else:
