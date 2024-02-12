@@ -68,12 +68,14 @@ def insert_node(root_node, value):
             root = q.get()
             if root.data == value:
                 return "Node value is already exist, skip the insertion"
-            if root.left_child is not None:
+            
+            if root.left_child:
                 q.put(root.left_child)
             else:
                 root.left_child = new_node
                 return "Successfully Inserted"
-            if root.right_child is not None:
+            
+            if root.right_child:
                 q.put(root.right_child)
             else:
                 root.right_child = new_node
@@ -112,11 +114,6 @@ def get_deepest_node(root_node):
         return deepest_node
 
 def delete_deepest_node(root_node, deepest_node):
-    """
-    1. If deepest node is root node make it None
-    2. If deepest node is leftChild remove link between root and leftChild
-    3. If deepest node is rightChild remove linke between root and rightChild
-    """
     if not root_node:
         return
     else:
@@ -141,12 +138,6 @@ def delete_deepest_node(root_node, deepest_node):
                     q.put(root.left_child)
 
 def delete_node(root_node, value):
-    """
-    1. Find matched node
-    2. Find Deepest node
-    3. Replace matched node with deepest node
-    4. Delete deepest node
-    """
     if not root_node:
         return "The BT doesnt exist"
     else:
@@ -156,8 +147,8 @@ def delete_node(root_node, value):
             root = q.get()
             if root.data == value:
                 deepest_node = get_deepest_node(root_node)
-                root.data = deepest_node
                 delete_deepest_node(root_node, deepest_node)
+                root.data = deepest_node
                 return "The node has been successfully deleted"
             if root.left_child:
                 q.put(root.left_child)
