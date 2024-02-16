@@ -39,13 +39,12 @@ def find_palindrome(string):
     for i in range(n-1):
         string1 = string[i+1:]
         string2 = string[:i+1]
-        string1+=(string2)
-        if string1 == string1[::-1]:
+        string3 = string2 + string1
+        if string3 == string3[::-1]:
             break
     else:
         return None
-
-    return string1
+    return string3
 
 res = find_palindrome("madam")
 print(res)
