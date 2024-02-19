@@ -80,7 +80,15 @@ symetric_difference - it returns non common items.
 """
 union - it combines the two sets.
 """
+s1 = set("123")
+s2 = set("456")
+s = s1.union(s2)
+print(s)
 
 """
 update - it updates set with non-existing items.
 """
+s1 = set("123")
+s2 = set("126")
+s1.update(s2)
+print(s1)
