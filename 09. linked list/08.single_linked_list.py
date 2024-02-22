@@ -43,7 +43,8 @@ class SLinkedList:
                 temp_node = self.head
                 index = 0
                 while index < location - 1:
-                    temp_node = temp_node.next
+                    if temp_node.next:
+                        temp_node = temp_node.next
                     index += 1
                 next_node = temp_node.next
                 temp_node.next = new_node
