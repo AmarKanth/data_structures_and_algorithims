@@ -32,7 +32,7 @@ class DoubleLinkedList:
     def insert(self, value, location):
         new_node = Node(value)
 
-        if self.head is None:
+        if self.head == None:
             return "DLL is not exist"
         else:
             if location == 0:
@@ -45,7 +45,7 @@ class DoubleLinkedList:
                 new_node.prev = self.tail
                 self.tail.next = new_node
                 self.tail = new_node
-            else location not in [0,-1]:
+            else:
                 temp_node = self.head
                 index = 0
                 while index < location - 1:
