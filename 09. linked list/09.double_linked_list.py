@@ -21,23 +21,17 @@ class DoubleLinkedList:
             yield temp_node
             temp_node = temp_node.next
     
-    def create(self, value):
+    def insert_node(self, location, value):
         new_node = Node(value)
-        new_node.next = None
-        new_node.prev = None
-        self.head = new_node
-        self.tail = new_node
-        return 'DLL created'
-    
-    def insert(self, value, location):
-        new_node = Node(value)
-
         if self.head == None:
-            return "DLL is not exist"
+            new_node.next = None
+            new_node.prev = None
+            self.head = new_node
+            self.tail = new_node
         else:
             if location == 0:
-                new_node.prev = None
                 new_node.next = self.head
+                new_node.prev = None
                 self.head.prev = new_node
                 self.head = new_node
             elif location == -1:
@@ -51,10 +45,11 @@ class DoubleLinkedList:
                 while index < location - 1:
                     temp_node = temp_node.next
                     index += 1
-                new_node.next = temp_node.next
                 new_node.prev = temp_node
-                new_node.next.prev = new_node
+                new_node.next = temp_node.next
                 temp_node.next = new_node
+                if new_node.next:
+                    new_node.next.prev = new_node
         
     def traverse(self):
         if self.head is None:
@@ -121,6 +116,15 @@ class DoubleLinkedList:
         self.head = None
         self.tail = None
         return "DLL is successfully deleted"
+
+def print_ddl(dll):
+    res = []
+    for node in dll:
+        prev = node.prev.value if node.prev else None
+        value = node.value
+        next = node.next.value if node.next else None
+        res.append((prev, value, next))
+    print(res)
 
 q = DoubleLinkedList()
 print(q.create(5))
