@@ -50,36 +50,27 @@ class DoubleLinkedList:
                 temp_node.next = new_node
                 if new_node.next:
                     new_node.next.prev = new_node
-        
-    def traverse(self):
-        if self.head is None:
-            return "DLL is not exist"
-        temp_node = self.head
-        while temp_node:
-            print(temp_node.value)
-            temp_node = temp_node.next
     
     def reverse_traverse(self):
-        if self.head is None:
-            return "DLL is not exist"
         temp_node = self.tail
         while temp_node:
             print(temp_node.value)
             temp_node = temp_node.prev
     
     def search(self, value):
-        if self.head is None:
+        if self.head == None:
             return "DLL is not exist"
-        temp_node = self.head
-        while temp_node:
-            if temp_node.value == value:
-                return temp_node.value
-            temp_node = temp_node.next
-        return "value is not exist in the DLL"
+        else:
+            temp_node = self.head
+            while temp_node:
+                if temp_node.value == value:
+                    return temp_node.value
+                temp_node = temp_node.next
+            return "value is not exist in the DLL"
     
-    def delete(self, location):
-        if self.head is None:
-            return "DLL is not exist"
+    def delete_node(self, location):
+        if self.head == None:
+            print("DLL is not exist")
         else:
             if location == 0:
                 if self.head == self.tail:
@@ -95,20 +86,17 @@ class DoubleLinkedList:
                 else:
                     self.tail = self.tail.prev
                     self.tail.next = None
-            else location not in [0,-1]:
+            else:
                 temp_node = self.head
                 index = 0
-                while index < location -1:
+                while index < location - 1:
                     temp_node = temp_node.next
                     index += 1
                 temp_node.next = temp_node.next.next
-                temp_node.next.prev = temp_node
-                return "Element is deleted successfully"
+                if temp_node.next:
+                    temp_node.next.prev = temp_node
     
     def delete(self):
-        if self.head is None:
-            return "DLL is not exist"
-        
         temp_node = self.head
         while temp_node:
             temp_node.prev = None
