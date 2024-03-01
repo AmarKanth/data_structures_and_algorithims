@@ -13,7 +13,7 @@ insert      O(n)                O(1)
 traverse    O(n)                O(1)
 search      O(n)                O(1)
 delete      O(n)                O(1)
-deleteAll   O(1)                O(1)
+delete_all  O(1)                O(1)
 """
 class SLinkedList:
     def __init__(self):

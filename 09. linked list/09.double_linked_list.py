@@ -1,15 +1,22 @@
 """
-It is same as single linked list, last node stores the first node reference.
-       10-->20-->30-->40-->None
-None<--10<--20<--30<--40
+TimeComplexity is O(1)
+SpaceComplexity is O(1)
 """
-
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
         self.prev = None
 
+"""
+                    TimeComplexity      SpaceComplexity
+insert              O(n)                O(1)
+traverse            O(n)                O(1)
+reverse_traverse    O(n)                O(1)
+search              O(n)                O(1)
+delete              O(n)                O(1)
+delete_all          O(n)                O(1)
+"""
 class DoubleLinkedList:
     def __init__(self):
         self.head = None
@@ -21,7 +28,7 @@ class DoubleLinkedList:
             yield temp_node
             temp_node = temp_node.next
     
-    def insert_node(self, location, value):
+    def insert(self, location, value):
         new_node = Node(value)
         if self.head == None:
             new_node.next = None
@@ -68,7 +75,7 @@ class DoubleLinkedList:
                 temp_node = temp_node.next
             return "value is not exist in the DLL"
     
-    def delete_node(self, location):
+    def delete(self, location):
         if self.head == None:
             print("DLL is not exist")
         else:
@@ -96,7 +103,7 @@ class DoubleLinkedList:
                 if temp_node.next:
                     temp_node.next.prev = temp_node
     
-    def delete(self):
+    def delete_all(self):
         temp_node = self.head
         while temp_node:
             temp_node.prev = None
@@ -105,15 +112,20 @@ class DoubleLinkedList:
         self.tail = None
         return "DLL is successfully deleted"
 
-def print_ddl(dll):
+def print_dll(dll):
     res = []
     for node in dll:
         prev = node.prev.value if node.prev else None
         value = node.value
         next = node.next.value if node.next else None
         res.append((prev, value, next))
-    print(res)
+    return res
 
-q = DoubleLinkedList()
-print(q.create(5))
-print([i.value for i in q])
+dll = DoubleLinkedList()
+dll.insert(0,0)
+dll.insert(1,1)
+dll.insert(2,2)
+dll.insert(3,3)
+dll.delete(2)
+res = print_dll(dll)
+print(res)
