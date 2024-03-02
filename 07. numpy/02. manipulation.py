@@ -202,19 +202,22 @@ array = np.array([[2, 8, 9, 4],
                   [2, 9, 4, 3]])
 """
 import numpy as np
+from collections import defaultdict
+
 array = np.array([[2, 8, 9, 4], 
                   [9, 4, 9, 4],
                   [4, 5, 9, 7],
                   [2, 9, 4, 3]])
+
 flat = array.flatten()
-d  = dict()
-for i in range(0, len(flat)-1):
-        comb = (flat[i], flat[i+1])
-        if comb in d.keys():
-            d[comb] += 1
-        else:
-            d[comb] = 1
-sorted = sorted(d.items(), key=lambda t: t[1], reverse=True)
+n = len(flat) - 1
+dd = defaultdict(int)
+
+for i in range(n):
+    pair = (flat[i], flat[i+1])
+    dd[pair] += 1
+
+sorted = sorted(dd.items(), key=lambda t: t[1], reverse=True)
 print(sorted[0][0])
 
 
