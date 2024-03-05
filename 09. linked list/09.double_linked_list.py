@@ -31,19 +31,19 @@ class DoubleLinkedList:
     def insert(self, location, value):
         new_node = Node(value)
         if self.head == None:
-            new_node.next = None
             new_node.prev = None
+            new_node.next = None
             self.head = new_node
             self.tail = new_node
         else:
             if location == 0:
-                new_node.next = self.head
                 new_node.prev = None
+                new_node.next = self.head
                 self.head.prev = new_node
                 self.head = new_node
             elif location == -1:
-                new_node.next = None
                 new_node.prev = self.tail
+                new_node.next = None
                 self.tail.next = new_node
                 self.tail = new_node
             else:
@@ -52,10 +52,15 @@ class DoubleLinkedList:
                 while index < location - 1:
                     temp_node = temp_node.next
                     index += 1
-                new_node.prev = temp_node
-                new_node.next = temp_node.next
-                temp_node.next = new_node
-                if new_node.next:
+                if self.tail == temp_node:
+                    new_node.prev = self.tail
+                    new_node.next = None
+                    self.tail.next = new_node
+                    self.tail = new_node
+                else:
+                    new_node.prev = temp_node
+                    new_node.next = temp_node.next
+                    temp_node.next = new_node
                     new_node.next.prev = new_node
     
     def reverse_traverse(self):
@@ -92,15 +97,18 @@ class DoubleLinkedList:
                     self.tail = None
                 else:
                     self.tail = self.tail.prev
-                    self.tail.next = None
+                    self.tail.next = None 
             else:
                 temp_node = self.head
                 index = 0
                 while index < location - 1:
                     temp_node = temp_node.next
                     index += 1
-                temp_node.next = temp_node.next.next
-                if temp_node.next:
+                if self.tail == temp_node.next:
+                    self.tail = self.tail.prev
+                    self.tail.next = None
+                else:
+                    temp_node.next = temp_node.next.next
                     temp_node.next.prev = temp_node
     
     def delete_all(self):
