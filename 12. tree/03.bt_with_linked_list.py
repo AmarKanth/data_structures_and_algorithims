@@ -57,7 +57,6 @@ def level_order_traversal(root_node):
 
 def insert_node(root_node, value):
     new_node = TreeNode(value)
-
     if not root_node:
         root_node = new_node
         return "Node successfully inserted"
@@ -162,16 +161,15 @@ def delete_bt(root_node):
     root_node.right_child = None
     return "The BT has been successfully deleted"
 
-new_bt = TreeNode("Drinks")
-hot = TreeNode("Hot")
-cold = TreeNode("Cold")
-new_bt.left_child = hot
-new_bt.right_child = cold
+def print_tree(root_node, level=0):
+    if root_node:
+        print_tree(root_node.left_child, level + 1)
+        print(' ' * 4 * level + '-> ' + str(root_node.data))
+        print_tree(root_node.right_child, level + 1)
 
-tea = TreeNode('Tea')
-coffee = TreeNode('Coffee')
-hot.left_child = tea
-hot.right_child = coffee
-
-coke = TreeNode('Coke')
-cold.left_child = coke
+tree = TreeNode(10)
+insert_node(tree, 20)
+insert_node(tree, 30)
+insert_node(tree, 40)
+insert_node(tree, 50)
+print_tree(tree)
