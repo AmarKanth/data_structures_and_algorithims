@@ -11,7 +11,6 @@ class Node:
 """
                     TimeComplexity      SpaceComplexity
 insert              O(n)                O(1)
-traverse            O(n)                O(1)
 reverse_traverse    O(n)                O(1)
 search              O(n)                O(1)
 delete              O(n)                O(1)
@@ -35,35 +34,36 @@ class DoubleLinkedList:
             new_node.next = None
             self.head = new_node
             self.tail = new_node
-        else:
-            if location == 0:
-                new_node.prev = None
-                new_node.next = self.head
-                self.head.prev = new_node
-                self.head = new_node
-            elif location == -1:
+            return "Node successfully inserted"
+        
+        if location == 0:
+            new_node.prev = None
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+            return "Node successfully inserted"
+        
+        if location != 0:
+            temp_node = self.head
+            index = 0
+            while index < location - 1:
+                temp_node = temp_node.next
+                index += 1
+            if self.tail == temp_node:
                 new_node.prev = self.tail
                 new_node.next = None
                 self.tail.next = new_node
                 self.tail = new_node
             else:
-                temp_node = self.head
-                index = 0
-                while index < location - 1:
-                    temp_node = temp_node.next
-                    index += 1
-                if self.tail == temp_node:
-                    new_node.prev = self.tail
-                    new_node.next = None
-                    self.tail.next = new_node
-                    self.tail = new_node
-                else:
-                    new_node.prev = temp_node
-                    new_node.next = temp_node.next
-                    temp_node.next = new_node
-                    new_node.next.prev = new_node
+                new_node.prev = temp_node
+                new_node.next = temp_node.next
+                temp_node.next = new_node
+                new_node.next.prev = new_node
+            return "Node successfully inserted"
     
     def reverse_traverse(self):
+        if self.head == None:
+            return "DLL is doesnt exist"
         temp_node = self.tail
         while temp_node:
             print(temp_node.value)
@@ -71,47 +71,45 @@ class DoubleLinkedList:
     
     def search(self, value):
         if self.head == None:
-            return "DLL is not exist"
-        else:
-            temp_node = self.head
-            while temp_node:
-                if temp_node.value == value:
-                    return temp_node.value
-                temp_node = temp_node.next
-            return "value is not exist in the DLL"
+            return "DLL is doesnt exist"
+        temp_node = self.head
+        while temp_node:
+            if temp_node.value == value:
+                return temp_node.value
+            temp_node = temp_node.next
+        return "value is not exist in the DLL"
     
     def delete(self, location):
         if self.head == None:
-            print("DLL is not exist")
-        else:
-            if location == 0:
-                if self.head == self.tail:
-                    self.head = None
-                    self.tail = None
-                else:
-                    self.head = self.head.next
-                    self.head.prev = None
-            elif location == -1:
-                if self.head == self.tail:
-                    self.head = None
-                    self.tail = None
-                else:
-                    self.tail = self.tail.prev
-                    self.tail.next = None 
+            return "DLL is not exist"
+
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+            return "Node successfully deleted"
+
+        if location == 0:
+            self.head = self.head.next
+            self.head.prev = None
+            return "Node successfully deleted"
+        
+        if location != 0:
+            temp_node = self.head
+            index = 0
+            while index < location - 1:
+                temp_node = temp_node.next
+                index += 1
+            if self.tail == temp_node.next:
+                self.tail = self.tail.prev
+                self.tail.next = None
             else:
-                temp_node = self.head
-                index = 0
-                while index < location - 1:
-                    temp_node = temp_node.next
-                    index += 1
-                if self.tail == temp_node.next:
-                    self.tail = self.tail.prev
-                    self.tail.next = None
-                else:
-                    temp_node.next = temp_node.next.next
-                    temp_node.next.prev = temp_node
+                temp_node.next = temp_node.next.next
+                temp_node.next.prev = temp_node
+            return "Node successfully deleted"
     
     def delete_all(self):
+        if self.head == None:
+            return "DLL is doesnt exist"
         temp_node = self.head
         while temp_node:
             temp_node.prev = None

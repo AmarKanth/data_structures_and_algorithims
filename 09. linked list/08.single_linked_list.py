@@ -14,7 +14,7 @@ search      O(n)                O(1)
 delete      O(n)                O(1)
 delete_all  O(1)                O(1)
 """
-class SLinkedList:
+class SingleLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -104,7 +104,7 @@ def print_sll(sll):
         res.append((value, next))
     return res
 
-ssl = SLinkedList()
+ssl = SingleLinkedList()
 ssl.insert(1, 1)
 ssl.insert(2, 1)
 ssl.insert(3, 1)
