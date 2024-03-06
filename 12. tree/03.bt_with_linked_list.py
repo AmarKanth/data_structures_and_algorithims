@@ -59,7 +59,7 @@ def insert_node(root_node, value):
     new_node = TreeNode(value)
     if not root_node:
         root_node = new_node
-        return "Node successfully inserted"
+        return "Node has been successfully inserted"
     else:
         q = Queue()
         q.put(root_node)
@@ -67,22 +67,20 @@ def insert_node(root_node, value):
             root = q.get()
             if root.data == value:
                 return "Node value is already exist, skip the insertion"
-            
             if root.left_child:
                 q.put(root.left_child)
             else:
                 root.left_child = new_node
-                return "Successfully Inserted"
-            
+                return "Node has been successfully inserted"
             if root.right_child:
                 q.put(root.right_child)
             else:
                 root.right_child = new_node
-                return "Successfully Inserted"
+                return "Node has been successfully inserted"
 
 def search_node(root_node, value):
     if not root_node:
-        return "BT is not exist"
+        return "Binary Tree is doesnt exist"
     else:
         q = Queue()
         q.put(root_node)
@@ -113,8 +111,8 @@ def get_deepest_node(root_node):
         return deepest_node
 
 def delete_deepest_node(root_node, deepest_node):
-    if not root_node:
-        return
+    if root_node == None:
+        return "Binary Tree is doesnt exist"
     else:
         q = Queue()
         q.put(root_node)
@@ -138,7 +136,7 @@ def delete_deepest_node(root_node, deepest_node):
 
 def delete_node(root_node, value):
     if not root_node:
-        return "The BT doesnt exist"
+        return "Binary Tree is doesnt exist"
     else:
         q = Queue()
         q.put(root_node)
@@ -172,4 +170,12 @@ insert_node(tree, 20)
 insert_node(tree, 30)
 insert_node(tree, 40)
 insert_node(tree, 50)
+insert_node(tree, 60)
+insert_node(tree, 70)
+insert_node(tree, 80)
+delete_node(tree, 10)
+delete_node(tree, 20)
+delete_node(tree, 30)
+delete_node(tree, 40)
+delete_node(tree, 50)
 print_tree(tree)
