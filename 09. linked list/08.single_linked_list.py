@@ -55,7 +55,6 @@ class SLinkedList:
     def search(self, value):
         if self.head == None:
            return "SLL does not exist"
-
         temp_node = self.head
         while temp_node:
             if temp_node.value == value:
