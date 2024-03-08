@@ -21,6 +21,11 @@ class TreeNode:
         self.right_child = None
 
 def pre_order_traversal(root_node):
+    """
+    Visit the current node (the root node initially).
+    Recursively traverse the left subtree.
+    Recursively traverse the right subtree.
+    """
     if not root_node:
         return
     print(root_node.data)
@@ -28,6 +33,11 @@ def pre_order_traversal(root_node):
     pre_order_traversal(root_node.right_child)
 
 def in_order_traversal(root_node):
+    """
+    Recursively traverse the left subtree.
+    Visit the current node.
+    Recursively traverse the right subtree.
+    """
     if not root_node:
         return
     in_order_traversal(root_node.left_child)
@@ -35,6 +45,11 @@ def in_order_traversal(root_node):
     in_order_traversal(root_node.right_child)
 
 def post_order_traversal(root_node):
+    """
+    Recursively traverse the left subtree.
+    Recursively traverse the right subtree.
+    Visit the current node.
+    """
     if not root_node:
         return
     post_order_traversal(root_node.left_child)
