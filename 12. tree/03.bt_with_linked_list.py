@@ -103,9 +103,9 @@ def search_node(root_node, value):
             root = q.get()
             if root.data == value:
                 return "Success"
-            if root.left_child is not None:
+            if root.left_child:
                 q.put(root.left_child)
-            if root.right_child is not None:
+            if root.right_child:
                 q.put(root.right_child)
         return "Not Found"
 
