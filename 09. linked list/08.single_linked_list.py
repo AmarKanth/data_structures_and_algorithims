@@ -113,3 +113,42 @@ ssl.insert(0, 0)
 ssl.insert(0, 3)
 search = ssl.search(10)
 print(f"search value is {search}")
+
+
+"""
+create linked list for courses
+courses = [
+    ('d', 'a'),
+    ('a', 'b'),
+    ('b', 'c'),
+]
+"""
+class ListNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def create_linked_list(courses):
+    if not courses:
+        return None
+    head = ListNode(courses[0][0])
+    current = head
+    for pair in courses:
+        new_node = ListNode(pair[1])
+        current.next = new_node
+        current = new_node
+    return head
+
+courses = [
+    ('d', 'a'),
+    ('a', 'b'),
+    ('b', 'c'),
+]
+
+linked_list = create_linked_list(courses)
+
+current = linked_list
+while current:
+    print(f'"{current.data}" -> ', end="")
+    current = current.next
+print("None")

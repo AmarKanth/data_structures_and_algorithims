@@ -64,24 +64,33 @@ output = {1: 1, 2: 1, 3: 1, 4: 3}
 """
 l = [1,2,3,4,4,4]
 d = {k: 0 for k in set(l)}
-
 for e in l:
     count = d[e]
     d[e] = count + 1
-
 print(d)
+
+"""
+Find second largest number from the given list
+lst = [2, 9, 3]
+"""
+lst = [2, 9, 3]
+largest = second_largest = 0
+for num in lst:
+    if num > largest:
+        largest, second_largest = num, largest
+    elif num > second_largest and num != largest:
+        second_largest = num
+print(second_largest)
 
 
 """
 Write a function to sort elements in the list without using sort function
 """
 l = [2,1,3]
-
 for i in range(len(l)):
     for j in range(i+1, len(l)):
         if l[i] > l[j]:
             l[i], l[j] = l[j], l[i]
-
 print(l)
 
 
@@ -92,7 +101,6 @@ def reverse(l):
     if len(l) == 0:
         return l
     return reverse(l[1:]) + l[:1]
-
 res = reverse([2,1,3])
 print(res)
 
@@ -103,11 +111,9 @@ using sum of n series equation
 1+2+3+4+...+n = n*(n+1)/2
 """
 l = [1, 2, 3, 4, 5, 6, 8, 9]
-
 def find_missing_number(l, n):
     sum1 = n*(n+1)//2
     sum2 = sum(l)
     return sum1-sum2
-
 res = find_missing_number(l, 9)
 print(res)
