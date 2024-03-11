@@ -80,38 +80,38 @@ def left_rotate(disbalance_node):
     new_root.height = 1 + max(get_height(new_root.left_child), get_height(new_root.right_child))
     return new_root
 
-def insert_node(root_node, node_value):
-    if not root_node:
-        return AVLNode(node_value)
-    elif node_value < root_node.data:
-        root_node.left_child = insert_node(root_node.left_child, node_value)
+def insert_node(root_node, value):
+    if root_node == None:
+        return AVLNode(value)
+    elif value < root_node.data:
+        root_node.left_child = insert_node(root_node.left_child, value)
     else:
-        root_node.right_child = insert_node(root_node.right_child, node_value)
+        root_node.right_child = insert_node(root_node.right_child, value)
     
     root_node.height = 1 + max(get_height(root_node.left_child), get_height(root_node.right_child))
     balance = get_balance(root_node)
 
     if balance > 1 and get_balance(root_node.left_child) >= 0:
         """
-        This case occurs when the left subtree of the left child of the node is taller than the right subtree.
-        To fix this, a right rotation is performed on the current node.
+        This case occurs when the left subtree of the left child of the node is taller than the 
+        right subtree. To fix this, a right rotation is performed on the current node.
                     30
                     / \
                   20   40
                   / 
-                 10
+                10
                 / 
                5 
         """
         return right_rotate(root_node)
     if balance > 1 and get_balance(root_node.left_child) < 0:
         """
-        This case occurs when the right subtree of the left child of the node is taller than the left subtree.
-        To fix this, a left rotation is first performed on the left child, followed by a right rotation on the 
-        current node.
+        This case occurs when the right subtree of the left child of the node is taller than the 
+        left subtree. To fix this, a left rotation is first performed on the left child, 
+        followed by a right rotation on the current node.
                 30
                /  \
-              20   40
+             20   40
              /
             10
              \
@@ -121,8 +121,8 @@ def insert_node(root_node, node_value):
         return right_rotate(root_node)
     if balance < -1 and get_balance(root_node.right_child) <= 0:
         """
-        This case occurs when the right subtree of the right child of the node is taller than the left subtree.
-        To fix this, a left rotation is performed on the current node.
+        This case occurs when the right subtree of the right child of the node is taller than the 
+        left subtree. To fix this, a left rotation is performed on the current node.
                 30
                /  \
               20   40
@@ -134,9 +134,9 @@ def insert_node(root_node, node_value):
         return left_rotate(root_node)
     if balance < -1 and get_balance(root_node.right_child) > 0:
         """
-        This case occurs when the left subtree of the right child of the node is taller than the right subtree.
-        To fix this, a right rotation is first performed on the right child, followed by a left rotation on the 
-        current node.
+        This case occurs when the left subtree of the right child of the node is taller than the 
+        right subtree. To fix this, a right rotation is first performed on the right child, 
+        followed by a left rotation on the current node.
                 30
                /  \
               20   40
