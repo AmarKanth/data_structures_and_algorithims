@@ -69,6 +69,7 @@ for e in l:
     d[e] = count + 1
 print(d)
 
+
 """
 Find second largest number from the given list
 lst = [2, 9, 3]
@@ -117,3 +118,23 @@ def find_missing_number(l, n):
     return sum1-sum2
 res = find_missing_number(l, 9)
 print(res)
+
+
+"""
+Find the number pairs where nums[i] + nums[j] < 2
+nums = [-1,1,2,3,1]
+"""
+nums = [-1,1,2,3,1]
+nums.sort()
+left = 0
+right = len(nums)-1
+target = 2
+count = 0
+
+while left < right:
+    if nums[left] + nums[right] < target:
+        count += right - left
+        left += 1
+    else:
+        right -= 1
+print(count)
