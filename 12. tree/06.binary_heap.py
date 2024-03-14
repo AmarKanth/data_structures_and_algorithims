@@ -14,25 +14,25 @@ class Heap:
         self.max_size = size + 1
 
 def peak_of_heap(root_node):
-    if not root_node:
-        return
+    if root_node == None:
+        return "Binary Tree is doesnt exist"
     return root_node.custom_list[1]
 
 def size_of_heap(root_node):
-    if not root_node:
-        return
+    if root_node == None:
+        return "Binary Tree is doesnt exist"
     return root_node.heap_size
 
 def level_order_traversal(root_node):
-    if not root_node:
-        return
+    if root_node == None:
+        return "Binary Tree is doesnt exist"
     for idx in range(1, root_node.heap_size+1):
         print(root_node.custom_list[idx])
 
 def heapify_tree_insert(root_node, index, heap_type):
     parent_index = int(index/2)
     if index <= 1:
-        return
+        return "Heapifying Tree is completed"
     
     if heap_type == "Min":
         if root_node.custom_list[index] < root_node.custom_list[parent_index]:
