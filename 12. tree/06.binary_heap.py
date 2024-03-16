@@ -61,25 +61,22 @@ def heapify_tree_extract(root_node, index, heap_type):
     swap_child = 0
 
     if root_node.heap_size < left_index:
-        return 
-    # If current node has only leftchild and leftchild is the last child
+        return "Extract Heapifying is completed"
     elif root_node.heap_size == left_index:
         if heap_type == "Min":
             if root_node.custom_list[index] > root_node.custom_list[left_index]:
                 temp = root_node.custom_list[index]
                 root_node.custom_list[index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
-            return
+            return "Extract Heapifying is completed"
         else:
             if root_node.custom_list[index] < root_node.custom_list[left_index]:
                 temp = root_node.custom_list[index]
                 root_node.custom_list[index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
-            return
-    # If current node has right and left child
+            return "Extract Heapifying is completed"
     else:
         if heap_type == "Min":
-            # Find Min value between left and right childs
             if root_node.custom_list[left_index] < root_node.custom_list[right_index]:
                 swap_child = left_index
             else:
@@ -88,7 +85,6 @@ def heapify_tree_extract(root_node, index, heap_type):
             root_node.custom_list[index] = root_node.custom_list[swap_child]
             root_node.custom_list[swap_child] = temp
         else:
-            # Find Max value between left and right childs
             if root_node.custom_list[left_index] > root_node.custom_list[right_index]:
                 swap_child = left_index
             else:
@@ -100,16 +96,13 @@ def heapify_tree_extract(root_node, index, heap_type):
 
 def extract_node(root_node, heap_type):
     if root_node.heap_size == 0:
-        return
-    else:
-        # Binary Heap allowed to extract rootNode
-        extracted_node = root_node.custom_list[1]
-        root_node.custom_list[1] = root_node.custom_list[root_node.heap_size]
-        root_node.custom_list[root_node.heap_size] = None
-        root_node.heap_size -= 1
-        # Heapifying will be performed from rootNode
-        heapify_tree_extract(root_node, 1, heap_type)
-        return extracted_node
+        return "Binary Tree is empty"
+    extracted_node = root_node.custom_list[1]
+    root_node.custom_list[1] = root_node.custom_list[root_node.heap_size]
+    root_node.custom_list[root_node.heap_size] = None
+    root_node.heap_size -= 1
+    heapify_tree_extract(root_node, 1, heap_type)
+    return extracted_node
     
 def delete_bh(root_node):
     root_node.custom_list = None
