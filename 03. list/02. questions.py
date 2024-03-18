@@ -121,7 +121,7 @@ print(res)
 
 
 """
-Find the number pairs where nums[i] + nums[j] < 2
+Find the number of pairs where nums[i] + nums[j] < 2
 nums = [-1,1,2,3,1]
 """
 nums = [-1,1,2,3,1]
