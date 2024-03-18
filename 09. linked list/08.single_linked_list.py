@@ -117,11 +117,7 @@ print(f"search value is {search}")
 
 """
 create linked list for courses
-courses = [
-    ('d', 'a'),
-    ('a', 'b'),
-    ('b', 'c'),
-]
+courses = [('d','a'), ('a','b'), ('b','c')]
 """
 class ListNode:
     def __init__(self, data):
@@ -152,3 +148,35 @@ while current:
     print(f'"{current.data}" -> ', end="")
     current = current.next
 print("None")
+
+
+"""
+Find the middle of the linked list
+"""
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+def create_linked_list(lst):
+    head = Node(lst[0])
+    temp_node = head
+    index = 1
+    while index < len(lst):
+        new_node = Node(lst[index])
+        temp_node.next = new_node
+        temp_node = new_node
+        index += 1
+    return head
+
+def middle_node(head):
+    fast_pointer = head
+    slow_pointer = head
+    while fast_pointer and fast_pointer.next:
+        slow_pointer = slow_pointer.next
+        fast_pointer = fast_pointer.next.next
+    return slow_pointer
+
+head = create_linked_list([1,2,3,4,5,6])
+middle = middle_node(head)
+print(middle)
