@@ -9,8 +9,8 @@ search_node             O(logN)             O(logN)
 delete_node             O(logN)             O(logN)
 delete_bst              O(1)                O(1)
 """
-
 from queue import Queue
+
 
 class BSTNode:
     def __init__(self, data):
@@ -126,15 +126,15 @@ def print_tree(root_node, level=0):
         print_tree(root_node.right_child, level + 1)
 
 bst = BSTNode(10)
-insert_node(bst, 5)
-insert_node(bst, 15)
-insert_node(bst, 3)
-insert_node(bst, 7)
-insert_node(bst, 12)
-insert_node(bst, 18)
-insert_node(bst, 1)
-insert_node(bst, 4)
-insert_node(bst, 17)
-insert_node(bst, 20)
-insert_node(bst, 19)
+bst = insert_node(bst, 5)
+bst = insert_node(bst, 15)
+bst = insert_node(bst, 3)
+bst = insert_node(bst, 7)
+bst = insert_node(bst, 12)
+bst = insert_node(bst, 18)
+bst = insert_node(bst, 1)
+bst = insert_node(bst, 4)
+bst = insert_node(bst, 17)
+bst = insert_node(bst, 20)
+bst = insert_node(bst, 19)
 print_tree(bst)
