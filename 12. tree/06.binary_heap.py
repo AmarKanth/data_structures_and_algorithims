@@ -15,17 +15,17 @@ class Heap:
 
 def peak_of_heap(root_node):
     if root_node == None:
-        return "Binary Tree is doesnt exist"
+        return "Binary Heap is doesnt exist"
     return root_node.custom_list[1]
 
 def size_of_heap(root_node):
     if root_node == None:
-        return "Binary Tree is doesnt exist"
+        return "Binary Heap is doesnt exist"
     return root_node.heap_size
 
 def level_order_traversal(root_node):
     if root_node == None:
-        return "Binary Tree is doesnt exist"
+        return "Binary Heap is doesnt exist"
     for idx in range(1, root_node.heap_size+1):
         print(root_node.custom_list[idx])
 
@@ -48,7 +48,7 @@ def heapify_tree_insert(root_node, index, heap_type):
         heapify_tree_insert(root_node, parent_index, heap_type)
 
 def insert_node(root_node, node_value, heap_type):
-    if root_node.heap_size + 1 == root_node.max_size:
+    if root_node.heap_size + 1 >= root_node.max_size:
         return "Binary Heap is full"
     root_node.custom_list[root_node.heap_size + 1] = node_value
     root_node.heap_size += 1
@@ -61,20 +61,20 @@ def heapify_tree_extract(root_node, index, heap_type):
     swap_child = 0
 
     if root_node.heap_size < left_index:
-        return "Extract Heapifying is completed"
+        return "Heapifying Tree is completed"
     elif root_node.heap_size == left_index:
         if heap_type == "Min":
             if root_node.custom_list[index] > root_node.custom_list[left_index]:
                 temp = root_node.custom_list[index]
                 root_node.custom_list[index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
-            return "Extract Heapifying is completed"
+            return "Heapifying Tree is completed"
         else:
             if root_node.custom_list[index] < root_node.custom_list[left_index]:
                 temp = root_node.custom_list[index]
                 root_node.custom_list[index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
-            return "Extract Heapifying is completed"
+            return "Heapifying Tree is completed"
     else:
         if heap_type == "Min":
             if root_node.custom_list[left_index] < root_node.custom_list[right_index]:
