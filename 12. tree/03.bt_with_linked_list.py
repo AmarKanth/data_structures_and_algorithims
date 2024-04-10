@@ -13,7 +13,6 @@ delete_bt               O(1)                O(1)
 """
 from queue import Queue
 
-
 class TreeNode:
     def __init__(self, data):
         self.data = data
