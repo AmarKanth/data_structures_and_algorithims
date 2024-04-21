@@ -68,13 +68,12 @@ def heapify_tree_extract(root_node, index, heap_type):
                 temp = root_node.custom_list[index]
                 root_node.custom_list[index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
-            return "Heapifying Tree is completed"
         else:
             if root_node.custom_list[index] < root_node.custom_list[left_index]:
                 temp = root_node.custom_list[index]
                 root_node.custom_list[index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
-            return "Heapifying Tree is completed"
+        return "Heapifying Tree is completed"
     else:
         if heap_type == "Min":
             if root_node.custom_list[left_index] < root_node.custom_list[right_index]:
@@ -92,7 +91,7 @@ def heapify_tree_extract(root_node, index, heap_type):
             temp = root_node.custom_list[index]
             root_node.custom_list[index] = root_node.custom_list[swap_child]
             root_node.custom_list[swap_child] = temp
-    heapify_tree_extract(root_node, swap_child, heap_type)
+        heapify_tree_extract(root_node, swap_child, heap_type)
 
 def extract_node(root_node, heap_type):
     if root_node.heap_size == 0:
