@@ -9,7 +9,6 @@ search_node             O(logN)             O(logN)
 delete_node             O(logN)             O(logN)
 delete_bst              O(1)                O(1)
 """
-
 from queue import Queue
 
 class AVLNode:

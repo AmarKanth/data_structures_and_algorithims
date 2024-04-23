@@ -65,28 +65,31 @@ class SingleLinkedList:
     def delete(self, location):
         if self.head == None:
             return "SLL is doesnt exist"
-
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-            return "Node successfully deleted from sll"
         
         if location == 0:
-            self.head = self.head.next
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.next
             return "Node successfully deleted from sll"
         
         if location != 0:
-            temp_node = self.head
-            index = 0
-            while index < location - 1:
-                temp_node = temp_node.next
-                index += 1
-            if self.tail == temp_node.next:
-                temp_node.next = None
-                self.tail = temp_node
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
             else:
-                next_node = temp_node.next
-                temp_node.next = next_node.next
+                temp_node = self.head
+                index = 0
+                while index < location - 1:
+                    temp_node = temp_node.next
+                    index += 1
+                if self.tail == temp_node.next:
+                    temp_node.next = None
+                    self.tail = temp_node
+                else:
+                    next_node = temp_node.next
+                    temp_node.next = next_node.next
             return "Node successfully deleted from sll"
     
     def delete_all(self):

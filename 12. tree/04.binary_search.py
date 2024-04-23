@@ -11,7 +11,6 @@ delete_bst              O(1)                O(1)
 """
 from queue import Queue
 
-
 class BSTNode:
     def __init__(self, data):
         self.data = data
@@ -56,8 +55,6 @@ def level_order_traversal(root_node):
 def insert_node(root_node, value):
     if root_node == None:
         return BSTNode(value)
-    elif value == root_node.data:
-        pass
     elif value < root_node.data:
         root_node.left_child = insert_node(root_node.left_child, value)
     elif value > root_node.data:

@@ -83,28 +83,31 @@ class DoubleLinkedList:
         if self.head == None:
             return "DLL is doesnt exist"
 
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-            return "Node has been successfully deleted"
-
         if location == 0:
-            self.head = self.head.next
-            self.head.prev = None
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.next
+                self.head.prev = None
             return "Node has been successfully deleted"
         
         if location != 0:
-            temp_node = self.head
-            index = 0
-            while index < location - 1:
-                temp_node = temp_node.next
-                index += 1
-            if self.tail == temp_node.next:
-                self.tail = self.tail.prev
-                self.tail.next = None
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
             else:
-                temp_node.next = temp_node.next.next
-                temp_node.next.prev = temp_node
+                temp_node = self.head
+                index = 0
+                while index < location - 1:
+                    temp_node = temp_node.next
+                    index += 1
+                if self.tail == temp_node.next:
+                    self.tail = self.tail.prev
+                    self.tail.next = None
+                else:
+                    temp_node.next = temp_node.next.next
+                    temp_node.next.prev = temp_node
             return "Node has been successfully deleted"
     
     def delete_all(self):
