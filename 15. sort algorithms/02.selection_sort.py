@@ -1,22 +1,21 @@
 """
-In case of selection sort we repeatedly find the minimum element and 
+1. In case of selection sort we repeatedly find the minimum element and 
 move it to the sorted part of array to make unsorted part sorted.
+2. Selection sort keeps the sorted elments starting part of the list.
 """
 
 """
 TimeComplexity is O(n^2)
 SpaceComplexity is O(1)
 """
-def selectionSort(customList):
-    for i in range(len(customList)):
+def selection_sort(custom_list):
+    for i in range(len(custom_list)):
         min_index = i
-        # this is to find the min value in the unorted part of array
-        for j in range(i+1, len(customList)):
-            if customList[min_index] > customList[j]:
+        for j in range(i+1, len(custom_list)):
+            if custom_list[min_index] > custom_list[j]:
                 min_index = j
-        customList[min_index], customList[i] = customList[i], customList[min_index]
-    else:
-        print(customList)
+        custom_list[min_index], custom_list[i] = custom_list[i], custom_list[min_index]
+    return customList
 
-cList = [0,9,7,1,2,3,6,5,4,8]
-selectionSort(cList)
+res = selectionSort([0,9,7,1,2,3,6,5,4,8])
+print(res)

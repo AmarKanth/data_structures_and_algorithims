@@ -1,6 +1,7 @@
 """
 1. Bubble sort is also known as sinking sort.
-2. We repeatedly compare each pair of adjucent items and swap them if they are in the wrong order
+2. We repeatedly compare each pair of adjucent items and swap them if they are in the wrong order.
+3. Bubble sort keeps the sorted elements at end of the list.
 """
 
 """
@@ -12,8 +13,7 @@ def bubble_sort(custom_list):
         for j in range(len(custom_list)-i-1):
             if custom_list[j] > custom_list[j+1]:
                 custom_list[j], custom_list[j+1] = custom_list[j+1], custom_list[j]
-    else:
-        print(custom_list)
+    return custom_list
 
-clist = [0,9,7,1,2,3,6,5,4,8]
-bubble_sort(clist)
+res = bubble_sort([0,9,7,1,2,3,6,5,4,8])
+print(res)
