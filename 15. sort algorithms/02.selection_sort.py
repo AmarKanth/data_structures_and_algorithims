@@ -1,7 +1,6 @@
 """
 1. In case of selection sort we repeatedly find the minimum element and 
 move it to the sorted part of array to make unsorted part sorted.
-2. Selection sort keeps the sorted elments starting part of the list.
 """
 
 """
