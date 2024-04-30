@@ -1,7 +1,5 @@
 """
-1. Bubble sort is also known as sinking sort.
-2. We repeatedly compare each pair of adjucent items and swap them if they are in the wrong order.
-3. Bubble sort keeps the sorted elements at end of the list.
+1. We repeatedly compare each pair of adjucent items and swap them if they are in the wrong order.
 """
 
 """
