@@ -5,7 +5,7 @@ until they become too small that cant not be broken further
 3. Merge halves by sorting them
 """
 
-def merge(customList, l, m, r):
+def merge(custom_list, l, m, r):
     n1 = m - l + 1
     n2 = r - m
 
@@ -13,10 +13,10 @@ def merge(customList, l, m, r):
     R = [0]*(n2)
 
     for i in range(0, n1):
-        L[i] = customList[l+i]
+        L[i] = custom_list[l+i]
     
     for j in range(0, n2):
-        R[j] = customList[m+1+j]
+        R[j] = custom_list[m+1+j]
     
     i = 0
     j = 0
@@ -24,33 +24,34 @@ def merge(customList, l, m, r):
 
     while i < n1 and j < n2:
         if L[i] <= R[j]:
-            customList[k] = L[i]
+            custom_list[k] = L[i]
             i += 1
         else:
-            customList[k] = R[j]
+            custom_list[k] = R[j]
             j += 1
         k += 1
     while i < n1:
-        customList[k] = L[i]
+        custom_list[k] = L[i]
         i += 1
         k += 1
     while j < n2:
-        customList[k] = R[j]
+        custom_list[k] = R[j]
         j += 1
         k += 1
+
 """
 TimeComplexity O(NLogN)
 SpaceComplexity O(n)
 Note : Refer Big O Notaion for T(N/2) and O(NLogN)
 """
-def mergeSort(customList, l, r):
+def merge_sort(custom_list, l, r):
     if l < r:
         m = (l+(r-1))//2
-        mergeSort(customList, l, m)
-        mergeSort(customList, m+1, r)
-        merge(customList, l, m, r)
-    return customList
+        merge_sort(custom_list, l, m)
+        merge_sort(custom_list, m+1, r)
+        merge(custom_list, l, m, r)
+    return custom_list
 
-cList = [2,1,7,6,5,3,4,9,8]
-res = mergeSort(cList, 0, 8)
+clist = [2,1,7,6,5,3,4,9,8]
+res = merge_sort(clist, 0, 8)
 print(res)
