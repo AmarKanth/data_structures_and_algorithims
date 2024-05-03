@@ -13,6 +13,10 @@ def heapify(custom_list, n, i):
 		custom_list[i], custom_list[smallest] = custom_list[smallest], custom_list[i]
 		heapify(custom_list, n, smallest)
 
+"""
+TimeComplexity O(NLogN)
+SpaceComplexity O(1)
+"""
 def heap_sort(custom_list):
 	n = len(custom_list)
 
