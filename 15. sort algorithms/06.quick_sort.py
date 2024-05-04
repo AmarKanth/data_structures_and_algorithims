@@ -17,7 +17,11 @@ def quick_sort_helper(custom_list, left, right):
         quick_sort_helper(custom_list, pivot_index+1, right)
     return custom_list
 
-def quick_sort(mylist):
+"""
+TimeComplexity O(NLogN)
+SpaceComplexity O(n)
+"""
+def quick_sort(custom_list):
     return quick_sort_helper(custom_list, 0, len(custom_list)-1)
 
 res = quick_sort([3,5,0,6,2,1,4])
