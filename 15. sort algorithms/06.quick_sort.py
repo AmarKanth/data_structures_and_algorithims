@@ -1,38 +1,24 @@
-"""
-QuickSort Algorithm
--------------------
-1. Take First element consider it as pivot number.
-2. Separate the list with elements less than pivot number.
-3. Separate the list with elements greater than pivot number.
-4. Now place pivot number after last element of 1st list(elements which are less than pivot number).
-5. The pivot number is in right sort order.
-6. Repeat the entire process with first element again.
-7. Once all the elements in first half of the list sorted then move on to second half of the elements.
-"""
+def swap(custom_list, index1, index2):
+    custom_list[index1], custom_list[index2] = custom_list[index2], custom_list[index1]
 
-def swap(mylist, index1, index2):
-    mylist[index1], mylist[index2] = mylist[index2], mylist[index1]
-
-def pivot(mylist, pivot_index, end_index):
-    # It will split the array into two sub arrays
+def pivot(custom_list, pivot_index, end_index):
     swap_index = pivot_index
     for i in range(pivot_index+1, end_index+1):
-        if mylist[i] < mylist[pivot_index]:
+        if custom_list[i] < custom_list[pivot_index]:
             swap_index += 1
-            swap(mylist, swap_index, i)
-    swap(mylist, pivot_index, swap_index)
+            swap(custom_list, swap_index, i)
+    swap(custom_list, pivot_index, swap_index)
     return swap_index
 
-def quick_sort_helper(mylist, left, right):
+def quick_sort_helper(custom_list, left, right):
     if left < right:
-        pivot_index = pivot(mylist, left, right)
-        quick_sort_helper(mylist, left, pivot_index-1)
-        quick_sort_helper(mylist, pivot_index+1, right)
-    return mylist
+        pivot_index = pivot(custom_list, left, right)
+        quick_sort_helper(custom_list, left, pivot_index-1)
+        quick_sort_helper(custom_list, pivot_index+1, right)
+    return custom_list
 
 def quick_sort(mylist):
-    return quick_sort_helper(mylist, 0, len(mylist)-1)
+    return quick_sort_helper(custom_list, 0, len(custom_list)-1)
 
-cList = [3,5,0,6,2,1,4]
-res = quick_sort(cList)
+res = quick_sort([3,5,0,6,2,1,4])
 print(res)
