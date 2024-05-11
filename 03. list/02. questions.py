@@ -85,17 +85,6 @@ print(second_largest)
 
 
 """
-Write a function to sort elements in the list without using sort function
-"""
-l = [2,1,3]
-for i in range(len(l)):
-    for j in range(i+1, len(l)):
-        if l[i] > l[j]:
-            l[i], l[j] = l[j], l[i]
-print(l)
-
-
-"""
 Write a program to reverse the list using recursion
 """
 def reverse(l):
