@@ -75,6 +75,56 @@ print(res)
 
 
 """
+S1 and S2 are given strings
+Convert S2 to S1 using delete, insert or replace operations
+Find the minimum count of edit operations
+"""
+def find_min_operations(s1, s2, index1, index2, temp_dict):
+    if index1 == len(s1):
+        return len(s2) - index2
+    if index2 == len(s2):
+        return len(s1) - index1
+    if s1[index1] == s2[index2]:
+        return find_min_operations(s1, s2, index1+1, index2+1, temp_dict)
+    else:
+        dict_key = str(index1)+str(index2)
+        if dict_key not in temp_dict:
+            delete_op = 1 + find_min_operations(s1, s2, index1, index2+1, temp_dict)
+            insert_op = 1 + find_min_operations(s1, s2, index1+1, index2, temp_dict)
+            replace_op = 1 + find_min_operations(s1, s2, index1+1, index2+1, temp_dict)
+            temp_dict[dict_key] = min(delete_op, insert_op, replace_op)
+        return temp_dict[dict_key]
+
+res = find_min_operations("catch", "carch", 0, 0, {})
+print(res)
+
+
+"""
+Given the weights and profits of N items
+Find the maximum profit within given capacity of C
+items can not be broken
+"""
+class Item:
+    def __init__(self, profit, weight):
+        self.profit = profit
+        self.weight = weight
+ 
+def zo_knapsack(items, capacity, current_index, temp_dict):
+    dict_key = str(current_index) + str(capacity)
+    if capacity <=0 or current_index < 0 or current_index >= len(items):
+        return 0
+    elif dict_key in temp_dict:
+        return temp_dict[current_index]
+    elif items[current_index].weight <= capacity:
+        profit1 = items[current_index].profit + zo_knapsack(items, capacity-items[current_index].weight, current_index+1, temp_dict)
+        profit2 = zo_knapsack(items, capacity, current_index+1, temp_dict)
+        temp_dict[dict_key] = max(profit1, profit2)
+        return temp_dict[dict_key]
+    else:
+        return 0
+
+
+"""
 Bottom Up with Tabulation : Tabulation is the opposite of the top-down approach and avoids recursion. 
 In this approach, we solve the problem bottom-up (i.e by solving all the related subproblems first). 
 This is done by filling up a table. Based on the result in the table, the solution to the top/original 
@@ -116,3 +166,61 @@ def house_robber(houses):
 
 res = house_robber([6,7,1,30,8,2,4])
 print(res)
+
+
+"""
+S1 and S2 are given strings
+Convert S2 to S1 using delete, insert or replace operations
+Find the minimum count of edit operations
+"""
+def find_min_operations(s1, s2, temp_dict):
+    for i1 in range(len(s1)+1):
+        dict_key = str(i1)+'0'
+        temp_dict[dict_key] = i1
+    
+    for i2 in range(len(s2)+1):
+        dict_key = '0'+str(i2)
+        temp_dict[dict_key] = i2
+    
+    for i1 in range(1,len(s1)+1):
+        for i2 in range(1,len(s2)+1):
+            if s1[i1-1] == s2[i2-1]:
+                dict_key = str(i1)+str(i2)
+                dict_key1 = str(i1-1)+str(i2-1)
+                temp_dict[dict_key] = temp_dict[dict_key1]
+            else:
+                dict_key = str(i1)+str(i2)
+                dict_keyd = str(i1-1)+str(i2)
+                dict_keyi = str(i1)+str(i2-1)
+                dict_Keyr = str(i1-1)+str(i2-1)
+                temp_dict[dict_key] = 1 + min(temp_dict[dict_keyd], min(temp_dict[dict_keyi], temp_dict[dict_Keyr]))
+    dict_key = str(len(s1))+str(len(s2))
+    return temp_dict[dict_key]
+
+res = find_min_operations("catch", "carch", {})
+print(res)
+
+
+"""
+Given the weights and profits of N items
+Find the maximum profit within given capacity of C
+items can not be broken
+"""
+def zo_knapsack(profits, weights, capacity):
+    if capacity <= 0 or len(profits) == 0 or len(weights) != len(profits):
+        return 0
+    number_of_rows = len(profits) + 1
+    dp = [[None for i in range(capacity+2)] for j in range(number_of_rows)]
+    for i in range(number_of_rows):
+        dp[i][0] = 0
+    for i in range(capacity+1):
+        dp[number_of_rows-1][i] = 0
+    for row in range(number_of_rows-2, -1, -1):
+        for column in range(1,capacity+1):
+            profit1 = 0
+            profit2 = 0
+            if weights[row] <= column:
+                profit1 = profits[row] + dp[row + 1][column - weights[row]]
+            profit2 = dp[row + 1][column]
+            dp[row][column] = max(profit1, profit2)
+    return dp[0][capacity]
