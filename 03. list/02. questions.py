@@ -99,6 +99,7 @@ print(res)
 how to find missing number in a list of 1 to 10
 using sum of n series equation 
 1+2+3+4+...+n = n*(n+1)/2
+l = [1, 2, 3, 4, 5, 6, 8, 9]
 """
 l = [1, 2, 3, 4, 5, 6, 8, 9]
 def find_missing_number(l, n):
