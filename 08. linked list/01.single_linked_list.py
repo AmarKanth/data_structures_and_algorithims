@@ -151,3 +151,34 @@ while current:
     print(f'"{current.data}" -> ', end="")
     current = current.next
 print("None")
+
+
+"""
+Reverse Linked List
+"""
+head = [1,2,3,4,5]
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+def create_linked_list(l):
+    head = Node(l[0])
+    temp_node = head
+    for i in range(1,len(l)):
+        new_node = Node(l[i])
+        temp_node.next = new_node
+        temp_node = new_node
+    return head
+
+sll = create_linked_list(head)
+def reverse(head):
+    prev = None
+    current = head
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    return prev
+reverse(sll)
