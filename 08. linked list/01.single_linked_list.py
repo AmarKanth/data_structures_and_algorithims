@@ -11,6 +11,7 @@ class Node:
             TimeComplexity      SpaceComplexity
 insert      O(n)                O(1)
 search      O(n)                O(1)
+reverse     O(n)                O(1)
 delete      O(n)                O(1)
 delete_all  O(1)                O(1)
 """
@@ -61,6 +62,20 @@ class SingleLinkedList:
                 return temp_node.value
             temp_node = temp_node.next
         return "The value does not exist in ssl"
+
+    def reverse(self):
+        if self.head == None:
+            return "SLL does not exist"
+        prev = None
+        temp_node = self.head
+        self.tail = self.head
+        while temp_node:
+            next_node = temp_node.next
+            temp_node.next = prev
+            prev = temp_node
+            temp_node = next_node
+        self.head = prev
+        return self.head
     
     def delete(self, location):
         if self.head == None:
@@ -151,34 +166,3 @@ while current:
     print(f'"{current.data}" -> ', end="")
     current = current.next
 print("None")
-
-
-"""
-Reverse Linked List
-"""
-head = [1,2,3,4,5]
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-def create_linked_list(l):
-    head = Node(l[0])
-    temp_node = head
-    for i in range(1,len(l)):
-        new_node = Node(l[i])
-        temp_node.next = new_node
-        temp_node = new_node
-    return head
-
-sll = create_linked_list(head)
-def reverse(head):
-    prev = None
-    current = head
-    while current:
-        next_node = current.next
-        current.next = prev
-        prev = current
-        current = next_node
-    return prev
-reverse(sll)
