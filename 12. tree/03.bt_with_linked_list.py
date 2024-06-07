@@ -20,7 +20,7 @@ class TreeNode:
         self.right_child = None
 
 """
-Dept First Search
+Depth First Search
 -----------------
 1. pre order traversal
     Visit the current node (the root node initially).
