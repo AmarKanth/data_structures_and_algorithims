@@ -93,3 +93,34 @@ newBT.insert_node("Hot")
 newBT.insert_node("Cold")
 newBT.insert_node("Tea")
 newBT.insert_node("Coffee")
+
+
+"""
+Convert the list into binary tree
+input_list = [2,1,3,None,None,0,1]
+"""
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def convert_list_to_binary_tree(node_list, index=0):
+    if index >= len(node_list) or node_list[index] is None:
+        return None
+    root = TreeNode(node_list[index])
+    left_index = index * 2 + 1
+    right_index = index * 2 + 2
+    root.left = convert_list_to_binary_tree(node_list, left_index)
+    root.right = convert_list_to_binary_tree(node_list, right_index)
+    return root
+
+def print_tree(root, level=0):
+    if root:
+        print_tree(root.right, level+1)
+        print(" " * 4 * level + "->" + str(root.val))
+        print_tree(root.left, level+1)
+
+input_list = [2,1,3,None,None,0,1]
+bt = convert_list_to_binary_tree(input_list)
+print_tree(bt)
