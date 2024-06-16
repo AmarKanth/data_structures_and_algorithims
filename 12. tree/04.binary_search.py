@@ -61,15 +61,15 @@ def insert_node(root_node, value):
         root_node.right_child = insert_node(root_node.right_child, value)
     return root_node
 
-def search_node(root_node, node_value):
-    if root_node == None:
-        print("Value is not found")
-    elif root_node.data == node_value:
-        print("Value is found")
-    elif node_value < root_node.data:
-        search_node(root_node.left_child, node_value)
-    else:
-        search_node(root_node.right_child, node_value)
+def search_node(root_node, value):
+    if root_node is None:
+        return None
+    elif root_node.data == value:
+        return root_node.data
+    elif value < root_node.data:
+        return search_node(root_node.left_child, value)
+    elif value > root_node.data:
+        return search_node(root_node.right_child, value)
 
 def min_value_node(bst_node):
     current = bst_node
@@ -77,13 +77,13 @@ def min_value_node(bst_node):
         current = current.left_child
     return current
 
-def delete_node(root_node, node_value):
+def delete_node(root_node, value):
     if root_node == None:
         return root_node
-    if node_value < root_node.data:
-        root_node.left_child = delete_node(root_node.left_child, node_value)
-    elif node_value > root_node.data:
-        root_node.right_child = delete_node(root_node.right_child, node_value)
+    if value < root_node.data:
+        root_node.left_child = delete_node(root_node.left_child, value)
+    elif value > root_node.data:
+        root_node.right_child = delete_node(root_node.right_child, value)
     else:
         """
         The below two if conditions will be execute
