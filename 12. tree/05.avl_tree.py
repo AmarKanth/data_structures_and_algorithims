@@ -148,13 +148,15 @@ def insert_node(root_node, value):
         return left_rotate(root_node)
     return root_node
 
-def search_node(root_node, node_value):
-    if root_node.data == node_value:
-        print("Value is found")
-    elif node_value < root_node.data:
-        search_node(root_node.left_child, node_value)
-    else:
-        search_node(root_node.right_child, node_value)
+def search_node(root_node, value):
+    if root_node is None:
+        return None
+    elif root_node.data == value:
+        return root_node.data
+    elif value < root_node.data:
+        return search_node(root_node.left_child, value)
+    elif value > root_node.data:
+        return search_node(root_node.right_child, value)
 
 def get_min_value_node(root_node):
     if root_node is None or root_node.left_child is None:
