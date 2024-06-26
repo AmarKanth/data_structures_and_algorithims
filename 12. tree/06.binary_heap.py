@@ -54,7 +54,7 @@ def insert_node(root_node, node_value, heap_type):
     heapify_tree_insert(root_node, root_node.heap_size, heap_type)
     return "The value is successfully inserted"
 
-def heapify_tree_extract(root_node, index, heap_type):
+def heapify_tree_extract(root_node, parent_index, heap_type):
     left_index = index * 2
     right_index = index * 2 + 1
     swap_child = 0
@@ -63,14 +63,14 @@ def heapify_tree_extract(root_node, index, heap_type):
         return "Heapifying Tree is completed"
     elif root_node.heap_size == left_index:
         if heap_type == "Min":
-            if root_node.custom_list[index] > root_node.custom_list[left_index]:
-                temp = root_node.custom_list[index]
-                root_node.custom_list[index] = root_node.custom_list[left_index]
+            if root_node.custom_list[parent_index] > root_node.custom_list[left_index]:
+                temp = root_node.custom_list[parent_index]
+                root_node.custom_list[parent_index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
         else:
-            if root_node.custom_list[index] < root_node.custom_list[left_index]:
-                temp = root_node.custom_list[index]
-                root_node.custom_list[index] = root_node.custom_list[left_index]
+            if root_node.custom_list[parent_index] < root_node.custom_list[left_index]:
+                temp = root_node.custom_list[parent_index]
+                root_node.custom_list[parent_index] = root_node.custom_list[left_index]
                 root_node.custom_list[left_index] = temp
         return "Heapifying Tree is completed"
     else:
@@ -79,16 +79,16 @@ def heapify_tree_extract(root_node, index, heap_type):
                 swap_child = left_index
             else:
                 swap_child = right_index
-            temp = root_node.custom_list[index]
-            root_node.custom_list[index] = root_node.custom_list[swap_child]
+            temp = root_node.custom_list[parent_index]
+            root_node.custom_list[parent_index] = root_node.custom_list[swap_child]
             root_node.custom_list[swap_child] = temp
         else:
             if root_node.custom_list[left_index] > root_node.custom_list[right_index]:
                 swap_child = left_index
             else:
                 swap_child = right_index
-            temp = root_node.custom_list[index]
-            root_node.custom_list[index] = root_node.custom_list[swap_child]
+            temp = root_node.custom_list[parent_index]
+            root_node.custom_list[parent_index] = root_node.custom_list[swap_child]
             root_node.custom_list[swap_child] = temp
         heapify_tree_extract(root_node, swap_child, heap_type)
 
