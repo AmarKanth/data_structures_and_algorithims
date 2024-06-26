@@ -39,13 +39,12 @@ def heapify_tree_insert(root_node, index, heap_type):
             temp = root_node.custom_list[index]
             root_node.custom_list[index] = root_node.custom_list[parent_index]
             root_node.custom_list[parent_index] = temp
-        heapify_tree_insert(root_node, parent_index, heap_type)
     if heap_type == "Max":
         if root_node.custom_list[index] > root_node.custom_list[parent_index]:
             temp = root_node.custom_list[index]
             root_node.custom_list[index] = root_node.custom_list[parent_index]
             root_node.custom_list[parent_index] = temp
-        heapify_tree_insert(root_node, parent_index, heap_type)
+    heapify_tree_insert(root_node, parent_index, heap_type)
 
 def insert_node(root_node, node_value, heap_type):
     if root_node.heap_size + 1 >= root_node.max_size:
