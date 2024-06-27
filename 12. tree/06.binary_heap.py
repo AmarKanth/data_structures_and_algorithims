@@ -55,8 +55,8 @@ def insert_node(root_node, node_value, heap_type):
     return "The value is successfully inserted"
 
 def heapify_tree_extract(root_node, parent_index, heap_type):
-    left_index = index * 2
-    right_index = index * 2 + 1
+    left_index = parent_index * 2
+    right_index = parent_index * 2 + 1
     swap_child = 0
 
     if root_node.heap_size < left_index:
