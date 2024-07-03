@@ -13,7 +13,7 @@ def selection_sort(custom_list):
             if custom_list[min_index] > custom_list[j]:
                 min_index = j
         custom_list[min_index], custom_list[i] = custom_list[i], custom_list[min_index]
-    return customList
+    return custom_list
 
 res = selectionSort([0,9,7,1,2,3,6,5,4,8])
 print(res)
