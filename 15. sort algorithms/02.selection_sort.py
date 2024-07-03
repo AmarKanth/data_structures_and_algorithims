@@ -15,5 +15,5 @@ def selection_sort(custom_list):
         custom_list[min_index], custom_list[i] = custom_list[i], custom_list[min_index]
     return custom_list
 
-res = selectionSort([0,9,7,1,2,3,6,5,4,8])
+res = selection_sort([0,9,7,1,2,3,6,5,4,8])
 print(res)
