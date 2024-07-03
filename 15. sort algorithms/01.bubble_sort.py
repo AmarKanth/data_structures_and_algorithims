@@ -1,8 +1,4 @@
 """
-1. We repeatedly compare each pair of adjucent items and swap them if they are in the wrong order.
-"""
-
-"""
 TimeComplexity is O(n^2)
 SpaceComplexity is O(1)
 """
