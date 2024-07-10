@@ -1,5 +1,5 @@
 """
-Dynamic programming is an algotthmic technique for solving an optimization problem by breaking it down 
+Dynamic programming is an algorthmic technique for solving an optimization problem by breaking it down 
 into simpler subproblems and utilizing the fact that the optimal solution to the overall problem depends 
 upon the optimal solution to its subproblems.
 """
