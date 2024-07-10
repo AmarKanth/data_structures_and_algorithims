@@ -25,12 +25,14 @@ solving it repeatedly if its called multiple times. This technique of storing th
 already solved problems is callled memoization.
 """
 
+
 """
 Bottom Up with Tabulation : Tabulation is the opposite of the top-down approach and avoids recursion. 
 In this approach, we solve the problem bottom-up (i.e by solving all the related subproblems first). 
 This is done by filling up a table. Based on the result in the table, the solution to the top/original 
 problem is then computed.
 """
+
 
 """
 Fibonacci series using Top Down
@@ -47,6 +49,7 @@ def fibonacci(n, memo):
 res = fibonacci(10, {})
 print(res)
 
+
 """
 Fibonacci series using Bottom Up
 """
@@ -58,6 +61,7 @@ def fibonacci(n):
 
 res = fibonacci(10)
 print(res)
+
 
 """
 Given N, find the number of ways to express N as a sum of 1, 3 and 4
@@ -77,6 +81,7 @@ def number_factor(n, tempdict):
 res = number_factor(5, {})
 print(res)
 
+
 """
 Given N number of houses along the street with some amount of money 
 Adjacent houses can not be stolen
@@ -93,6 +98,7 @@ def house_robber(houses, current_index, temp_dict):
 
 res = house_robber([6,7,1,30,8,2,4], 0, {})
 print(res)
+
 
 """
 S1 and S2 are given strings
@@ -118,6 +124,7 @@ def find_min_operations(s1, s2, index1, index2, temp_dict):
 res = find_min_operations("catch", "carch", 0, 0, {})
 print(res)
 
+
 """
 Given the weights and profits of N items
 Find the maximum profit within given capacity of C
@@ -142,6 +149,7 @@ def zo_knapsack(items, capacity, current_index, temp_dict):
     else:
         return 0
 
+
 """
 Given N, find the number of ways to express N as a sum of 1, 3 and 4
 """
@@ -153,6 +161,7 @@ def number_factor(n):
 
 res = number_factor(5)
 print(res)
+
 
 """
 Given N number of houses along the street with some amount of money 
@@ -167,6 +176,7 @@ def house_robber(houses):
 
 res = house_robber([6,7,1,30,8,2,4])
 print(res)
+
 
 """
 S1 and S2 are given strings
@@ -199,6 +209,7 @@ def find_min_operations(s1, s2, temp_dict):
 
 res = find_min_operations("catch", "carch", {})
 print(res)
+
 
 """
 Given the weights and profits of N items
