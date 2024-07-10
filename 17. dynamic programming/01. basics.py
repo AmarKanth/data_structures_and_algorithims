@@ -42,7 +42,7 @@ def fibonacci(n, memo):
         return 0
     if n == 2:
         return 1
-    if not n in memo:
+    if n not in memo:
         memo[n] = fibonacci(n-1, memo) + fibonacci(n-2, memo)
     return memo[n]
 
