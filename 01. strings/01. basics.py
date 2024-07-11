@@ -94,5 +94,5 @@ def extract_substrings(str):
 set1 = extract_substrings(str1)
 set2 = extract_substrings(str2)
 res = set2.intersection(set1)
-sort = sorted(res, key=lambda s: len(s), reverse=True)
+sort = sorted(res, key=len, reverse=True)
 print(sort[0])
