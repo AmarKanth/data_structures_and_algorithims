@@ -1,22 +1,4 @@
 """
-del keyword is use to delete objects in python.
-"""
-class MyClass:
-  name = "John"
-
-del MyClass
-print(MyClass)
-
-x = "hello"
-del x
-print(x)
-
-x = ["apple", "banana", "cherry"]
-del x[0]
-print(x)
-
-
-"""
 [
     {"name": "vijay", "age": 20},
     {"name": "kumar", "age": 40},
@@ -24,12 +6,7 @@ print(x)
 ]
 sort the given list based on age
 """
-obj = [
-    {"name": "vijay", "age": 20},
-    {"name": "kumar", "age": 40},
-    {"name": "rakesh", "age": 30}
-]
-
+obj = [{"name": "vijay", "age": 20}, {"name": "kumar", "age": 40}, {"name": "rakesh", "age": 30}]
 res = sorted(obj, key=lambda d: d["age"])
 print(res)
 
