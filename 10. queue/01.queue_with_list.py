@@ -33,7 +33,7 @@ class Queue:
         self.items = None
 
 q = Queue()
-print(q.isEmpty())
+print(q.is_empty())
 print(q.enqueue(1))
 print(q.dequeue())
 print(q.peek())
