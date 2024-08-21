@@ -5,38 +5,38 @@
 """
 
 class Stack:
-    def __init__(self, maxSize):
+    def __init__(self, max_size):
         self.list = []
-        self.maxSize = maxSize
+        self.max_size = max_size
     
     def __str__(self):
         self.list.reverse()
         values = [str(i) for i in self.list]
         return "\n".join(values)
     
-    def isEmpty(self):
+    def is_empty(self):
         if self.list == []:
             return True
         return False
 
-    def isFull(self):
-        if len(self.list) == self.maxSize:
+    def is_full(self):
+        if len(self.list) == self.max_size:
             return True
         return False
     
     def push(self, value):
-        if self.isFull():
+        if self.is_full():
             return "Stack is full"
         self.list.append(value)
         return self.list
     
     def pop(self):
-        if self.isEmpty():
+        if self.is_empty():
             return "Stack is empty"
         return self.list.pop()
     
     def peek(self):
-        if self.isEmpty():
+        if self.is_empty():
             return "Stack is empty"
         return self.list[len(self.list)-1]
     
