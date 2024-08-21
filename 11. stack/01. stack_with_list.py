@@ -10,8 +10,7 @@ class Stack:
         self.max_size = max_size
     
     def __str__(self):
-        self.list.reverse()
-        values = [str(i) for i in self.list]
+        values = [str(i) for i in self.list[::-1]]
         return "\n".join(values)
     
     def is_empty(self):
