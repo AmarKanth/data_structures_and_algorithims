@@ -1,6 +1,6 @@
 """
 Take the first element in un-sorted array find its position in sorted array, 
-do this repearedly until unsorted array gets empty.
+do this repeatedly until unsorted array gets empty.
 """
 
 """
