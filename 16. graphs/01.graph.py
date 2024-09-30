@@ -22,6 +22,12 @@ If a graph is complete or almost complete we should use Adjacency Matrix
 If the number of edges are few then we should use Adjacency List
 """
 
+"""
+      Timecomplexity   Spacecomplexity
+bfs   O(V+E)           O(V)
+dfs   O(V+E)           O(V)
+"""
+
 from queue import Queue, LifoQueue
 
 class Graph:
@@ -32,7 +38,14 @@ class Graph:
         if vertex not in self.adjacency_list.keys():
             self.adjacency_list[vertex] = []
         return "Vertex added successfully"
-    
+
+    def add_edge(self, vertex1, vertex2):
+        vertices = self.adjacency_list.keys()
+        if vertex1 in vertices and vertex2 in vertices:
+            self.adjacency_list[vertex1].append(vertex2)
+            self.adjacency_list[vertex2].append(vertex1)
+        return "Edge added successfully"
+
     def remove_vertex(self, vertex):
         if vertex in self.adjacency_list.keys():
             for other_vertex in self.adjacency_list[vertex]:
@@ -40,29 +53,14 @@ class Graph:
             del self.adjacency_list[vertex]
         return "Vertex removed successfully"
     
-    def print_graph(self):
-        for key, val in self.adjacency_list.items():
-            print(key,":",val)
-    
-    def add_edge(self, vertex1, vertex2):
-        if vertex1 in self.adjacency_list.keys() and vertex2 in self.adjacency_list.keys():
-            self.adjacency_list[vertex1].append(vertex2)
-            self.adjacency_list[vertex2].append(vertex1)
-        return "Edge added successfully"
-    
     def remove_edge(self, vertex1, vertex2):
-        if vertex1 in self.adjacency_list.keys() and vertex2 in self.adjacency_list.keys():
+        vertices = self.adjacency_list.keys()
+        if vertex1 in vertices and vertex2 in vertices:
             self.adjacency_list[vertex1].remove(vertex2)
             self.adjacency_list[vertex2].remove(vertex1)
-            return True
-        return False
+        return "Edge removed successfully"
     
-    """
-    TimeComplexity is O(V+E)
-    SpaceComplexity is O(V)
-    """
     def bfs(self, vertex):
-        # It works similar way as levelorder-traversal
         visited = set()
         visited.add(vertex)
         q = Queue()
@@ -75,12 +73,7 @@ class Graph:
                     visited.add(adjacent_vertex)
                     q.put(adjacent_vertex)
     
-    """
-    TimeComplexity is O(V+E)
-    SpaceComplexity is O(V)
-    """
     def dfs(self, vertex):
-        # It goes top to deepest-node and deepest-node to top
         visited = set()
         stack = LifoQueue()
         stack.put(vertex)
@@ -93,18 +86,21 @@ class Graph:
                 if adjacent_vertex not in visited:
                     stack.put(adjacent_vertex)
 
+    def print_graph(self):
+        for tpl in self.adjacency_list.items():
+            print(tpl)
 
-custom_graph = Graph()
-custom_graph.add_vertex("A")
-custom_graph.add_vertex("B")
-custom_graph.add_vertex("C")
-custom_graph.add_vertex("D")
-custom_graph.add_vertex("E")
-custom_graph.add_edge("A", "B")
-custom_graph.add_edge("A", "C")
-custom_graph.add_edge("B", "E")
-custom_graph.add_edge("C", "D")
-custom_graph.add_edge("D", "E")
-custom_graph.print_grapth()
-# custom_graph.bfs("A")
-custom_graph.dfs("A")
+graph = Graph()
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
+graph.add_vertex("D")
+graph.add_vertex("E")
+graph.add_edge("A", "B")
+graph.add_edge("A", "C")
+graph.add_edge("B", "E")
+graph.add_edge("C", "D")
+graph.add_edge("D", "E")
+graph.print_grapth()
+graph.bfs("A")
+graph.dfs("A")
