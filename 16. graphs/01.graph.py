@@ -1,3 +1,8 @@
+"""
+Vertices : Vertices are the nodes of the graph
+Edge : Edge is the line that connects pair of vertices
+"""
+
 from queue import Queue, LifoQueue
 
 class Graph:
