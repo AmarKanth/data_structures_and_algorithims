@@ -42,7 +42,7 @@ class Graph:
             return True
         return False
     
-    def print_grapth(self):
+    def print_graph(self):
         for key, val in self.adjacency_list.items():
             print(key,":",val)
     
