@@ -17,6 +17,9 @@ Graph Types:
         Weighted    Unweighted    Weighted    Unweighted 
         /    \                    /    \
 Positive    Negative         Positive   Negative
+
+If a graph is complete or almost complete we should use Adjacency Matrix
+If the number of edges are few then we should use Adjacency List
 """
 
 from queue import Queue, LifoQueue
