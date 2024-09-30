@@ -2,7 +2,10 @@
 Vertices : Vertices are the nodes of the graph
 Edge : Edge is the line that connects pair of vertices
 Unwieghted Graph : A graph which does not have weight associated with any edge
+Weighted Graph : A graph which has weight associated with any edge
 Undirect Graph : In case the edges of the graph do not have a direction associated with them
+Directed Graph : If the edges in a graph have a direction associated with them
+Cyclic Graph : A graph which has at least one loop
 """
 
 from queue import Queue, LifoQueue
