@@ -1,6 +1,7 @@
 """
 Vertices : Vertices are the nodes of the graph
 Edge : Edge is the line that connects pair of vertices
+Unwieghted Graph : A graph which does not have weight associated with any edge
 """
 
 from queue import Queue, LifoQueue
