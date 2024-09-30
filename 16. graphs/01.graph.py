@@ -8,6 +8,15 @@ Directed Graph : If the edges in a graph have a direction associated with them
 Cyclic Graph : A graph which has at least one loop
 Acylic Graph : A graph whith no loop
 Tree : Tree is a special case of directed acyclic graph
+
+Graph Types:
+                            Graph
+                        /            \
+                Directed             Undirected
+                /    \                  /    \
+        Weighted    Unweighted    Weighted    Unweighted 
+        /    \                    /    \
+Positive    Negative         Positive   Negative
 """
 
 from queue import Queue, LifoQueue
