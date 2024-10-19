@@ -4,19 +4,16 @@ into simpler subproblems and utilizing the fact that the optimal solution to the
 upon the optimal solution to its subproblems.
 """
 
-
 """
 Optimal Substracture : If any problem's overall optimal solution can be constructed from the 
 optimal solutions of the subproblem then this problem has optimal substracture.
 ex : Fib(n) = Fib(n-1) + Fib(n-2)
 """
 
-
 """
 Overlapping Subproblem : Subproblem are smaller versions of the original problem. Any Problem has 
 overlapping sub problem if finding its solution involves solving the same subproblem multiple times.
 """
-
 
 """
 Top Down with memoization : Solving the bigger problem by recursively finding the solution to 
@@ -40,7 +37,6 @@ def fibonacci(n, memo):
 res = fibonacci(10, {})
 print(res)
 
-
 """
 Bottom Up with Tabulation : Tabulation is the opposite of the top-down approach and avoids recursion. 
 In this approach, we solve the problem bottom-up (i.e by solving all the related subproblems first). 
@@ -60,7 +56,6 @@ def fibonacci(n):
 res = fibonacci(10)
 print(res)
 
-
 """
 Given N, find the number of ways to express N as a sum of 1, 3 and 4
 """
@@ -79,7 +74,6 @@ def number_factor(n, tempdict):
 res = number_factor(5, {})
 print(res)
 
-
 """
 Given N number of houses along the street with some amount of money 
 Adjacent houses can not be stolen
@@ -96,7 +90,6 @@ def house_robber(houses, current_index, temp_dict):
 
 res = house_robber([6,7,1,30,8,2,4], 0, {})
 print(res)
-
 
 """
 S1 and S2 are given strings
@@ -122,7 +115,6 @@ def find_min_operations(s1, s2, index1, index2, temp_dict):
 res = find_min_operations("catch", "carch", 0, 0, {})
 print(res)
 
-
 """
 Given the weights and profits of N items
 Find the maximum profit within given capacity of C
@@ -147,7 +139,6 @@ def zo_knapsack(items, capacity, current_index, temp_dict):
     else:
         return 0
 
-
 """
 Given N, find the number of ways to express N as a sum of 1, 3 and 4
 """
@@ -159,7 +150,6 @@ def number_factor(n):
 
 res = number_factor(5)
 print(res)
-
 
 """
 Given N number of houses along the street with some amount of money 
@@ -174,7 +164,6 @@ def house_robber(houses):
 
 res = house_robber([6,7,1,30,8,2,4])
 print(res)
-
 
 """
 S1 and S2 are given strings
@@ -207,7 +196,6 @@ def find_min_operations(s1, s2, temp_dict):
 
 res = find_min_operations("catch", "carch", {})
 print(res)
-
 
 """
 Given the weights and profits of N items
