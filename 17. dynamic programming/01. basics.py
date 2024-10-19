@@ -25,15 +25,6 @@ solving it repeatedly if its called multiple times. This technique of storing th
 already solved problems is callled memoization.
 """
 
-
-"""
-Bottom Up with Tabulation : Tabulation is the opposite of the top-down approach and avoids recursion. 
-In this approach, we solve the problem bottom-up (i.e by solving all the related subproblems first). 
-This is done by filling up a table. Based on the result in the table, the solution to the top/original 
-problem is then computed.
-"""
-
-
 """
 Fibonacci series using Top Down
 """
@@ -49,6 +40,13 @@ def fibonacci(n, memo):
 res = fibonacci(10, {})
 print(res)
 
+
+"""
+Bottom Up with Tabulation : Tabulation is the opposite of the top-down approach and avoids recursion. 
+In this approach, we solve the problem bottom-up (i.e by solving all the related subproblems first). 
+This is done by filling up a table. Based on the result in the table, the solution to the top/original 
+problem is then computed.
+"""
 
 """
 Fibonacci series using Bottom Up
