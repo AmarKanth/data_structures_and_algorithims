@@ -15,36 +15,14 @@ print(res)
 input = ["-1", "0", "2", "3", "4","-1","-2", "-1","3", "-1"] write program to return 
 output ['-1', '-1', '-1', '-1', '0', '2', '3', '4', '-2', '3'] from the given list
 """
-input = ["-1", "0", "2", "3", "4", "-1", "-2", "-1", "3", "-1"]
-n = len(input)
-last_index = 0
-for i in range(n):
-    if input[i] == "-1":
-        input[i], input[last_index] = input[last_index], input[i]
-        last_index += 1
-print(input)
+def reorder_list(input_list):
+    minus_ones = [x for x in input_list if x == "-1"]
+    others = [x for x in input_list if x != "-1"]
+    return minus_ones + others
 
-input = ["-1", "0", "2", "3", "4", "-1", "-2", "-1", "3", "-1"]
-n = len(input)
-last_index = n - 1
-for i in range(n-1, -1, -1):
-    if input[i] == "-1":
-        input[i], input[last_index] = input[last_index], input[i]
-        last_index -= 1
-print(input)
-
-
-"""
-Write a code to return number of occurrences of elements in the list l = [1,2,3,4,4,4], 
-without using counter
-output = {1: 1, 2: 1, 3: 1, 4: 3}
-"""
-l = [1,2,3,4,4,4]
-d = {k: 0 for k in set(l)}
-for e in l:
-    count = d[e]
-    d[e] = count + 1
-print(d)
+input_list = ["-1", "0", "2", "3", "4", "-1", "-2", "-1", "3", "-1"]
+res = reorder_list(input_list)
+print(res)
 
 
 """
