@@ -24,12 +24,14 @@ def bucket_sort(custom_list):
     number_of_buckets = math.ceil(math.sqrt(len(custom_list)))
     min_value = min(custom_list)
     max_value = max(custom_list)
-    range_val = (min_value + max_value)/number_of_buckets
+    range_val = (max_value - min_value)/number_of_buckets
     buckets = [[] for _ in range(number_of_buckets)]
     sorted_array = []
 
     for j in custom_list:
         idx = math.floor((j-min_value)/range_val)
+        if idx == number_of_buckets:
+            idx -= 1
         buckets[idx].append(j)
 
     for i in range(number_of_buckets):
