@@ -21,7 +21,7 @@ TimeComplexity is O(n^2)
 SpaceComplexity is O(n+k)
 """
 def bucket_sort(custom_list):
-    number_of_buckets = round(math.sqrt(len(custom_list)))
+    number_of_buckets = math.ceil(math.sqrt(len(custom_list)))
     min_value = min(custom_list)
     max_value = max(custom_list)
     range_val = (min_value + max_value)/number_of_buckets
