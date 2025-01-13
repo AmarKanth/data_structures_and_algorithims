@@ -5,19 +5,19 @@ then the dependent action always comes later than its parent action
 from collections import defaultdict
 
 class Graph:
-    def __init__(self, numberOfVertices):
+    def __init__(self, number_of_vertices):
         self.graph = defaultdict(list)
-        self.numberOfVertices = numberOfVertices
+        self.number_of_vertices = number_of_vertices
     
-    def addEdge(self, vertex, edge):
+    def add_edge(self, vertex, edge):
         self.graph[vertex].append(edge)
     
-    def topologicalSortUtil(self, vertex, visited, stack):
+    def topological_sort_util(self, vertex, visited, stack):
         visited.append(vertex)
 
         for adjacent_vertex in self.graph[vertex]:
             if adjacent_vertex not in visited:
-                self.topologicalSortUtil(adjacent_vertex, visited, stack)
+                self.topological_sort_util(adjacent_vertex, visited, stack)
         
         stack.insert(0, vertex)
     
@@ -25,23 +25,23 @@ class Graph:
     TimeComplexity is O(V+E)
     SpaceComplexity is O(V+E)
     """
-    def topologicalSort(self):
+    def topological_sort(self):
         visited = []
         stack = []
 
         for vertex in list(self.graph):
             if vertex not in visited:
-                self.topologicalSortUtil(vertex, visited, stack)
+                self.topological_sort_util(vertex, visited, stack)
         
         print(stack)
 
-customGraph = Graph(8)
-customGraph.addEdge("A","C")
-customGraph.addEdge("C","E")
-customGraph.addEdge("E","H")
-customGraph.addEdge("E","F")
-customGraph.addEdge("F","G")
-customGraph.addEdge("B","D")
-customGraph.addEdge("B","C")
-customGraph.addEdge("D","F")
-customGraph.topologicalSort()
+graph = Graph(8)
+graph.add_edge("A","C")
+graph.add_edge("C","E")
+graph.add_edge("E","H")
+graph.add_edge("E","F")
+graph.add_edge("F","G")
+graph.add_edge("B","D")
+graph.add_edge("B","C")
+graph.add_edge("D","F")
+graph.topological_sort()
