@@ -44,7 +44,7 @@ class Graph:
         while not q.empty():
             current_vertex = q.get()
             print(current_vertex)
-            for adjacent_vertex in self.adjacency_list[vertex]:
+            for adjacent_vertex in self.adjacency_list[current_vertex]:
                 if adjacent_vertex not in visited:
                     visited.add(adjacent_vertex)
                     q.put(adjacent_vertex)
