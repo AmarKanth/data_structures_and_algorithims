@@ -15,9 +15,8 @@ then the dependent action always comes later than its parent action
 from collections import defaultdict
 
 class Graph:
-    def __init__(self, number_of_vertices):
+    def __init__(self):
         self.graph = defaultdict(list)
-        self.number_of_vertices = number_of_vertices
     
     def add_edge(self, vertex, edge):
         self.graph[vertex].append(edge)
@@ -39,7 +38,8 @@ class Graph:
         visited = []
         stack = []
 
-        for vertex in list(self.graph):
+        vertices = list(self.graph.keys())
+        for vertex in vertices:
             if vertex not in visited:
                 self.topological_sort_util(vertex, visited, stack)
         
