@@ -41,7 +41,7 @@ class SingleLinkedList:
         if location != 0:
             temp_node = self.head
             index = 0
-            while index <= location - 1:
+            while index < location - 1:
                 if temp_node.next:
                     temp_node = temp_node.next
                 index += 1
