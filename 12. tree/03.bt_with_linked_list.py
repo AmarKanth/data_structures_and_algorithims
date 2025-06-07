@@ -198,3 +198,53 @@ tree = delete_node(tree, 30)
 tree = delete_node(tree, 40)
 tree = delete_node(tree, 50)
 print_tree(tree)
+
+"""
+Count number of nodes
+"""
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def count_nodes(root):
+    if not root:
+        return 0
+
+    def get_height(node):
+        height = 0
+        while node.left:
+            height += 1
+            node = node.left
+        return height
+
+    def exists(index, height, node):
+        left = 0
+        right = (2 ** height) - 1
+        for _ in range(height):
+            mid = (left + right) // 2
+            if index <= mid:
+                node = node.left
+                right = mid
+            else:
+                node = node.right
+                left = mid + 1
+            if not node:
+                return False
+        return True
+
+    height = get_height(root)
+    if height == 0:
+        return 1
+
+    left = 0
+    right = (2 ** height) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if exists(mid, height, root):
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return (2 ** height - 1) + left
