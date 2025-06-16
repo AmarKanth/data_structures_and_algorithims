@@ -67,10 +67,12 @@ class Graph:
 
     def draw_graph(self):
         g = nx.Graph()
+        for vertex in self.adjacency_list:
+            g.add_node(vertex)
         for vertex, neighbors in self.adjacency_list.items():
             for neighbor in neighbors:
                 g.add_edge(vertex, neighbor)
-        nx.draw(g, with_labels=True, node_color='skyblue', edge_color='gray', node_size=2000, font_size=16)
+        nx.draw(g, with_labels=True, node_color="skyblue", edge_color="gray", node_size=2000, font_size=16)
         plt.show()
 
 graph = Graph()
