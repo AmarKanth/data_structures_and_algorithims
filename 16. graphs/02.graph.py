@@ -4,6 +4,9 @@ bfs   O(V+E)           O(V)
 dfs   O(V+E)           O(V)
 """
 
+import networkx as nx
+import matplotlib.pyplot as plt
+
 from queue import Queue, LifoQueue
 
 class Graph:
@@ -62,9 +65,13 @@ class Graph:
                 if adjacent_vertex not in visited:
                     stack.put(adjacent_vertex)
 
-    def print_graph(self):
-        for tpl in self.adjacency_list.items():
-            print(tpl)
+    def draw_graph(self):
+        G = nx.Graph()
+        for vertex, neighbors in self.adjacency_list.items():
+            for neighbor in neighbors:
+                G.add_edge(vertex, neighbor)
+        nx.draw(G, with_labels=True, node_color='skyblue', edge_color='gray', node_size=2000, font_size=16)
+        plt.show()
 
 graph = Graph()
 graph.add_vertex("A")
