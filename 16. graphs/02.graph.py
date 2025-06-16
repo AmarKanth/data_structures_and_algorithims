@@ -66,11 +66,11 @@ class Graph:
                     stack.put(adjacent_vertex)
 
     def draw_graph(self):
-        G = nx.Graph()
+        g = nx.Graph()
         for vertex, neighbors in self.adjacency_list.items():
             for neighbor in neighbors:
-                G.add_edge(vertex, neighbor)
-        nx.draw(G, with_labels=True, node_color='skyblue', edge_color='gray', node_size=2000, font_size=16)
+                g.add_edge(vertex, neighbor)
+        nx.draw(g, with_labels=True, node_color='skyblue', edge_color='gray', node_size=2000, font_size=16)
         plt.show()
 
 graph = Graph()
