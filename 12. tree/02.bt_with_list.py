@@ -124,3 +124,24 @@ def print_tree(root, level=0):
 input_list = [2,1,3,None,None,0,1]
 bt = convert_list_to_binary_tree(input_list)
 print_tree(bt)
+
+
+"""
+Dutch National Flag
+"""
+nums = [0,1,2,0,1,2]
+left = 0
+mid = 0
+right = len(nums)-1
+
+while mid <= right:
+    if nums[mid] == 0:
+        nums[left], nums[mid] = nums[mid], nums[left]
+        left += 1
+        mid += 1
+    elif nums[mid] == 1:
+        mid += 1
+    else:
+        nums[mid], nums[right] = nums[right], nums[mid]
+        right -= 1
+print(nums)
