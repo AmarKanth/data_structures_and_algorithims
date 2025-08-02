@@ -1,5 +1,6 @@
 """
-Single Source Shortest path means path from given vertex to all other vertices in the graph.
+Single Source Shortest path means, path from given vertex to all other vertices in a graph,
+such that the total distance between them is minimum.
 """
 
 """
