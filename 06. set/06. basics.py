@@ -5,6 +5,12 @@ For loop, iter, in  and next are the different ways to access the elements.
 """
 
 """
+frozenset is an immutable version of a standard set.
+"""
+my_list = [1, 2, 3, 2, 4]
+frozenset(my_list)
+
+"""
 adds the element to the set
 """
 s1 = set()
