@@ -46,7 +46,7 @@ class DoubleLinkedList:
         if location != 0:
             temp_node = self.head
             index = 0
-            while index < location - 1:
+            while index < location-1 and self.tail != temp_node:
                 temp_node = temp_node.next
                 index += 1
             if self.tail == temp_node:
@@ -99,7 +99,7 @@ class DoubleLinkedList:
             else:
                 temp_node = self.head
                 index = 0
-                while index < location - 1:
+                while index < location-1 and self.tail != temp_node.next:
                     temp_node = temp_node.next
                     index += 1
                 if self.tail == temp_node.next:
