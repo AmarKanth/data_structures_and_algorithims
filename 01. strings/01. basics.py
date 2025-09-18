@@ -96,3 +96,22 @@ set2 = extract_substrings(str2)
 res = set2.intersection(set1)
 sort = sorted(res, key=len, reverse=True)
 print(sort[0])
+
+
+"""
+Find the maximum consecutive substring
+"""
+s = "abcdabcbb"
+left = 0
+max_left = 0
+max_len = 1
+
+for right in range(1, len(s)):
+    if ord(s[right]) == ord(s[right-1])+1:
+        cur_len = right - left + 1
+        if cur_len > max_len:
+            max_len = cur_len
+            max_left = left
+    else:
+        left = right
+print(s[max_left:max_left + max_len])
