@@ -66,3 +66,15 @@ for i in range(1, len(arr)):
         max_at_i = max(max_at_i, cur_sum+sub_sum)
     dp[i%k] = max_at_i
 print(dp[(len(arr)-1)%k])
+
+"""
+118 Pascals Triangle
+"""
+numRows = 5
+dp = [[0]*(i+1) for i in range(numRows)]
+
+for row in range(numRows):
+    dp[row][0] = dp[row][row] = 1
+    for col in range(1, row):
+        dp[row][col] = dp[row-1][col-1]+dp[row-1][col]
+print(dp)
