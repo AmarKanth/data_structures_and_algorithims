@@ -23,7 +23,7 @@ This technique of storing the results of already solved problems is callled memo
 """
 
 """
-Count Square Submatrices with all ones
+1277 Count square submatrices with all ones
 """
 matrix =[[0,1,1,1],
          [1,1,1,1],
