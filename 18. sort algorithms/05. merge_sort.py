@@ -55,3 +55,27 @@ def merge_sort(custom_list, l, r):
 clist = [2,1,7,6,5,3,4,9,8]
 res = merge_sort(clist, 0, len(clist)-1)
 print(res)
+
+
+"""
+349 Intersection of two arrays
+"""
+nums1 = [4,9,5]
+nums2 = [9,4,9,8,4]
+
+nums1.sort()
+nums2.sort()
+
+i = 0 
+j = 0
+result = set()
+while i < len(nums1) and j < len(nums2):
+    if nums1[i] < nums2[j]:
+        i += 1
+    elif nums1[i] == nums2[j]:
+        result.add(nums1[i])
+        i += 1
+        j += 1
+    else:
+        j += 1
+print(result)
