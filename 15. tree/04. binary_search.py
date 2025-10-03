@@ -135,3 +135,49 @@ bst = insert_node(bst, 17)
 bst = insert_node(bst, 20)
 bst = insert_node(bst, 19)
 print_tree(bst)
+
+"""
+889. Construct Binary Tree from Preorder and Postorder Traversal
+"""
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def construct_bt(preorder, postorder):
+    n = len(preorder)
+    postorder_pos = {value:idx for idx, value in enumerate(postorder)}
+
+    def build(pre_start, pre_end, post_start, post_end):
+        if pre_start > pre_end:
+            return None
+        
+        root_value = preorder[pre_start]
+        root = TreeNode(root_value)
+
+        if pre_start == pre_end:
+            return root
+
+        left_root_value = preorder[pre_start+1]
+        left_node_in_postorder_pos = postorder_pos[left_root_value]
+        left_size = left_node_in_postorder_pos - post_start + 1
+
+        root.left = build(
+            pre_start+1, 
+            pre_start+left_size, 
+            post_start, 
+            left_node_in_postorder_pos
+        )
+        root.right = build(
+            pre_start+left_size+1, 
+            pre_end, 
+            left_node_in_postorder_pos+1,
+            post_end-1
+        )
+        return root
+    return build(0, n-1, 0, n-1)
+
+preorder = [1,2,4,5,3,6,7]
+postorder = [4,5,2,6,7,3,1]
+root = construct_bt(preorder, postorder)
