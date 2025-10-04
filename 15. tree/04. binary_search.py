@@ -181,3 +181,28 @@ def construct_bt(preorder, postorder):
 preorder = [1,2,4,5,3,6,7]
 postorder = [4,5,2,6,7,3,1]
 root = construct_bt(preorder, postorder)
+
+"""
+1011. Capacity To Ship Packages Within D Days
+"""
+weights=[1,2,3,4,5,6,7,8,9,10]
+days=5
+
+left=max(weights)
+right=sum(weights)
+
+while left < right:
+    mid = (left + right) // 2
+    days_needed, curr_weight = 1, 0
+
+    for weight in weights:
+        if curr_weight + weight > mid:
+            days_needed += 1
+            curr_weight = 0
+        curr_weight += weight    
+    
+    if days_needed > days:
+        left = mid + 1
+    else:
+        right = mid
+print(left)
