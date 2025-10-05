@@ -87,3 +87,17 @@ cost.append(0)
 for i in range(len(cost)-3, -1, -1):
     cost[i] += min(cost[i+1], cost[i+2])
 print(min(cost[0], cost[1]))
+
+"""
+2900. Longest Unequal Adjacent Groups Subsequence I
+"""
+words = ["e","a","b"]
+groups = [0,0,1]
+
+result = []
+last = -1
+for i in range(len(words)):
+    if groups[i] != last:
+        result.append(words[i])
+        last = groups[i]
+print(result)
