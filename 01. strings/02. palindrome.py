@@ -1,5 +1,5 @@
 """
-check palindrome using recursion
+*check palindrome using recursion
 """
 def palindrome(string):
     if len(string) in [1, 0]:
