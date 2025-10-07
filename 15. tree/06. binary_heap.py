@@ -111,3 +111,25 @@ insert_node(new_binary_heap, 5, "Max")
 insert_node(new_binary_heap, 2, "Max")
 insert_node(new_binary_heap, 1, "Max")
 level_order_traversal(new_binary_heap)
+
+
+"""
+786. K-th Smallest Prime Fraction
+"""
+from heapq import heappush, heappop
+
+arr = [1,2,3,5]
+k = 3
+
+min_heap = []
+n = len(arr)
+
+for i in range(n):
+    for j in range(i+1, n):
+        fraction = (arr[i] / arr[j], (arr[i], arr[j]))
+        heappush(min_heap, fraction)
+
+for _ in range(k - 1):
+    heappop(min_heap)
+
+print(heappop(min_heap)[1])
