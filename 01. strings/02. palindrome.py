@@ -67,39 +67,3 @@ def can_be_palindrome(string):
     if len(odd_nums) > 1:
         return False
     return True
-
-
-"""
-Minimum number of deletions to make a string palindrome
-"""
-def num_of_appends(s):
-    if len(s) == 0:
-        return 0
- 
-    if s == s[::-1]:
-        return 0
-
-    del s[0]
-    return 1 + num_of_appends(s)
-
-l = [i for i in "aabb"]
-res = num_of_appends(l)
-print(res)
-
-
-"""
-Minimum characters to be added at front to make string palindrome
-"""
-def num_of_appends(s):
-    if len(s) == 0:
-        return 0
- 
-    if s == s[::-1]:
-        return 0
-
-    del s[len(s)-1]    
-    return 1 + num_of_appends(s)
-
-l = [i for i in "AACECAAAA"]
-res = num_of_appends(l)
-print(res)
