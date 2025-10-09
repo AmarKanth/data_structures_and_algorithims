@@ -101,3 +101,14 @@ for i in range(len(words)):
         result.append(words[i])
         last = groups[i]
 print(result)
+
+"""
+119. Pascal's Triangle II
+"""
+row = [1]
+rowIndex = 3
+
+for i in range(1, rowIndex + 1):
+    next_element = row[i - 1] * (rowIndex - i + 1) // i
+    row.append(next_element)
+print(row)
