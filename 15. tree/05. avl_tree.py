@@ -238,3 +238,24 @@ while l <= r:
     else:
         r = mid - 1
 print(ans)
+
+
+"""
+2554. Maximum Number of Integers to Choose From a Range I
+"""
+banned = [1,6,5]
+n = 5
+maxSum = 6
+
+banned_set = set(banned)
+total_sum = 0
+count = 0
+
+for i in range(1, n + 1):
+    if i in banned_set:
+        continue
+    total_sum += i
+    if total_sum > maxSum:
+        break
+    count += 1
+print(count)
