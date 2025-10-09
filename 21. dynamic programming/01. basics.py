@@ -112,3 +112,16 @@ for i in range(1, rowIndex + 1):
     next_element = row[i - 1] * (rowIndex - i + 1) // i
     row.append(next_element)
 print(row)
+
+"""
+121. Best Time to Buy and Sell Stock
+"""
+prices = [7,1,5,3,6,4]
+buy_price = prices[0]
+profit = 0
+
+for p in prices[1:]:
+    if buy_price > p:
+        buy_price = p
+    profit = max(profit, p - buy_price)
+print(profit)
