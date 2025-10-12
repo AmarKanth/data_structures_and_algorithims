@@ -22,3 +22,20 @@ ans = []
 for p in people:
     ans.insert(p[1], p)
 print(ans)
+
+"""
+1365. How Many Numbers Are Smaller Than the Current Number
+"""
+nums = [8,1,2,2,3]
+
+sorted_arr = sorted(nums)
+freq = {}
+for i, val in enumerate(sorted_arr):
+    if val in freq:
+        continue
+    freq[val] = i
+
+ans = []
+for num in nums:
+    ans.append(freq[num])
+print(ans)
