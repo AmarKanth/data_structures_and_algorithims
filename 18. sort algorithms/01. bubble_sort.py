@@ -39,3 +39,13 @@ ans = []
 for num in nums:
     ans.append(freq[num])
 print(ans)
+
+"""
+1636. Sort Array by Increasing Frequency
+"""
+from collections import Counter
+
+nums = [1,1,2,2,2,3]
+freq = Counter(nums)
+nums.sort(key=lambda x: (freq[x], -x))
+return nums
