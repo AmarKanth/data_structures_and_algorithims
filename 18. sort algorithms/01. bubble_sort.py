@@ -49,3 +49,13 @@ nums = [1,1,2,2,2,3]
 freq = Counter(nums)
 nums.sort(key=lambda x: (freq[x], -x))
 return nums
+
+"""
+1356. Sort Integers by The Number of 1 Bits
+"""
+def custom_sort_key(num):
+    bit_count = bin(num).count('1')
+    return (bit_count, num)
+
+arr = [0,1,2,3,4,5,6,7,8]
+arr.sort(key=custom_sort_key)
