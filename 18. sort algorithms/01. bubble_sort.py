@@ -59,3 +59,18 @@ def custom_sort_key(num):
 
 arr = [0,1,2,3,4,5,6,7,8]
 arr.sort(key=custom_sort_key)
+
+"""
+1337. The K Weakest Rows in a Matrix
+"""
+mat = [[1,1,0,0,0],
+       [1,1,1,1,0],
+       [1,0,0,0,0],
+       [1,1,0,0,0],
+       [1,1,1,1,1]]
+m = len(mat)
+k = 3
+
+rows = sorted(range(m), key=lambda i: (mat[i], i))
+del rows[k:]
+print(rows)
