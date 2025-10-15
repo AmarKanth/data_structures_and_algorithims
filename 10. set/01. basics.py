@@ -98,3 +98,9 @@ s1 = set("123")
 s2 = set("126")
 s1.update(s2)
 print(s1)
+
+"""
+2357. Make Array Zero by Subtracting Equal Amounts
+"""
+nums = [1,5,0,3,5]
+operations = len({n for n in nums if n > 0})
