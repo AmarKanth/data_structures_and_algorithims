@@ -38,3 +38,20 @@ def maximum_units(boxTypes, truckSize):
 
 result = maximum_units([[1,3],[2,2],[3,1]], 4)
 print(result)
+
+"""
+3010. Divide an Array Into Subarrays With Minimum Cost I
+"""
+def min_cost_three_sub_arrays(nums):
+    n = len(nums)
+    if n < 3:
+        return None
+    best_pair = float('inf')
+    min_prev = nums[1]
+    for s3 in range(2, n):
+        best_pair = min(best_pair, min_prev + nums[s3])
+        min_prev = min(min_prev, nums[s3])
+    return nums[0] + best_pair
+
+result = min_cost_three_sub_arrays([10,3,1,1])
+print(result)
