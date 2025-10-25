@@ -55,3 +55,38 @@ def min_cost_three_sub_arrays(nums):
 
 result = min_cost_three_sub_arrays([10,3,1,1])
 print(result)
+
+"""
+2164. Sort Even and Odd Indices Independently
+"""
+def sort_even_odd(nums):
+    even = sorted(nums[0::2])
+    odd = sorted(nums[1::2], reverse=True)
+    
+    result = []
+    e = o = 0
+    for i in range(len(nums)):
+        if i % 2 == 0:
+            result.append(even[e])
+            e += 1
+        else:
+            result.append(odd[o])
+            o += 1
+    return result
+
+result = sort_even_odd([4,1,2,3])
+print(result)
+
+"""
+2144. Minimum Cost of Buying Candies With Discount
+"""
+def minimum_cost(cost):
+    cost.sort(reverse=True)
+    total = 0
+    for i, c in enumerate(cost):
+        if (i + 1) % 3 != 0:
+            total += c
+    return total
+
+result = minimum_cost([6,5,7,9,2,2])
+print(result)
