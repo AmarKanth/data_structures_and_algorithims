@@ -19,3 +19,22 @@ def insertion_sort(custom_list):
 
 res = insertion_sort([2,1,5,4,9,7,6,8,3])
 print(res)
+
+"""
+1710. Maximum Units on a Truck
+"""
+def maximum_units(boxTypes, truckSize):
+    boxTypes.sort(key=lambda x: x[1], reverse=True)
+
+    total_units = 0
+    for numberOfBoxes, unitsPerBox in boxTypes:
+        if truckSize <= 0:
+            break
+        boxes_to_take = min(truckSize, numberOfBoxes)
+        total_units += boxes_to_take * unitsPerBox
+        truckSize -= boxes_to_take
+
+    return total_units
+
+result = maximum_units([[1,3],[2,2],[3,1]], 4)
+print(result)
