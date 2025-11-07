@@ -79,3 +79,29 @@ while i < len(nums1) and j < len(nums2):
     else:
         j += 1
 print(result)
+
+
+"""
+2996. Smallest Missing Integer Greater Than Sequential Prefix Sum
+"""
+def smallest_missing_at_least_prefix_sum(nums):
+    if not nums:
+        return 0
+    
+    k = 1
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i-1] + 1:
+            k += 1
+        else:
+            break
+
+    a0 = nums[0]
+    s = k * (2 * a0 + (k - 1)) // 2
+    present = set(nums)
+    x = s
+    while x in present:
+        x += 1
+    return x
+
+result = smallest_missing_at_least_prefix_sum([1,2,3,2,5])
+print(result)
