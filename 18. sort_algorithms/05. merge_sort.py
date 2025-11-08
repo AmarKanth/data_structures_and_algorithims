@@ -105,3 +105,15 @@ def smallest_missing_at_least_prefix_sum(nums):
 
 result = smallest_missing_at_least_prefix_sum([1,2,3,2,5])
 print(result)
+
+
+"""
+2545. Sort the Students by Their Kth Score
+"""
+def sort_the_students(score, k):
+    return sorted(score, key=lambda row: row[k], reverse=True)
+
+score = [[10,6,9,1],
+         [7,5,11,2],
+         [4,8,3,15]]
+result = sort_the_students(score, 2)
