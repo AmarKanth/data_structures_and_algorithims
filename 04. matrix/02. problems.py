@@ -71,3 +71,55 @@ grid = [[1,3],
         [2,2]]
 result = find_repeat_and_missing(grid)
 print(result)
+
+
+"""
+1329. Sort the Matrix Diagonally
+"""
+from collections import defaultdict
+
+def diagonal_sort(mat):
+    m, n = len(mat), len(mat[0])
+    diagonals = defaultdict(list)
+
+    for i in range(m):
+        for j in range(n):
+            diagonals[i - j].append(mat[i][j])
+    
+    for key in diagonals:
+        diagonals[key].sort(reverse=True)
+
+    for i in range(m):
+        for j in range(n):
+            mat[i][j] = diagonals[i - j].pop()
+
+    return mat
+
+mat = [[3,3,1,1],
+       [2,2,1,2],
+       [1,1,1,2]]
+result = diagonal_sort(mat)
+print(result)
+
+
+"""
+1605. Find Valid Matrix Given Row and Column Sums
+"""
+def restore_matrix(rowSum, colSum):
+    m, n = len(rowSum), len(colSum)
+    matrix = [[0] * n for _ in range(m)]
+
+    for i in range(m):
+        for j in range(n):
+            val = min(rowSum[i], colSum[j])
+            matrix[i][j] = val
+            
+            rowSum[i] -= val
+            colSum[j] -= val
+
+    return matrix
+
+rowSum1 = [3,8]
+colSum1 = [4,7]
+result = restore_matrix(rowSum1, colSum1)
+print(result)
