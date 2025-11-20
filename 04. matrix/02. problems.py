@@ -123,3 +123,55 @@ rowSum1 = [3,8]
 colSum1 = [4,7]
 result = restore_matrix(rowSum1, colSum1)
 print(result)
+
+
+"""
+2326. Spiral Matrix IV
+"""
+class ListNode:
+    def __init__(self, val, next):
+        self.val = val
+        self.next = next
+
+def spiral_matrix(m, n, head):
+    matrix = [[-1] * n for _ in range(m)]
+    
+    top, bottom = 0, m - 1
+    left, right = 0, n - 1
+    node = head
+    
+    while node and top <= bottom and left <= right:
+        # left -> right (top row)
+        for c in range(left, right + 1):
+            if not node: break
+            matrix[top][c] = node.val
+            node = node.next
+        top += 1
+        if not node: break
+        
+        # top -> bottom (right column)
+        for r in range(top, bottom + 1):
+            if not node: break
+            matrix[r][right] = node.val
+            node = node.next
+        right -= 1
+        if not node: break
+        
+        # right -> left (bottom row)
+        if top <= bottom:
+            for c in range(right, left - 1, -1):
+                if not node: break
+                matrix[bottom][c] = node.val
+                node = node.next
+            bottom -= 1
+        if not node: break
+        
+        # bottom -> top (left column)
+        if left <= right:
+            for r in range(bottom, top - 1, -1):
+                if not node: break
+                matrix[r][left] = node.val
+                node = node.next
+            left += 1
+    
+    return matrix
