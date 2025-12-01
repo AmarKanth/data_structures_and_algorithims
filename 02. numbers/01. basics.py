@@ -29,18 +29,16 @@ def fibonacci(n):
         return n
     return fibonacci(n-1) + fibonacci(n-2)
 
-res = fibonacci(10)
+res = fibonacci(9)
 print(res)
 
 n = 9
 num1 = 0
 num2 = 1
-next_number = num1 + num2
 counter = 1
 while counter <= n:
-    print(num2)
-    num1, num2 = num2, next_number
-    next_number = num1 + num2
+    print(num1)
+    num1, num2 = num2, num1 + num2
     counter += 1
 
 
@@ -99,10 +97,10 @@ print(res)
 """
 How to convert decimal to binary number using recursion
 """
-def decimalToBinary(n):
+def decimal_to_binary(n):
     if n == 0:
         return 0
-    return n%2 + 10 * decimalToBinary(n//2)
+    return n%2 + 10 * decimal_to_binary(n//2)
 
-res = decimalToBinary(13)
+res = decimal_to_binary(13)
 print(res)
