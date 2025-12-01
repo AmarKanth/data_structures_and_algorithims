@@ -62,20 +62,6 @@ print(x)
 
 
 """
-s = "sdls ab lld ab"
-Write program to count number of occurrences of substring "ab" in given string 
-without using count method
-"""
-s = "sdls ab lld ab"
-count = 0
-for i in range(len(s)):
-    sub = s[i:i+2]
-    if sub == 'ab':
-        count += 1
-print(count)
-
-
-"""
 Find longest common substring between given strings
 str1 = "abcaaaabbb"
 str2 = "abcaabb"
