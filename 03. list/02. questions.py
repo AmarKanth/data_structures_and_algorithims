@@ -1,19 +1,8 @@
 """
-[
-    {"name": "vijay", "age": 20},
-    {"name": "kumar", "age": 40},
-    {"name": "rakesh", "age": 30}
-]
-sort the given list based on age
-"""
-obj = [{"name": "vijay", "age": 20}, {"name": "kumar", "age": 40}, {"name": "rakesh", "age": 30}]
-res = sorted(obj, key=lambda d: d["age"])
-print(res)
-
-
-"""
-input = ["-1", "0", "2", "3", "4","-1","-2", "-1","3", "-1"] write program to return 
-output ['-1', '-1', '-1', '-1', '0', '2', '3', '4', '-2', '3'] from the given list
+input = ["-1", "0", "2", "3", "4","-1","-2", "-1","3", "-1"] 
+write program to return output 
+['-1', '-1', '-1', '-1', '0', '2', '3', '4', '-2', '3'] 
+from the given list
 """
 def reorder_list(input_list):
     minus_ones = [x for x in input_list if x == "-1"]

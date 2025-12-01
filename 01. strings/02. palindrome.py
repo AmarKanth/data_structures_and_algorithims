@@ -37,11 +37,8 @@ print(res)
 
 
 """
-Check if characters of a given string can be rearranged to form a palindrome
-
-1. here "f","o","r" are odd occurances
-2. if number of odd occurances are > 1 cant arrange 
-string to  palindrome.
+Check if characters of a given string can be rearranged to 
+form a palindrome
 """
 from collections import Counter
 string = "geeksforgeeks"

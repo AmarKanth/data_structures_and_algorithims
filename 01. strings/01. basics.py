@@ -2,7 +2,8 @@
 1. strings are immutables which mean we cant replace or add element to the string.
 2. indexing means fetching specific element from the string.
 3. slicing means grabbing sub section from the string.
-4. reverse indexing means reads the element from the last element. it starts with negative number.
+4. reverse indexing means reads the element from the last element. it starts 
+   with negative number.
 """
 
 """
@@ -86,6 +87,7 @@ print(sort[0])
 
 """
 Find the maximum consecutive substring
+s = "abcdabcbb"
 """
 s = "abcdabcbb"
 left = 0
