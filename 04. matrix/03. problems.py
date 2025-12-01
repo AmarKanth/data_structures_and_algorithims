@@ -67,3 +67,72 @@ def delete_greatest_value(grid):
 
 result = delete_greatest_value([[1,2,4],[3,3,1]])
 print(result)
+
+
+"""
+1351. Count Negative Numbers in a Sorted Matrix
+"""
+def count_negatives(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+
+    i = rows-1
+    j = 0
+    counter = 0
+
+    while i >= 0 and j < cols:
+        if grid[i][j] < 0:
+            counter += cols-j
+            i -= 1
+        else:
+            j += 1
+    return counter
+
+grid = [[4,3,2,-1],
+        [3,2,1,-1],
+        [1,1,-1,-2],
+        [-1,-1,-2,-3]]
+result = count_negatives(grid)
+print(result)
+
+
+"""
+427. Construct Quad Tree
+"""
+class Node:
+    def __init__(self, val, isLeaf, topLeft=None, topRight=None, bottomLeft=None, bottomRight=None):
+        self.val = val
+        self.isLeaf = isLeaf
+        self.topLeft = topLeft
+        self.topRight = topRight
+        self.bottomLeft = bottomLeft
+        self.bottomRight = bottomRight
+
+def construct(grid):
+    n = len(grid)
+    return build(grid, 0, 0, n)
+
+def build(grid, r, c, size):
+    if is_uniform(grid, r, c, size):
+        return Node(bool(grid[r][c]), True)
+
+    half = size // 2
+    tl = build(grid, r, c, half)
+    tr = build(grid, r, c + half, half)
+    bl = build(grid, r + half, c, half)
+    br = build(grid, r + half, c + half, half)
+
+    return Node(True, False, tl, tr, bl, br)
+
+def is_uniform(grid, r, c, size):
+    first = grid[r][c]
+    for i in range(r, r + size):
+        for j in range(c, c + size):
+            if grid[i][j] != first:
+                return False
+    return True
+
+grid = [[0,1],
+        [1,0]]
+result = construct(grid)
+print(result)
