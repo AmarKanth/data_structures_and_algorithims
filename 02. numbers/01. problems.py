@@ -104,3 +104,22 @@ def decimal_to_binary(n):
 
 res = decimal_to_binary(13)
 print(res)
+
+
+"""
+2125. Number of Laser Beams in a Bank
+"""
+def number_of_beams(bank):
+    prev_count = 0
+    total = 0
+
+    for row in bank:
+        cnt = row.count('1')
+        if cnt > 0:
+            total += prev_count * cnt
+            prev_count = cnt
+    return total
+
+bank = ["011001","000000","010100","001000"]
+result = number_of_beams(bank)
+print(result)

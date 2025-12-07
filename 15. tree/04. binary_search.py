@@ -136,6 +136,64 @@ bst = insert_node(bst, 20)
 bst = insert_node(bst, 19)
 print_tree(bst)
 
+
+"""
+1351 Count the negative numbers in sorted matrix
+"""
+def count_negatives(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+    total = 0
+
+    for row in grid:
+        left, right = 0, cols - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            if row[mid] < 0:
+                right = mid - 1
+            else:
+                left = mid + 1
+        total += cols - left
+    
+    return total
+
+grid = [
+    [4,3,2,-1],
+    [3,2,1,-1],
+    [1,1,-1,-2],
+    [-1,-1,-2,-3]
+]
+result = count_negatives(grid)
+print(result)
+
+
+"""
+1011. Capacity To Ship Packages Within D Days
+"""
+weights = [1,2,3,4,5,6,7,8,9,10]
+days = 5
+
+left = max(weights)
+right = sum(weights)
+
+while left < right:
+    mid = (left + right) // 2
+    days_needed, curr_weight = 1, 0
+
+    for weight in weights:
+        if curr_weight + weight > mid:
+            days_needed += 1
+            curr_weight = 0
+        curr_weight += weight    
+    
+    if days_needed > days:
+        left = mid + 1
+    else:
+        right = mid
+print(left)
+
+
 """
 889. Construct Binary Tree from Preorder and Postorder Traversal
 """
@@ -181,28 +239,3 @@ def construct_bt(preorder, postorder):
 preorder = [1,2,4,5,3,6,7]
 postorder = [4,5,2,6,7,3,1]
 root = construct_bt(preorder, postorder)
-
-"""
-1011. Capacity To Ship Packages Within D Days
-"""
-weights=[1,2,3,4,5,6,7,8,9,10]
-days=5
-
-left=max(weights)
-right=sum(weights)
-
-while left < right:
-    mid = (left + right) // 2
-    days_needed, curr_weight = 1, 0
-
-    for weight in weights:
-        if curr_weight + weight > mid:
-            days_needed += 1
-            curr_weight = 0
-        curr_weight += weight    
-    
-    if days_needed > days:
-        left = mid + 1
-    else:
-        right = mid
-print(left)
