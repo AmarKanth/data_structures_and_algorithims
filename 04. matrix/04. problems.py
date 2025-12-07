@@ -111,3 +111,35 @@ def find_farmland(land):
 land = [[1,0,0],[0,1,1],[0,1,1]]
 result = find_farmland(land)
 print(result)
+
+
+"""
+867. Transpose Matrix
+"""
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+rows = len(matrix)
+cols = len(matrix[0])
+
+result = [[0] * rows for _ in range(cols)]
+for r in range(rows):
+    for c in range(cols):
+        result[c][r] = matrix[r][c]
+print(result)
+
+
+"""
+883. Projection Area of 3D Shapes
+"""
+grid = [[1,2],[3,4]]
+n = len(grid)
+top = sum(1 for i in range(n) for j in range(n) if grid[i][j] > 0)
+front = sum(max(row) for row in grid)
+side = 0
+
+for j in range(n):
+    max_col = 0
+    for i in range(n):
+        if grid[i][j] > max_col:
+            max_col = grid[i][j]
+    side += max_col
+print(top + front + side)
