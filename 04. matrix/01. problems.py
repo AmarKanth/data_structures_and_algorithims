@@ -21,32 +21,32 @@ print(max_local)
 
 """
 885. Spiral Matrix III
+
+7   8   9
+6   1   2
+5   4   3
 """
 def spiral_matrix_III(rows, cols, rStart, cStart):
-    total = rows * cols
     res = []
     
-    dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
     r, c = rStart, cStart
     step = 1
 
     if 0 <= r < rows and 0 <= c < cols:
         res.append([r, c])
 
-    while len(res) < total:
-        for d in range(4):
-            dr, dc = dirs[d]
-            steps_this_leg = step
-            for _ in range(steps_this_leg):
+    while len(res) < (rows*cols):
+        for direction in range(4):
+            dr, dc = directions[direction]
+            for _ in range(steps):
                 r += dr
                 c += dc
                 if 0 <= r < rows and 0 <= c < cols:
                     res.append([r, c])
-                    if len(res) == total:
-                        return res
-            if d % 2 == 1:
+            if direction % 2 == 1:
                 step += 1
     return res
 
-result = spiral_matrix_III(1, 4, 0, 0)
+result = spiral_matrix_III(3, 3, 1, 1)
 print(result)
