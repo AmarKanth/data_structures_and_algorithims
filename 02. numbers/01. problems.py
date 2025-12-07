@@ -123,3 +123,29 @@ def number_of_beams(bank):
 bank = ["011001","000000","010100","001000"]
 result = number_of_beams(bank)
 print(result)
+
+
+"""
+2965. Find Missing and Repeated Values
+"""
+grid = [[1,3],
+        [2,2]]
+
+n = len(grid)
+total_vals = n * n
+expected_sum = total_vals * (total_vals + 1) // 2
+
+seen = set()
+repeat = None
+sum_actual = 0
+
+for row in grid:
+    for x in row:
+        sum_actual += x
+        if x in seen:
+            repeat = x
+        else:
+            seen.add(x)
+
+missing = expected_sum - (sum_actual - repeat)
+print([repeat, missing])

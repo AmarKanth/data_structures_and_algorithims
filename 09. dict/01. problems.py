@@ -54,3 +54,28 @@ class LRUCache:
     
     def clear(self):
         self.elements.clear()
+
+
+"""
+1329. Sort the Matrix Diagonally
+"""
+from collections import defaultdict
+
+mat = [[3,3,1,1],
+       [2,2,1,2],
+       [1,1,1,2]]
+
+m, n = len(mat), len(mat[0])
+diagonals = defaultdict(list)
+
+for i in range(m):
+    for j in range(n):
+        diagonals[i - j].append(mat[i][j])
+
+for key in diagonals:
+    diagonals[key].sort(reverse=True)
+
+for i in range(m):
+    for j in range(n):
+        mat[i][j] = diagonals[i - j].pop()
+print(mat)

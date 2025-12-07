@@ -50,3 +50,58 @@ def spiral_matrix_III(rows, cols, rStart, cStart):
 
 result = spiral_matrix_III(3, 3, 1, 1)
 print(result)
+
+
+"""
+2482. Difference Between Ones and Zeros in Row and Column
+"""
+grid = [[0,1,1],
+        [1,0,1],
+        [0,0,1]]
+
+m, n = len(grid), len(grid[0])
+ones_row = [sum(row) for row in grid]
+ones_col = [sum(grid[i][j] for i in range(m)) for j in range(n)]
+
+diff = [[0] * n for _ in range(m)]
+for i in range(m):
+    for j in range(n):
+        diff[i][j] = ones_row[i] + ones_col[j] - (n-ones_row[i]) - (m-ones_col[j])
+print(diff)
+
+
+"""
+1572. Matrix Diagonal Sum
+"""
+mat = [[1,2,3],
+       [4,5,6],
+       [7,8,9]]
+
+n = len(mat)
+total = 0
+for i in range(n):
+    total += mat[i][i]
+    total += mat[i][n - i - 1]
+
+if n % 2 == 1:
+    total -= mat[n // 2][n // 2]
+print(total)
+
+
+"""
+1605. Find Valid Matrix Given Row and Column Sums
+"""
+rowSum1 = [3,8]
+colSum1 = [4,7]
+
+m, n = len(rowSum), len(colSum)
+matrix = [[0] * n for _ in range(m)]
+
+for i in range(m):
+    for j in range(n):
+        val = min(rowSum[i], colSum[j])
+        matrix[i][j] = val
+        
+        rowSum[i] -= val
+        colSum[j] -= val
+print(matrix)
