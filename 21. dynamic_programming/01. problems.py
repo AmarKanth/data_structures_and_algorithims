@@ -1,26 +1,29 @@
 """
-Dynamic programming is an algorthmic technique for solving an optimization problem by breaking 
-it down into simpler subproblems and utilizing the fact that the optimal solution to the overall 
-problem depends upon the optimal solution to its subproblems.
+Dynamic programming is an algorthmic technique for solving an optimization problem 
+by breaking it down into simpler subproblems and utilizing the fact that the optimal 
+solution to the overall problem depends upon the optimal solution to its subproblems.
 """
 
 """
-Optimal Substracture : If any problem's overall optimal solution can be constructed from the 
-optimal solutions of the subproblem then this problem has optimal substracture.
+Optimal Substracture : If any problem's overall optimal solution can be constructed 
+from the optimal solutions of the subproblem then this problem has optimal 
+substracture.
 ex : Fib(n) = Fib(n-1) + Fib(n-2)
 """
 
 """
-Overlapping Subproblem : Subproblem are smaller versions of the original problem. Any Problem has 
-overlapping sub problem if finding its solution involves solving the same subproblem multiple times.
+Overlapping Subproblem : Subproblem are smaller versions of the original problem. 
+Any Problem has overlapping sub problem if finding its solution involves solving 
+the same subproblem multiple times.
 """
 
 """
-Top Down with memoization : Solving the bigger problem by recursively finding the solution to 
-smaller subproblem. Whatever we solve a sub-problem, we cache its results so that we dont end up 
-solving it repeatedly if its called multiple times. 
+Top Down with memoization : Solving the bigger problem by recursively finding the 
+solution to smaller subproblem. Whatever we solve a sub-problem, we cache its results 
+so that we dont end up solving it repeatedly if its called multiple times. 
 This technique of storing the results of already solved problems is callled memoization.
 """
+
 
 """
 1277 Count square submatrices with all ones
@@ -43,6 +46,7 @@ for i in range(m):
             )
         result += matrix[i][j]
 print(result)
+
 
 """
 1043 Partition array for maximum sum
@@ -67,6 +71,7 @@ for i in range(1, len(arr)):
     dp[i%k] = max_at_i
 print(dp[(len(arr)-1)%k])
 
+
 """
 118 Pascals Triangle
 """
@@ -79,6 +84,7 @@ for row in range(numRows):
         dp[row][col] = dp[row-1][col-1]+dp[row-1][col]
 print(dp)
 
+
 """
 746. Min Cost Climbing Stairs
 """
@@ -87,6 +93,7 @@ cost.append(0)
 for i in range(len(cost)-3, -1, -1):
     cost[i] += min(cost[i+1], cost[i+2])
 print(min(cost[0], cost[1]))
+
 
 """
 2900. Longest Unequal Adjacent Groups Subsequence I
@@ -102,6 +109,7 @@ for i in range(len(words)):
         last = groups[i]
 print(result)
 
+
 """
 119. Pascal's Triangle II
 """
@@ -112,6 +120,7 @@ for i in range(1, rowIndex + 1):
     next_element = row[i - 1] * (rowIndex - i + 1) // i
     row.append(next_element)
 print(row)
+
 
 """
 121. Best Time to Buy and Sell Stock

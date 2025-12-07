@@ -1,47 +1,37 @@
 """
 2482. Difference Between Ones and Zeros in Row and Column
 """
-def ones_minus_zeros(grid):
-    m, n = len(grid), len(grid[0])
-
-    ones_row = [sum(row) for row in grid]
-    ones_col = [sum(grid[i][j] for i in range(m)) for j in range(n)]
-
-    diff = [[0] * n for _ in range(m)]
-
-    for i in range(m):
-        for j in range(n):
-            diff[i][j] = ones_row[i] + ones_col[j] - (n-ones_row[i]) - (m-ones_col[j])
-
-    return diff
-
 grid = [[0,1,1],
         [1,0,1],
         [0,0,1]]
-result = ones_minus_zeros(grid)
-print(result)
+
+m, n = len(grid), len(grid[0])
+ones_row = [sum(row) for row in grid]
+ones_col = [sum(grid[i][j] for i in range(m)) for j in range(n)]
+
+diff = [[0] * n for _ in range(m)]
+for i in range(m):
+    for j in range(n):
+        diff[i][j] = ones_row[i] + ones_col[j] - (n-ones_row[i]) - (m-ones_col[j])
+print(diff)
 
 
 """
 1572. Matrix Diagonal Sum
 """
-def diagonal_sum(mat):
-    n = len(mat)
-    total = 0
-    
-    for i in range(n):
-        total += mat[i][i]
-        total += mat[i][n - i - 1]
-    
-    if n % 2 == 1:
-        total -= mat[n // 2][n // 2]
-    return total
-
 mat = [[1,2,3],
        [4,5,6],
        [7,8,9]]
-result = diagonal_sum(mat)
-print(result)
+
+n = len(mat)
+total = 0
+for i in range(n):
+    total += mat[i][i]
+    total += mat[i][n - i - 1]
+
+if n % 2 == 1:
+    total -= mat[n // 2][n // 2]
+print(total)
 
 
 """
